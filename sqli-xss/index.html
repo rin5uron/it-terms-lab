@@ -4,39 +4,78 @@
   <meta charset="UTF-8" />
   <title>パスワード入力フォームとSQLインジェクション対策</title>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-      background-color: #FFF9F2;
-      color: #555; /* わずかにグレーな文字色 */
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      line-height: 1.7;
+    /* ===== CSS変数（カラーパレット） ===== */
+    :root {
+      --primary-bg: #FFF9F2;
+      --text-color: #555;
+      --button-bg: #B8D8BA;
+      --button-hover: #C8E6CA; /* よりパステルな薄緑 */
+      --input-hover: #E8F4EA; /* 入力フォーム用のさらに薄い緑 */
+      --code-bg: #FFE5B4;
+      --code-hover: #FFD1A4;
+      --border-color: #bbb;
+      --border-accent: #B9D8BA;
     }
 
-    form {
-      background-color: #FFF9F2;
+    /* ===== ベーススタイル ===== */
+    * {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden; /* 横スクロールは無効 */
+}
+body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.7;
+    }
+/* 固定フォーム */
+form {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--primary-bg);
       padding: 2em;
       border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       text-align: center;
       max-width: 400px;
       width: 90%;
-      margin: 2em auto;
+      z-index: 1000;
     }
-    /* フォーム・テーブル */
-  form, .instructions {
-  background-color: #FFF9F2;
-  color: #555; /* 全体文字色 */
-}
 
+    /* スクロールする背景部分 */
+    .wrapper {
+      margin-top: 250px; /* フォーム分だけ空ける */
+      padding: 0 1em;
+    }
+
+
+    
+
+    .instructions {
+      background-color: var(--primary-bg);
+      border-radius: 15px;
+      padding: 2em;
+      margin: 0 auto 2em;
+      width: 90%;
+      max-width: 700px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    /* ===== フォーム要素 ===== */
     label {
       display: block;
       margin-bottom: 10px;
       font-weight: bold;
     }
+
     input[type="text"],
     input[type="password"] {
       width: 100%;
@@ -44,62 +83,96 @@
       margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
-    }
-   
-    button {  
-      background-color: #B8D8BA;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
       font-size: 16px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    button:hover {
-      background-color: #add6af;
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
     }
 
-    .instructions {
-      background-color: #FFF9F2;
-      border-radius: 15px;
-      padding: 2em;
-      margin: 2em auto;
-      width: 90%;
-      max-width: 700px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    input[type="text"]:hover,
+    input[type="password"]:hover {
+      background-color: var(--input-hover);
+      border-color: var(--button-hover);
     }
-    /* コードタグ */
-.instructions .SQL-text code {
-  background-color: #FFE5B4; /* 薄いオレンジ背景 */
-  padding: 0.3em 0.5em;
-  border-radius: 5px;
-  cursor: pointer; /* 手のアイコンに */
-  transition: background-color 0.3s;
-  color: #555;
-  text-decoration: none; /* 下線なし */
-}
 
-/* ホバー時 */
-.instructions code:hover {
-  background-color: #FFD1A4; /* 濃くなる */
-}
-.instructions code::after {
-  content: ' copy';
-  font-size: 0.7em;
-  color: #aaa;
-}
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      background-color: var(--input-hover);
+      border-color: var(--button-bg);
+      outline: none;
+    }
 
+    button,
+    input[type="submit"],
+    button[type="submit"] {
+      width: 100%;
+      font-size: 1em;
+      padding: 12px;
+    }
+
+    button:hover,
+    input[type="submit"]:hover,
+    button[type="submit"]:hover {
+      background-color: var(--button-hover) !important;
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15) !important;
+      color: #fff !important;
+    }
+
+    button:focus,
+    input[type="submit"]:focus,
+    button[type="submit"]:focus {
+      background-color: var(--button-hover) !important;
+      outline: none !important;
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    /* ===== コンテンツスタイル ===== */
+    .instructions h2 {
+      margin-top: 0;
+    }
 
     .instructions h3 {
       font-weight: bold;
-      border-bottom: 2px solid #B9D8BA;
+      border-bottom: 2px solid var(--border-accent);
       display: inline-block;
       padding-bottom: 0.3em;
-      margin-bottom: 0; /* ← 余白詰めた！ */
+      margin-bottom: 0.5em;
     }
 
+    .SQL-text {
+      margin-top: 2em;
+    }
+
+    /* ===== コードスタイル ===== */
+    code {
+      background-color: var(--code-bg);
+      padding: 0.3em 0.5em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    code:hover {
+      background-color: var(--code-hover);
+    }
+
+    code::after {
+      content: ' copy';
+      font-size: 0.7em;
+      color: #aaa;
+    }
+
+    /* テーブル内のcodeは背景なし */
+    .attack-table code {
+      background: transparent;
+      padding: 0.2em 0.4em;
+    }
+
+    .attack-table code::after {
+      content: none;
+    }
+
+    /* ===== テーブルスタイル ===== */
     .attack-table {
       width: 100%;
       border-collapse: collapse;
@@ -107,195 +180,158 @@
       font-size: 1em;
     }
 
-    /* テーブル */
-.attack-table th {
-  font-size: 0.9em; /* 小さくする */
-  padding: 0.5em; /* 高さも詰める */
-  background-color: #f8f8f8; /* ほんのり灰色ベース */
-  color: #555;
-}
-
-
-.attack-table th, .attack-table td {
-  border: 1px solid #ccc; /* 薄いグレー */
-  padding: 0.8em;
-  text-align: center;
-}
-
-/* コード */
-.attack-table td code {
-  background: transparent; /* 背景なし */
-  padding: 0.2em 0.4em;
-  border-radius: 5px;
-  color: #555; /* 文字と同じ色 */
-}
-
-/* コピーエリアを横並びに */
-.copy-area {
-  display: flex;
-  gap: 1em;
-  justify-content: center;
-  margin-top: 1em;
-}
-
-/* コピー用コードブロック */
-.code-block {
-  padding: 1em;
-  border-radius: 6px;
-  overflow-x: auto;
-  font-family: 'Courier New', monospace;
-  position: relative;
-  flex: 1;
-}
-
-/* コピーボタン */
-.copy-btn {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  background: #F4C7AB;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 1.2em;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-thead {
-  background-color: #cbdccc;
-  font-size: 0.8em;
-}
-
-    
-
-    .SQL-text {
-      margin-top: 2em;
+    .attack-table th {
+      font-size: 0.9em;
+      padding: 0.5em;
+      background-color: #cbdccc;
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
     }
 
+    .attack-table td {
+      padding: 12px 8px;
+      text-align: center;
+      word-break: break-word;
+      border: 1px solid var(--border-color);
+    }
+
+    /* ===== レスポンシブデザイン ===== */
     @media (max-width: 600px) {
-      input {
+      form {
+        width: 95%;
+        padding: 1.2em;
+      }
+
+      .instructions {
+        width: 95%;
+        padding: 1.2em;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        font-size: 1em;
+        padding: 12px;
+      }
+
+      button {
         width: 100%;
-        padding: 0.8em;
-        box-sizing: border-box;
+        font-size: 1em;
+        padding: 12px;
+      }
+
+      button:hover {
+        background-color: var(--button-hover) !important;
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15) !important;
+      }
+
+      .wrapper {
+        padding-top: 180px;
+      }
+
+      .attack-table {
+        font-size: 0.85em;
       }
     }
   </style>
 </head>
 
 <body>
-  
   <form id="loginForm">
     <label for="username">ユーザー名：</label>
     <input type="text" id="username" name="username" required />
-    <br><br>
+    
     <label for="password">パスワード：</label>
     <input type="password" id="password" name="password" required />
-    <br><br>
+    
     <button type="submit">ログイン</button>
     <p id="message"></p>
   </form>
 
-  <section class="instructions">
-    <div class="instructions-text">
-      <h2>入力フォームからこのサイトを攻撃してみよう！</h2>
-      <p>このフォームは「入力による攻撃」を体験できるセキュリティ学習ページです。<br>
-      以下の入力内容を試して、フォームの反応を確認してみてください。
-      <br>
-      <p>SQLインジェクションとXSSの２つの攻撃手法を用います。(詳しくは下部ページを参照)</p>
-      
-    </div>  
+  <div class="wrapper">
+    <section class="instructions">
+      <div class="instructions-text">
+        <h2>入力フォームからこのサイトを攻撃してみよう！</h2>
+        <p>このフォームは「入力による攻撃」を体験できるセキュリティ学習ページです。<br>
+        以下の入力内容を試して、フォームの反応を確認してみてください。
+        </p>
+        <p>SQLインジェクションとXSSの２つの攻撃手法を用います。(詳しくは下部ページを参照)</p>
+      </div>  
 
-    <div class="SQL-text">
-      <h3>Let's try！</h3>
-      <p>①任意のハッキングコードを作る
-          <br> <code>' OR '1'='1</code>または<code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code>の攻撃コードを入れる<br>
-         ②ログインフォームに入力する<br>
-      </p>
-    
+      <div class="SQL-text">
+        <h3>Let's try！</h3>
+        <p>①任意のハッキングコードを作る
+            <br> <code>' OR '1'='1</code>または<code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code>の攻撃コードを入れる<br>
+           ②ログインフォームに入力する<br>
+        </p>
+        
+        <p>◉ログインID:<code id="loginID">hack_me</code>パスワード:<code id="loginPass">loginok</code>
+          <br>◉この他にも下の表の文字列を使い、様々なパターンで攻撃を仕掛けてみてください<br>
+        </p>
+      </div>
 
-  <p>◉ログインID:<code id="loginID">hack_me</code>パスワード:<code id="loginPass">loginok</code>
-    <br>◉この他にも下の表の文字列を使い、様々なパターンで攻撃を仕掛けてみてください<br>
- </p>
-</div>
-
-    <div class="SQL-text">
-      <h3>攻撃手法と良く使われる文字列</h3>
-      <table class="attack-table">
-        <thead>
-          <tr>
-            <th>攻撃手法</th>
-            <th>コード例</th>
-            <th>説明</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td rowspan="6">SQLi</td>
-            <td><code>'</code></td>
-            <td>文字列を強制終了し、SQL文を壊す</td>
-          </tr>
-          <tr>
-            <td><code>"</code></td>
-            <td>ダブルクォート版。上と同様</td>
-          </tr>
-          <tr>
-            <td><code>;</code></td>
-            <td>新しいSQL文を挿入できる</td>
-          </tr>
-          <tr>
-            <td><code>--</code></td>
-            <td>後続のSQLコードをコメントアウトして無効化</td>
-          </tr>
-          <tr>
-            <td><code>=</code></td>
-            <td>値を比較してログイン突破を狙う</td>
-          </tr>
-          <tr>
-            <td><code>' OR '1'='1</code></td>
-            <td>常にtrueになる条件を作りログイン突破</td>
-          </tr>
-          <tr>
-            <td rowspan="4">XSS</td>
-            <td><code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></td>
-            <td>スクリプトを実行。アラートを表示</td>
-          </tr>
-          <tr>
-            <td><code>&lt;img src="x" onerror="alert(1)"&gt;</code></td>
-            <td>画像エラー時にスクリプトを実行</td>
-          </tr>
-          <tr>
-            <td><code>onload=</code></td>
-            <td>HTML要素読み込み時にスクリプト実行</td>
-          </tr>
-          <tr>
-            <td><code>"&gt;</code></td>
-            <td>HTML属性を切り上げスクリプト挿入</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-  </section>
+      <div class="SQL-text">
+        <h3>攻撃手法と良く使われる文字列</h3>
+        <table class="attack-table">
+          <thead>
+            <tr>
+              <th>攻撃手法</th>
+              <th>コード例</th>
+              <th>説明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="6">SQLi</td>
+              <td><code>'</code></td>
+              <td>文字列を強制終了し、SQL文を壊す</td>
+            </tr>
+            <tr>
+              <td><code>"</code></td>
+              <td>ダブルクォート版。上と同様</td>
+            </tr>
+            <tr>
+              <td><code>;</code></td>
+              <td>新しいSQL文を挿入できる</td>
+            </tr>
+            <tr>
+              <td><code>--</code></td>
+              <td>後続のSQLコードをコメントアウトして無効化</td>
+            </tr>
+            <tr>
+              <td><code>=</code></td>
+              <td>値を比較してログイン突破を狙う</td>
+            </tr>
+            <tr>
+              <td><code>' OR '1'='1</code></td>
+              <td>常にtrueになる条件を作りログイン突破</td>
+            </tr>
+            <tr>
+              <td rowspan="4">XSS</td>
+              <td><code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></td>
+              <td>スクリプトを実行。アラートを表示</td>
+            </tr>
+            <tr>
+              <td><code>&lt;img src="x" onerror="alert(1)"&gt;</code></td>
+              <td>画像エラー時にスクリプトを実行</td>
+            </tr>
+            <tr>
+              <td><code>onload=</code></td>
+              <td>HTML要素読み込み時にスクリプト実行</td>
+            </tr>
+            <tr>
+              <td><code>"&gt;</code></td>
+              <td>HTML属性を切り上げスクリプト挿入</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
 
   <script>
     // ページ読み込み完了後に実行
     document.addEventListener('DOMContentLoaded', function() {
       
-      // コピー対象コードボタン
-      document.querySelectorAll('.copy-btn').forEach(button => {
-        button.addEventListener('click', () => {
-          const code = button.nextElementSibling.textContent;
-          navigator.clipboard.writeText(code).then(() => {
-            alert("コピーしました！");
-          }).catch(err => {
-            console.error('コピーに失敗しました:', err);
-            alert("コピーに失敗しました。手動でコピーしてください。");
-          });
-        });
-      });
-
       // ID・パスワードコピー用（codeタグ全体）
       document.querySelectorAll('code').forEach(codeTag => {
         codeTag.addEventListener('click', () => {
@@ -371,7 +407,7 @@ thead {
       });
 
     }); // DOMContentLoaded終了
-
   </script>
+</div>
 </body>
 </html>
