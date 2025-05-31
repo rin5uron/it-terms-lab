@@ -1,0 +1,283 @@
+    /* ===== CSS変数（カラーパレット） ===== */
+    :root {
+      --primary-bg: #FFF9F2;
+      --text-color: #555;
+      --button-bg: #B8D8BA;
+      --button-hover: #C8E6CA; /* よりパステルな薄緑 */
+      --input-hover: #E8F4EA; /* 入力フォーム用のさらに薄い緑 */
+      --code-bg: #FFE5B4;
+      --code-hover: #FFD1A4;
+      --border-color: #bbb;
+      --border-accent: #B9D8BA;
+    }
+
+    /* ===== ベーススタイル ===== */
+    * {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* bodyのスクロールを無効化 */
+}
+body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.7;
+    }
+
+    /* スクロールする背景部分 */
+    .wrapper {
+        position: fixed;
+        top: 200px; /* フォームの下から開始 */
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow-y: auto;
+        padding: 20px;
+      }
+
+
+/* headerを全体囲って固定 */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #FFF9F2;
+    z-index: 1000;
+    padding: 30px 20px;  /* 上下の余白を大きめに */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* フォーム */
+  #loginForm {
+    margin-top: 30px; /* テキストとフォームの間に余白 */
+    max-width: 400px;
+    width: 90%;
+    background-color: #FFF9F2;
+    padding: 2em;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* スクロールエリア */
+  .wrapper {
+    position: absolute;
+    top: 500px; /* headerの高さに合わせる：調整してね */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #FFF9F2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+  }
+  
+  
+
+    
+
+    .instructions {
+      background-color: var(--primary-bg);
+      border-radius: 15px;
+      padding: 2em;
+      margin: 0 auto 2em;
+      width: 90%;
+      max-width: 700px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    /* ===== フォーム要素 ===== */
+    /* 固定フォーム */
+form {
+    background-color: var(--primary-bg);
+    padding: 2em;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:hover,
+    input[type="password"]:hover {
+      background-color: var(--input-hover);
+      border-color: var(--button-hover);
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      background-color: var(--input-hover);
+      border-color: var(--button-bg);
+      outline: none;
+    }
+
+    button,
+    input[type="submit"],
+    button[type="submit"] {
+      width: 100%;
+      font-size: 1em;
+      padding: 12px;
+    }
+
+    button:hover,
+    input[type="submit"]:hover,
+    button[type="submit"]:hover {
+      background-color: var(--button-hover) !important;
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15) !important;
+      color: #fff !important;
+    }
+
+    button:focus,
+    input[type="submit"]:focus,
+    button[type="submit"]:focus {
+      background-color: var(--button-hover) !important;
+      outline: none !important;
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15) !important;
+    }
+
+
+  
+    /* ===== コンテンツスタイル ===== */
+    .instructions h2 {
+      margin-top: 0;
+    }
+
+    .instructions h3 {
+      font-weight: bold;
+      border-bottom: 2px solid var(--border-accent);
+      display: inline-block;
+      padding-bottom: 0.3em;
+      margin-bottom: 0.5em;
+    }
+
+    .SQL-text {
+      margin-top: 2em;
+    }
+
+    /* ===== コードスタイル ===== */
+    code {
+      background-color: var(--code-bg);
+      padding: 0.3em 0.5em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    code:hover {
+      background-color: var(--code-hover);
+    }
+
+    code::after {
+      content: ' copy';
+      font-size: 0.7em;
+      color: #aaa;
+    }
+
+    /* テーブル内のcodeは背景なし */
+    .attack-table code {
+      background-color: var(--code-bg); /* 背景色を復活 */
+      padding: 0.2em 0.4em;
+    }
+
+    .attack-table code::after {
+      content: none;
+    }
+
+    /* ===== テーブルスタイル ===== */
+    .attack-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5em;
+      font-size: 1em;
+    }
+
+    .attack-table th {
+      font-size: 0.9em;
+      padding: 0.5em;
+      background-color: #cbdccc;
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+    }
+
+    .attack-table td {
+      padding: 12px 8px;
+      text-align: center;
+      word-break: break-word;
+      border: 1px solid var(--border-color);
+    }
+
+    /* ===== レスポンシブデザイン ===== */
+    @media (max-width: 600px) {
+      form {
+        width: 95%;
+        padding: 1.2em;
+      }
+
+      .instructions {
+        width: 95%;
+        padding: 1.2em;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        font-size: 1em;
+        padding: 12px;
+      }
+
+      button {
+        width: 100%;
+        font-size: 1em;
+        padding: 12px;
+      }
+
+      button:hover {
+        background-color: var(--button-hover) !important;
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15) !important;
+      }
+
+      .wrapper {
+        top: 160px; /* モバイルではフォームがより小さいので調整 */
+      }
+
+      .attack-table {
+        font-size: 0.85em;
+      }
+    }
+  
