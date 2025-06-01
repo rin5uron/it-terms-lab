@@ -2,6 +2,7 @@
     // ページ読み込み完了後に実行
     document.addEventListener('DOMContentLoaded', function() {
       
+      
       // ID・パスワードコピー用（codeタグ全体）
       document.querySelectorAll('code').forEach(codeTag => {
         codeTag.addEventListener('click', () => {

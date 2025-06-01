@@ -10,17 +10,17 @@
 
   <header class="header">
     <div class="instructions-text">
-      <h2>入力フォームからこのサイトを攻撃してみよう！</h2>
-      <p>このフォームは「入力による攻撃」を体験できるセキュリティ学習ページです。<br>
+      <h2>このサイトを攻撃してみよう！</h2>
+      <p>このフォームは「入力による攻撃」を体験できるページです。<br>
       以下の入力内容を試して、フォームの反応を確認してみてください。
       </p>
     </div>  
   
     <form id="loginForm">
-    <label for="username">ユーザー名：</label>
+    <label for="username">ユーザー名</label>
     <input type="text" id="username" name="username" required />
     
-    <label for="password">パスワード：</label>
+    <label for="password">パスワード</label>
     <input type="password" id="password" name="password" required />
     
     <button type="submit">ログイン</button>
@@ -29,7 +29,7 @@
 
   </header>
   <div class="wrapper">
-      <div class="SQL-text">
+      <div class="try-text" id="try-text">
         <h3>Let's try！</h3>
         <p>①任意のハッキングコードを作る
             <br> <code>' OR '1'='1</code>または<code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code>の攻撃コードを入れる<br>
@@ -42,12 +42,11 @@
       </div>
   
     <section class="instructions">
-      <div class="SQL-text" id="SQL-text">
         <h3>攻撃手法と良く使われる文字列</h3>
         <table class="attack-table">
           <thead>
             <tr>
-              <th>攻撃手法</th>
+              <th>手法</th>
               <th>コード例</th>
               <th>説明</th>
             </tr>
@@ -97,7 +96,6 @@
             </tr>
           </tbody>
         </table>
-      </div>
     </section>
   </div>
 

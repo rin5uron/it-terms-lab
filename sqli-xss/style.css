@@ -97,6 +97,7 @@ body {
       width: 90%;
       max-width: 700px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-top: 2em;
     }
 
     /* ===== フォーム要素 ===== */
@@ -145,30 +146,37 @@ form {
       border-color: var(--button-bg);
       outline: none;
     }
+    
+    
+     
 
-    button,
-    input[type="submit"],
-    button[type="submit"] {
-      width: 100%;
-      font-size: 1em;
-      padding: 12px;
-    }
-
-    button:hover,
-    input[type="submit"]:hover,
-    button[type="submit"]:hover {
-      background-color: var(--button-hover) !important;
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15) !important;
-      color: #fff !important;
-    }
-
-    button:focus,
-    input[type="submit"]:focus,
-    button[type="submit"]:focus {
-      background-color: var(--button-hover) !important;
-      outline: none !important;
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15) !important;
-    }
+      button, input[type="submit"] {
+        -webkit-appearance: none;
+        appearance: none;
+        background: var(--button-bg);
+        border: none;
+        padding: 12px;
+        border-radius: 5px;
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;
+        width: 100%; /* 幅もここでまとめる */
+      }
+      
+      /* hover */
+      button:hover, input[type="submit"]:hover {
+        background: var(--button-hover);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        color: #fff;
+      }
+      
+      /* focus */
+      button:focus, input[type="submit"]:focus {
+        background: var(--button-hover);
+        outline: none;
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      }
+      
 
 
   
@@ -177,15 +185,13 @@ form {
       margin-top: 0;
     }
 
-    .instructions h3 {
-      font-weight: bold;
-      border-bottom: 2px solid var(--border-accent);
-      display: inline-block;
-      padding-bottom: 0.3em;
-      margin-bottom: 0.5em;
-    }
-
-    .SQL-text {
+    .try-text h3,.instructions h3 {
+    font-weight: bold;
+    border-bottom: 2px solid var(--border-accent);
+    display: inline-block;
+    margin-bottom: 0.5em;
+}
+    .try-text {
       margin-top: 2em;
     }
 
@@ -229,11 +235,12 @@ form {
     }
 
     .attack-table th {
-      font-size: 0.9em;
+      font-size: 0.8em;
       padding: 0.5em;
       background-color: #cbdccc;
       color: var(--text-color);
       border: 1px solid var(--border-color);
+      text-align: center;
     }
 
     .attack-table td {
@@ -278,6 +285,11 @@ form {
 
       .attack-table {
         font-size: 0.85em;
+      }
+
+      .instructions-text {
+        max-width: 400px; /* スマホだけ400px制限 */
+        width: 100%;
       }
     }
   
