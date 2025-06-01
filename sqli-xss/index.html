@@ -10,39 +10,102 @@
 
   <header class="header">
     <div class="instructions-text">
-      <h2>このサイトを攻撃してみよう！</h2>
-      <p>このフォームは「入力による攻撃」を体験できるページです。<br>
-      以下の入力内容を試して、フォームの反応を確認してみてください。
-      </p>
+      <section style="text-align: center; ">
+        <h1 style="font-weight: bold; font-size: 2em;">ハッカーからサイトを守れ！</h1>
+        <p style="font-size: 1.2em; color: #555;">— 入力フォームに潜む危険を体験しよう —</p>
+      </section>
     </div>  
   
     <form id="loginForm">
-    <label for="username">ユーザー名</label>
+    <label for="username">ID</label>
     <input type="text" id="username" name="username" required />
     
     <label for="password">パスワード</label>
     <input type="password" id="password" name="password" required />
     
-    <button type="submit">ログイン</button>
+    <div class="button-group">
+      <button type="submit">リセット</button>
+      <button type="submit">ログイン</button>
+    </div>
     <p id="message"></p>
     </form>
 
   </header>
+
+  
   <div class="wrapper">
-      <div class="try-text" id="try-text">
-        <h3>Let's try！</h3>
-        <p>①任意のハッキングコードを作る
-            <br> <code>' OR '1'='1</code>または<code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code>の攻撃コードを入れる<br>
-           ②ログインフォームに入力する<br>
-        </p>
-        
-        <p>◉ログインID:<code id="loginID">hack_me</code>パスワード:<code id="loginPass">loginok</code>
-          <br>◉この他にも下の表の文字列を使い、様々なパターンで攻撃を仕掛けてみてください<br>
-        </p>
-      </div>
+    <section class="instructions" 
+              style="background-color: #f0f8ff; padding: 2em; border-radius: 10px; margin-bottom: 2em;text-align: center;">
+      <p style="font-size: 1em; color: #333;">
+        このページは、<strong>ハッキングの脅威</strong>を体験する場所です。
+      </p>
+      <p style="font-size: 1em; color: #333;">
+        <strong>あなたのサイトを守り</strong>、<br><strong>安全なネットライフを送る</strong>一歩になりますように。
+      </p>
+      <p style="font-size: 1em; color: #333;">
+        さあ、<strong>情報リテラシーをレベルアップ</strong>しよう！
+      </section>
   
     <section class="instructions">
+      <h2>Mission 1: 入力フォームに潜む罠を体験しよう！</h2>
+      <h3>ミッション内容</h3>
+        <p>
+          <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code> の攻撃コードを入力して、<br>
+          ログインが突破できるか確かめてみよう！
+        </p>
+        <h3>このコードはなに？</h3>
+        <p>
+          &lt;script&gt;で囲まれたコードは、<br>
+          <strong>JavaScript</strong>というプログラムを動かすコードです。<br><br>
+          これが悪用されると、あなたのサイトに来た人が<strong>悪意のあるサイトに強制移動</strong>させられたり、<br>
+          <strong>偽サイトに誘導されてフィッシング詐欺</strong>に遭う危険も！
+      
+      <h3>狙われるリスク</h3>
+      <p>
+        あなたのサイトが、悪徳エロサイトやフィッシングページへの誘導に利用されるかも！？
+      </p>
+    </section>
+      
+    
+      
+      <section class="instructions">
+        <h2>Mission 2: 顧客データを守れ！（SQLi）</h2>
+        <h3>ミッション内容</h3>
+        <p>
+          <code>' OR '1'='1</code> の攻撃コードを入力して、<br>
+          ログインが突破できるか確かめてみよう！
+        </p>
+        <h3>このコードはなに？</h3>
+        <p>
+          <code>' OR '1'='1</code> は、<br>
+          ログイン認証の仕組みをすり抜けるための**攻撃コード**です。<br><br>
+          入力された文字列をそのままSQL文に組み込んでしまうと、<br>
+          本来照合されるべきIDやパスワードが無視され、<br>
+          **誰でもログインできてしまう**という深刻な脆弱性につながります。
+        </p>
+      
+        <h3>狙われるリスク</h3>
+        <p>
+          顧客情報が流出し、サイト運営の信頼はゼロに。
+        </p>
+      
+      
+      </section>
+      
+      
+      <section class="instructions">
+        <h2>⚠️ 最後に…</h2>
+        <p>これらの対策ができていないと――<br>
+        → 信用は一瞬で失われ、ユーザーは離れ、最悪の場合は裁判沙汰や賠償問題に発展します。</p>
+      
+        <p>※ここで体験できるのは、攻撃手法のほんの一部です。<br>
+        現実世界ではさらに多くの脅威が存在します。</p>
+      </section>
+    </section>
+
+    <section class="instructions">
         <h3>攻撃手法と良く使われる文字列</h3>
+        <p>任意の攻撃コードを作ってフォームに入力してみよう！</p>
         <table class="attack-table">
           <thead>
             <tr>
