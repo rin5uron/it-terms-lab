@@ -1,16 +1,20 @@
     /* ===== CSS変数（カラーパレット） ===== */
     :root {
-      --primary-bg: #FFF9F2;
-      --text-color: #555;
-      --button-bg: #B8D8BA;
-      --button-hover: #C8E6CA; /* よりパステルな薄緑 */
-      --input-hover: #E8F4EA; /* 入力フォーム用のさらに薄い緑 */
-      --code-bg: #FFE5B4;
-      --code-hover: #FFD1A4;
-      --border-color: #bbb;
-      --border-accent: #B9D8BA;
+      --primary-bg: #111111;        /* ダークなベース背景 */
+      --text-color: #CCCCCC;        /* ライトグレー文字 */
+      --button-bg: #00CC6A;         /* ネオングリーンボタン */
+      --button-hover: #00FF88;      /* ホバー時はちょい深めのグリーン */
+      --input-hover: #1F1F1F;       /* 入力フォームホバーで濃いグレー */
+      --code-bg: #002B1F;           /* コード背景：ダークグリーン */
+      --code-hover: #004433;        /* コードホバー背景：ちょっと明るいグリーン */
+      --code-text: #00FF88;         /* コード文字：ネオングリーン */
+      --code-hover-text: #66FFCC;   /* コードホバー文字：淡いネオンブルー */
+      --card-bg: #1e1e1e; 
+      --border-color: #333333;      /* 枠線：地味なダークグレー */
+      --border-accent: #00FF88;     /* アクセントのネオングリーン（細線とか） */
+      
     }
-
+    
     /* ===== ベーススタイル ===== */
     * {
   box-sizing: border-box;
@@ -23,13 +27,61 @@ html, body {
   overflow: hidden; /* bodyのスクロールを無効化 */
 }
 body {
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      font-family: 'Helvetica Neue', sans-serif;
+      /* font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; */
       background-color: var(--primary-bg);
       color: var(--text-color);
       line-height: 1.7;
     }
 
+  
     
+    .card {
+      background-color: #1e1e1e;
+      border: 2px solid #00ff99; /* 緑の枠 */
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 255, 153, 0.2);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    h2 {
+      font-size: 1.5em;
+      color: #00ff99;
+      margin-bottom: 10px;
+    }
+    
+    h3 {
+      font-size: 1.2em;
+      color: #00ff99;
+      margin-top: 20px;
+      border-bottom: 1px solid #00ff99;
+      padding-bottom: 5px;
+    }
+    
+    p, ul {
+      font-size: 1em;
+      line-height: 1.7;
+      color: #eeeeee;
+    }
+    
+    ul {
+      padding-left: 20px;
+    }
+    
+    li {
+      margin-bottom: 8px;
+    }
+    
+    code {
+      background-color: #fff3cd;
+      color: #333;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.95em;
+    }
+      
 
 
 /* headerを全体囲って固定 */
@@ -38,25 +90,51 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background-color: #FFF9F2;
+    background-color: var(--primary-bg);
     z-index: 1000;
     padding: 30px 20px;  /* 上下の余白を大きめに */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: 500px; /* ここを明示する */
   
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
-  
+  .header h1 {
+    text-shadow: 0 0 10px rgba(0, 255, 153, 0.9); /* シャープなネオン */
+    font-size: 3em;
+color: #ffffff;
+font-weight: 900;
+  }
+  .header p {
+    font-weight: 900;
+    font-size: 1.2em;
+    color:#fcf6f6; /* 明るいグレーにして見やすく */
+  }
+
+
   /* フォーム */
   #loginForm {
-    max-width: 400px;
-    width: 90%;
-    background-color: #FFF9F2;
+    background-color: var(--card-bg);       /* カード背景 */
+    border: 2px solid var(--border-accent); /* ネオングリーンの枠線 */
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 255, 153, 0.5); /* 他の枠線よりもネオンつよめ */
     padding: 2em;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  
+  
+  button[type="submit"]:last-child {
+    background: #00cc88; /* 少しダークなグリーン */
+    box-shadow: 0 0 10px rgba(0, 255, 153, 0.3); /* ネオン */
+  }
+  
+
+  #loginForm button[type="submit"]:first-child {
+    background-color: #555555; /* ちょっと明るめグレー */
   }
   
   /* スクロールエリア */
@@ -73,22 +151,29 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: left;
+    top: 500px; /* ヘッダーと同じ高さに揃える */
+    background-color: var(--primary-bg);
+
     
   }
   
+  
 
     .instructions {
+      background-color: #1e1e1e;
       background-color: var(--primary-bg);
-      border-radius: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 255, 153, 0.2);
+      border-radius: 12px;
       padding: 2em;
       margin: 0 auto 2em;
       width: 90%;
       max-width: 600px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       margin-top: 2em;
     }
 
-
+    
+  
     /* ===== コンテンツスタイル ===== */
     .instructions h2 {
       margin-top: 0;
@@ -124,8 +209,12 @@ form {
       width: 100%; /* 幅を100%にして左寄せを確実にする */
     }
 
+    
+
     input[type="text"],
     input[type="password"] {
+      background-color: #1A1A1A; /* ダークグレーにして統一感 */
+      color: #EEEEEE; /* テキストも明るめ */
       width: 100%;
       padding: 10px;
       margin-bottom: 10px;
@@ -171,11 +260,11 @@ form {
       }
       
       /* リセットボタンの色（グレー系） */
-      button[type="submit"]:first-child {
+      button[type="button"]:first-child {
         background: #888;
       }
       
-      button[type="submit"]:first-child:hover {
+      button[type="button"]:first-child:hover {
         background: #999;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
       }
@@ -204,33 +293,38 @@ form {
     /* ===== コードスタイル ===== */
     code {
       background-color: var(--code-bg);
+      color: var(--code-text); /* さっきの提案ならこれ */
       padding: 0.3em 0.5em;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
-      color: var(--text-color);
       text-decoration: none;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      font-weight: bold;
     }
-
+    
+    /* hover */
     code:hover {
       background-color: var(--code-hover);
     }
-
+    
+    /* 共通で copy 表示 */
     code::after {
       content: ' copy';
       font-size: 0.7em;
       color: #aaa;
     }
-
-    /* テーブル内のcodeは背景なし */
+    
+    /* テーブル用カスタマイズだけ */
     .attack-table code {
-      background-color: var(--code-bg); /* 背景色を復活 */
-      padding: 0.2em 0.4em;
+      font-size: 0.8em;       /* ちょっと小さく */
+      padding: 0.2em 0.4em;   /* 余白ちょい小さく */
+      font-weight: bold;
     }
-
-    .attack-table code::after {
-      content: none;
-    }
+    
+    
+    
 
     /* ===== テーブルスタイル ===== */
     .attack-table {
@@ -243,10 +337,11 @@ form {
     .attack-table th {
       font-size: 0.8em;
       padding: 0.5em;
-      background-color: #cbdccc;
       color: var(--text-color);
       border: 1px solid var(--border-color);
       text-align: center;
+      background-color: #222; /* 少し濃いめの黒グレーに */
+  border: 1px solid var(--border-color);
     }
 
     .attack-table td {
@@ -255,6 +350,20 @@ form {
       word-break: break-word;
       border: 1px solid var(--border-color);
     }
+
+    
+    /* 最初の列だけ縦書き */
+.attack-table td.method {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.card,
+.instructions {
+  margin: 2em 0;
+}
 
     /* ===== レスポンシブデザイン ===== */
     @media (max-width: 600px) {

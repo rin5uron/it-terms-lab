@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
   <title>パスワード入力フォームとSQLインジェクション対策</title>
   <link rel="stylesheet" href="style.css">
  </head>
@@ -24,7 +26,7 @@
     <input type="password" id="password" name="password" required />
     
     <div class="button-group">
-      <button type="submit">リセット</button>
+      <button type="button" id="resetBtn">リセット</button>
       <button type="submit">ログイン</button>
     </div>
     <p id="message"></p>
@@ -35,72 +37,73 @@
   
   <div class="wrapper">
     <section class="instructions" 
-              style="background-color: #f0f8ff; padding: 2em; border-radius: 10px; margin-bottom: 2em;text-align: center;">
-      <p style="font-size: 1em; color: #333;">
+              style="padding: 2em; border-radius: 10px; margin-bottom: 2em;text-align: center;box-shadow: 0 0 10px rgba(0,255,136,0.3) ">
+      <p style="font-size: 1em; color: #CCC;">
         このページは、<strong>ハッキングの脅威</strong>を体験する場所です。
       </p>
-      <p style="font-size: 1em; color: #333;">
+      <p style="font-size: 1em; color: #CCC;">
         <strong>あなたのサイトを守り</strong>、<br><strong>安全なネットライフを送る</strong>一歩になりますように。
       </p>
-      <p style="font-size: 1em; color: #333;">
+      <p style="font-size: 1em; color: #CCC;">
         さあ、<strong>情報リテラシーをレベルアップ</strong>しよう！
-      </section>
-  
-    <section class="instructions">
-      <h2>Mission 1: 入力フォームに潜む罠を体験しよう！</h2>
-      <h3>ミッション内容</h3>
-        <p>
-          <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code> の攻撃コードを入力して、<br>
-          ログインが突破できるか確かめてみよう！
-        </p>
-        <h3>このコードはなに？</h3>
-        <p>
-          &lt;script&gt;で囲まれたコードは、<br>
-          <strong>JavaScript</strong>というプログラムを動かすコードです。<br><br>
-          これが悪用されると、あなたのサイトに来た人が<strong>悪意のあるサイトに強制移動</strong>させられたり、<br>
-          <strong>偽サイトに誘導されてフィッシング詐欺</strong>に遭う危険も！
-      
-      <h3>狙われるリスク</h3>
-      <p>
-        あなたのサイトが、悪徳エロサイトやフィッシングページへの誘導に利用されるかも！？
-      </p>
     </section>
-      
-    
-      
-      <section class="instructions">
-        <h2>Mission 2: 顧客データを守れ！（SQLi）</h2>
+    <section class="instructions" >
+      <div class="card">
+        <h2>⚔️ Mission 0⚔️</h2>
+        <h2>ログインしてみよう！</h2>
         <h3>ミッション内容</h3>
-        <p>
-          <code>' OR '1'='1</code> の攻撃コードを入力して、<br>
-          ログインが突破できるか確かめてみよう！
-        </p>
-        <h3>このコードはなに？</h3>
-        <p>
-          <code>' OR '1'='1</code> は、<br>
-          ログイン認証の仕組みをすり抜けるための**攻撃コード**です。<br><br>
-          入力された文字列をそのままSQL文に組み込んでしまうと、<br>
-          本来照合されるべきIDやパスワードが無視され、<br>
-          **誰でもログインできてしまう**という深刻な脆弱性につながります。
-        </p>
+        <p>ID<code>hack_me</code> パスワード<code>loginok</code>を入力して、ログイン突破できるか確かめてみよう！</p>
+      
+        <h3>考えてみよう</h3>
+        <p>どうしてパスワードには文字制限があることが多いのかな<br>
+        入力フォームからどんな攻撃ができるのか考えてみよう</p>
+      
+        <h3>ヒント</h3>
+        <p>入力フォームは外部が入り込みやすい穴<br>
+        コードもパスワードを構成する文字列と同じ種類を使っているよ</p>
+      </div>
+      
+      <div class="card">
+        <h2>⚔️ Mission 1⚔️</h2>
+        <h2>入力フォームに潜む罠を体験しよう！</h2>
+        <h3>ミッション内容</h3>
+        <p><code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code> の攻撃コードを入力して、ログイン突破できるか確かめてみよう！</p>
+      
+        <h3>どんなコード？</h3>
+        <p>&lt;script&gt; で囲まれたコードは、<strong>JavaScript</strong> というプログラムを動かすコードです。<br>
+        これが悪用されると、あなたのサイトに来た人が <strong>悪意のあるサイトに強制移動</strong> させられたり、<strong>偽サイトに誘導されてフィッシング詐欺</strong> に遭う危険も！</p>
       
         <h3>狙われるリスク</h3>
-        <p>
-          顧客情報が流出し、サイト運営の信頼はゼロに。
-        </p>
+        <ul>
+          <li>あなたのサイトが、悪徳エロサイトやフィッシングページへの誘導に利用されるかも！？</li>
+        </ul>
+      </div>
       
+      <div class="card">
+        <h2>🛡️ Mission 2🛡️</h2>
+        <h2>顧客データを守れ！</h2>
+        <h3>ミッション内容</h3>
+        <p><code>' OR '1'='1</code> の攻撃コードを入力して、ログイン突破できるか確かめてみよう！</p>
       
-      </section>
+        <h3>どんなコード？</h3>
+        <p><code>' OR '1'='1</code> は、ログイン認証の仕組みをすり抜けるための<strong>攻撃コード</strong>です。<br>
+        入力された文字列をそのままSQL文に組み込んでしまうと、本来照合されるべきIDやパスワードが無視され、<br>
+        <strong>誰でもログインできてしまう</strong>という深刻な脆弱性につながります。</p>
       
+        <h3>狙われるリスク</h3>
+        <ul>
+          <li>顧客情報が流出し、サイト運営の信頼はゼロに。</li>
+        </ul>
+      </div>
       
-      <section class="instructions">
+      <div class="card">
         <h2>⚠️ 最後に…</h2>
-        <p>これらの対策ができていないと――<br>
+        <p>これらの対策ができていないとーー<br>
         → 信用は一瞬で失われ、ユーザーは離れ、最悪の場合は裁判沙汰や賠償問題に発展します。</p>
       
         <p>※ここで体験できるのは、攻撃手法のほんの一部です。<br>
         現実世界ではさらに多くの脅威が存在します。</p>
-      </section>
+      </div>
     </section>
 
     <section class="instructions">
@@ -116,7 +119,7 @@
           </thead>
           <tbody>
             <tr>
-              <td rowspan="6">SQLi</td>
+              <td class="method" rowspan="6">SQLi</td>
               <td><code>'</code></td>
               <td>文字列を強制終了し、SQL文を壊す</td>
             </tr>
@@ -141,7 +144,7 @@
               <td>常にtrueになる条件を作りログイン突破</td>
             </tr>
             <tr>
-              <td rowspan="4">XSS</td>
+              <td class="method" rowspan="4">XSS</td>
               <td><code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></td>
               <td>スクリプトを実行。アラートを表示</td>
             </tr>

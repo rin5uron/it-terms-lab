@@ -22,6 +22,17 @@
         });
       });
 
+      // リセットボタン取得
+const resetButton = document.getElementById('resetBtn');
+
+resetButton.addEventListener('click', function() {
+  // フォームリセット
+  document.getElementById('loginForm').reset();
+  // メッセージクリア
+  document.getElementById('message').textContent = '';
+});
+
+
       // ログインフォーム設定
       const form = document.getElementById('loginForm');
       const message = document.getElementById('message');
@@ -70,9 +81,9 @@
         // ログイン判定
         if (username === 'hack_me' && password === 'loginok') {
           message.textContent = 'ログイン成功♡';
-          message.style.color = 'green';
+          message.style.color = color: #00ff99;;
         } else {
-          message.textContent = 'ユーザー名またはパスワードが違います';
+          message.textContent = 'IDまたはパスワードが違います';
           message.style.color = 'red';
         }
       });
