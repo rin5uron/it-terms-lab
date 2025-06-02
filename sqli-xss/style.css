@@ -24,8 +24,10 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* bodyのスクロールを無効化 */
+  overflow-x: hidden; /* 横スクロールだけ防ぐ */
+  overflow-y: auto;   /* 縦スクロールはOK */
 }
+
 body {
       font-family: 'Helvetica Neue', sans-serif;
       /* font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; */
@@ -51,12 +53,10 @@ body {
       margin-bottom: 10px;
     }
     
-    h3 {
+    h4 {
       font-size: 1.2em;
       color: #00ff99;
-      margin-top: 20px;
       border-bottom: 1px solid #00ff99;
-      padding-bottom: 5px;
     }
     
     p, ul {
@@ -92,7 +92,7 @@ body {
     right: 0;
     background-color: var(--primary-bg);
     z-index: 1000;
-    padding: 30px 20px;  /* 上下の余白を大きめに */
+    padding: 0px 20px;  /* 上下の余白を大きめに */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     height: 500px; /* ここを明示する */
   
@@ -106,11 +106,13 @@ body {
     font-size: 3em;
 color: #ffffff;
 font-weight: 900;
+margin-bottom: 0;
   }
   .header p {
     font-weight: 900;
     font-size: 1.2em;
     color:#fcf6f6; /* 明るいグレーにして見やすく */
+    margin-top: 0;
   }
 
 
@@ -140,7 +142,6 @@ font-weight: 900;
   /* スクロールエリア */
   .wrapper {
     position: absolute;
-    top: 500px; /* headerの高さに合わせる：調整してね */
     left: 0;
     right: 0;
     bottom: 0;
@@ -152,6 +153,7 @@ font-weight: 900;
     align-items: center;
     text-align: left;
     top: 500px; /* ヘッダーと同じ高さに揃える */
+    margin-top: 5px; 
     background-color: var(--primary-bg);
 
     
@@ -165,11 +167,12 @@ font-weight: 900;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 255, 153, 0.2);
       border-radius: 12px;
-      padding: 2em;
       margin: 0 auto 2em;
       width: 90%;
       max-width: 600px;
-      margin-top: 2em;
+      margin-bottom: 0;
+      
+
     }
 
     
@@ -364,6 +367,11 @@ form {
 .instructions {
   margin: 2em 0;
 }
+.br-mobile {
+  display: none;
+}
+
+
 
     /* ===== レスポンシブデザイン ===== */
     @media (max-width: 600px) {
@@ -374,7 +382,15 @@ form {
         width: 95%;
         padding: 1.2em;
       }
+      .br-mobile {
+        display: block;
+        height: 0;
+        visibility: hidden;
+      }
 
+      .header p {
+        font-size: 1em;
+      }
       .instructions {
         width: 95%;
         padding: 1.2em;
@@ -413,8 +429,10 @@ form {
       }
 
       .wrapper {
-        top: 160px; /* モバイルではフォームがより小さいので調整 */
-      }
+        top: 150px; /* モバイルではフォームがより小さいので調整 */
+         margin-top: 350px; /* スマホならちょっと浅く */
+        }
+    
 
       .attack-table {
         font-size: 0.85em;
