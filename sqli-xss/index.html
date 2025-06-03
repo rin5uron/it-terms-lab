@@ -111,7 +111,7 @@
       
       <!-- 警告カード -->
       <div class="card box">
-        <h2>⚠️ 最後に…</h2>
+        <h3>⚠️ 最後に…</h3>
         <p>これらの対策ができていないとーー<br>
         サイトの信用は一瞬で失われ、ユーザーは離れ、最悪の場合は裁判沙汰や賠償問題に発展します。</p>
       
@@ -129,7 +129,7 @@
         <div class="card box">
           <h3>SQLインジェクション<span class="br-mobile"></span>（SQLi）</h3>
           <p class="bullet-list">📚 <strong>ターゲット：</strong> <br>データベース</p>
-          <p class="bullet-list">🛠️ <strong>攻撃内容：</strong> <br>入力欄に不正なSQL文を入れて、データを盗んだり壊したりする攻撃</p>
+          <p class="bullet-list">🛠️ <strong>攻撃内容：</strong> <br>入力欄に不正なSQL文（データベースに命令をする文）を入れて、データを盗んだり壊したりする</p>
           <p class="bullet-list">🛡️ <strong>防止策：</strong> <br>入力チェック（サニタイズ）</p>
         </div>
         
@@ -137,7 +137,7 @@
         <div class="card box">
           <h3>クロスサイトスクリプティング（XSS）</h3>
           <p class="bullet-list">📚 <strong>ターゲット：</strong> <br>Webページを見ている人</p>
-          <p class="bullet-list">🛠️ <strong>攻撃内容：</strong> <br>悪いスクリプトをページに埋め込み、ユーザーのブラウザで勝手に動かす攻撃</p>
+          <p class="bullet-list">🛠️ <strong>攻撃内容：</strong> <br>悪いスクリプトをページに埋め込み、ユーザーのブラウザで勝手に動かす</p>
           <p class="bullet-list">🛡️ <strong>防止策：</strong> <br>出力エスケープ（無害化）</p>
         </div>
       </div>
@@ -166,7 +166,7 @@
           </tr>
           <tr>
             <td><code>"</code></td>
-            <td>ダブルクォート版。上と同様</td>
+            <td>上と同様、ダブルクォート版</td>
           </tr>
           <tr>
             <td><code>;</code></td>
@@ -189,7 +189,7 @@
           <tr>
             <td class="method" rowspan="4">XSS</td>
             <td><code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></td>
-            <td>スクリプトを実行。アラートを表示</td>
+            <td>スクリプトを実行、アラートを表示</td>
           </tr>
           <tr>
             <td><code>&lt;img src="x" onerror="alert(1)"&gt;</code></td>

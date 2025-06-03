@@ -486,4 +486,11 @@ code::after {
     padding: 1em;
     box-shadow: 0 0 8px rgba(0, 255, 153, 0.2); /* 💡カードも優しく */
   }
+
+  .attack-table td.method {
+    font-size: 0.8em;
+  }
+  .attack-table td {
+    font-size: 0.7em;
+  }
 }
