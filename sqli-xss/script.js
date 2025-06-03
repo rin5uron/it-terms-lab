@@ -44,6 +44,18 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('ユーザー名:', username);
     console.log('パスワード:', password);
 
+
+    // XSS検出
+    const inputText = username.toLowerCase() + password.toLowerCase(); // 小文字に変換
+    const dangerousXSS = ["<", ">", "script", "onload", "onerror"];
+
+    for (let tag of dangerousXSS) {
+    if (inputText.includes(tag)) {
+    message.textContent = "⚠️ クロスサイトスクリプティングが検出されました（XSS攻撃の可能性）";
+    message.style.color = "#FF4444"; 
+      return;
+      }
+    }    
     // SQLインジェクション対策
     const dangerousChars = ["'", '"', ";", "--", "=", " OR "];
     let isSQLAttack = false;
@@ -65,15 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    // XSS検出
-    const dangerousXSS = ["<", ">", "script", "onload", "onerror"];
-    for (let tag of dangerousXSS) {
-      if (username.includes(tag) || password.includes(tag)) {
-        message.textContent = "⚠️ クロスサイトスクリプティングが検出されました（XSS攻撃の可能性）";
-        message.style.color = "#FF4444"; 
-        return;
-      }
-    }
+    
+
 
     // ログイン判定
     if (username === 'hack_me' && password === 'loginok') {

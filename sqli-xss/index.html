@@ -10,71 +10,82 @@
 
 <body>
 
+  <!-- ===== ヘッダー部分（タイトル・フォーム） ===== -->
   <header class="header">
+    <!-- サイトタイトル -->
     <div class="instructions-text">
-      <section style="text-align: center; ">
-      <h1 style="font-weight: bold; font-size: 2.5em;">ハッカーから<span class="br-mobile"></span>サイトを守れ！！</h1>
+      <section>
+        <h1>ハッカーから<span class="br-mobile"></span>サイトを守れ！！</h1>
         <p>— 入力フォームに潜む危険を体験しよう —</p>
       </section>
     </div>  
   
+    <!-- ログインフォーム -->
     <form id="loginForm">
-    <label for="username">ID</label>
-    <input type="text" id="username" name="username" required />
-    
-    <label for="password">パスワード</label>
-    <input type="password" id="password" name="password" required />
-    
-    <div class="button-group">
-      <button type="button" id="resetBtn">リセット</button>
-      <button type="submit">ログイン</button>
-    </div>
-    <p id="message"></p>
+      <label for="username">ID</label>
+      <input type="text" id="username" name="username" required />
+      
+      <label for="password">パスワード</label>
+      <input type="password" id="password" name="password" required />
+      
+      <div class="button-group">
+        <button type="button" id="resetBtn">リセット</button>
+        <button type="submit">ログイン</button>
+      </div>
+      <p id="message"></p>
     </form>
 
   </header>
 
   
   <div class="wrapper">
-    <section class="instructions" 
-              style="padding: 2em; border-radius: 10px; margin-bottom: 2em;text-align: center;box-shadow: 0 0 10px rgba(0,255,136,0.3) ">
-      <p style="font-size: 1em; color: #CCC;">
-        このページは、<strong>ハッキングの脅威</strong>を体験する場所です。
+    <!-- 導入セクション -->
+    <section class="instructions box">
+      <p class="bullet-list">
+        ▶︎ このページは、<strong>ハッキングの脅威</strong>を体験する場所です。
       </p>
-      <p style="font-size: 1em; color: #CCC;">
-        <strong>あなたのサイトを守り</strong>、<br><strong>安全なネットライフを送る</strong>一歩になりますように。
+      <p class="bullet-list">
+        ▶︎ <strong>悪用厳禁！！</strong><br>
+        あなたのサイトを守り、<span class="br-mobile"></span>安全なネットライフを送る一歩にしてください。
       </p>
-      <p style="font-size: 1em; color: #CCC;">
-        さあ、<strong>情報リテラシーをレベルアップ</strong>しよう！
+      <p class="bullet-list">
+        ▶︎ さあ、<strong>情報リテラシーをレベルアップ</strong>しよう！
+      </p>
     </section>
-    <section class="instructions" >
-      <div class="card">
-        <h2>⚔️ Mission 0⚔️</h2>
-        <h2>ログインしてみよう！</h2>
+
+
+    <!-- ミッションセクション -->
+    <section class="instructions box">
+      <h2>ミッションに挑戦だ！</h2>
+      <!-- Mission 0 -->
+      <div class="card box">
+        <h2>🔒Mission 0🔒</h2>
+        <h2>ログイン突破！</h2>
         <h4>ミッション内容</h4>
         <p>ID<code>hack_me</code> パスワード<code>loginok</code>を入力し、ログイン突破できるか確かめてみよう！</p>
       
         <h4>考えてみよう</h4>
         <ul>
-          <li>どうしてパスワードには文字制限があることが多いのかな</li>
+          <li>どうしてパスワードには文字の種類や数に制限があることが多いのかな</li>
           <li>入力フォームからどんな攻撃ができるのか考えてみよう</li>
         </ul>
       
         <h4>ヒント</h4>
-<ul>
-  <li>入力フォームは外部からの侵入を許してしまう「入り口」になりやすい。</li>
-  <li>パスワードに使う文字列には、攻撃に悪用される記号や特殊文字も混ざっているかも。</li>
-</ul>
+        <ul>
+          <li>入力フォームは外部からの侵入を許してしまう「入り口」になりやすい</li>
+          <li>パスワードに使う文字列には、攻撃に悪用される記号や特殊文字も混ざっているかも！？</li>
+        </ul>
 
       </div>
       
-      <div class="card">
+      <!-- Mission 1 -->
+      <div class="card box">
         <h2>⚔️ Mission 1⚔️</h2>
-        <h2>入力フォームに潜む罠を<span class="br-mobile"></span>体験しよう！</h2>
+        <h2>入力フォームに潜む<span class="br-mobile"></span>罠を体験しよう！</h2>
         <h4>ミッション内容</h4>
         <p><code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code> の攻撃コードを入力し、ログイン突破できるか確かめてみよう！</p>
       
-        <h4>どんなコード？</h3>
+        <h4>どんなコード？</h4>
         <p>&lt;script&gt; で囲まれたコードは、<strong>JavaScript</strong> というプログラムを動かすコードです。<br>
         これが悪用されると、あなたのサイトに来た人が <strong>悪意のあるサイトに強制移動</strong> させられたり、<strong>偽サイトに誘導されてフィッシング詐欺</strong> に遭う危険も！</p>
       
@@ -82,7 +93,8 @@
         <p>あなたのサイトが、悪徳エロサイトやフィッシングページへの誘導に利用されるかも！？</p>
       </div>
       
-      <div class="card">
+      <!-- Mission 2 -->
+      <div class="card box">
         <h2>🛡️ Mission 2🛡️</h2>
         <h2>顧客データを守れ！</h2>
         <h4>ミッション内容</h4>
@@ -97,74 +109,104 @@
         <p>顧客情報が流出し、サイト運営の信頼はゼロに、、、</p>
       </div>
       
-      <div class="card">
+      <!-- 警告カード -->
+      <div class="card box">
         <h2>⚠️ 最後に…</h2>
         <p>これらの対策ができていないとーー<br>
-        信用は一瞬で失われ、ユーザーは離れ、最悪の場合は裁判沙汰や賠償問題に発展します。</p>
+        サイトの信用は一瞬で失われ、ユーザーは離れ、最悪の場合は裁判沙汰や賠償問題に発展します。</p>
       
         <p>ここで体験できるのは、攻撃手法のほんの一部です。<br>
         現実世界ではさらに多くの脅威が存在します。</p>
       </div>
     </section>
 
-    <section class="instructions">
-        <h3>攻撃手法と良く使われる文字列</h3>
-        <p>任意の攻撃コードを作ってフォームに入力してみよう！</p>
-        <table class="attack-table">
-          <thead>
-            <tr>
-              <th>手法</th>
-              <th>コード例</th>
-              <th>説明</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="method" rowspan="6">SQLi</td>
-              <td><code>'</code></td>
-              <td>文字列を強制終了し、SQL文を壊す</td>
-            </tr>
-            <tr>
-              <td><code>"</code></td>
-              <td>ダブルクォート版。上と同様</td>
-            </tr>
-            <tr>
-              <td><code>;</code></td>
-              <td>新しいSQL文を挿入できる</td>
-            </tr>
-            <tr>
-              <td><code>--</code></td>
-              <td>後続のSQLコードをコメントアウトして無効化</td>
-            </tr>
-            <tr>
-              <td><code>=</code></td>
-              <td>値を比較してログイン突破を狙う</td>
-            </tr>
-            <tr>
-              <td><code>' OR '1'='1</code></td>
-              <td>常にtrueになる条件を作りログイン突破</td>
-            </tr>
-            <tr>
-              <td class="method" rowspan="4">XSS</td>
-              <td><code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></td>
-              <td>スクリプトを実行。アラートを表示</td>
-            </tr>
-            <tr>
-              <td><code>&lt;img src="x" onerror="alert(1)"&gt;</code></td>
-              <td>画像エラー時にスクリプトを実行</td>
-            </tr>
-            <tr>
-              <td><code>onload=</code></td>
-              <td>HTML要素読み込み時にスクリプト実行</td>
-            </tr>
-            <tr>
-              <td><code>"&gt;</code></td>
-              <td>HTML属性を切り上げスクリプト挿入</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- 攻撃種類説明セクション -->
+    <section class="instructions box">
+      <div class="attack-cards">
+        <h2>ミッションに出てきた<span class="br-mobile"></span>２つの脅威</h2>
+        
+        <!-- SQLインジェクションカード -->
+        <div class="card box">
+          <h3>SQLインジェクション<span class="br-mobile"></span>（SQLi）</h3>
+          <p class="bullet-list">📚 <strong>ターゲット：</strong> <br>データベース</p>
+          <p class="bullet-list">🛠️ <strong>攻撃内容：</strong> <br>入力欄に不正なSQL文を入れて、データを盗んだり壊したりする攻撃</p>
+          <p class="bullet-list">🛡️ <strong>防止策：</strong> <br>入力チェック（サニタイズ）</p>
+        </div>
+        
+        <!-- XSSカード -->
+        <div class="card box">
+          <h3>クロスサイトスクリプティング（XSS）</h3>
+          <p class="bullet-list">📚 <strong>ターゲット：</strong> <br>Webページを見ている人</p>
+          <p class="bullet-list">🛠️ <strong>攻撃内容：</strong> <br>悪いスクリプトをページに埋め込み、ユーザーのブラウザで勝手に動かす攻撃</p>
+          <p class="bullet-list">🛡️ <strong>防止策：</strong> <br>出力エスケープ（無害化）</p>
+        </div>
+      </div>
     </section>
-  </div>
+
+    <!-- 攻撃手法一覧テーブル -->
+    <section class="instructions box">
+      <h2>攻撃パターンを知ろう</h2>
+      <p>任意の攻撃コードを作ってフォームに入力してみよう！</p>
+      
+      <h3>攻撃手法と良く使われる文字列</h3>
+      <table class="attack-table">
+        <thead>
+          <tr>
+            <th>手法</th>
+            <th>コード例</th>
+            <th>説明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- SQLインジェクション攻撃例 -->
+          <tr>
+            <td class="method" rowspan="6">SQLi</td>
+            <td><code>'</code></td>
+            <td>文字列を強制終了し、SQL文を壊す</td>
+          </tr>
+          <tr>
+            <td><code>"</code></td>
+            <td>ダブルクォート版。上と同様</td>
+          </tr>
+          <tr>
+            <td><code>;</code></td>
+            <td>新しいSQL文を挿入できる</td>
+          </tr>
+          <tr>
+            <td><code>--</code></td>
+            <td>後続のSQLコードをコメントアウトして無効化</td>
+          </tr>
+          <tr>
+            <td><code>=</code></td>
+            <td>値を比較してログイン突破を狙う</td>
+          </tr>
+          <tr>
+            <td><code>' OR '1'='1</code></td>
+            <td>常にtrueになる条件を作りログイン突破</td>
+          </tr>
+          
+          <!-- XSS攻撃例 -->
+          <tr>
+            <td class="method" rowspan="4">XSS</td>
+            <td><code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></td>
+            <td>スクリプトを実行。アラートを表示</td>
+          </tr>
+          <tr>
+            <td><code>&lt;img src="x" onerror="alert(1)"&gt;</code></td>
+            <td>画像エラー時にスクリプトを実行</td>
+          </tr>
+          <tr>
+            <td><code>onload=</code></td>
+            <td>HTML要素読み込み時にスクリプト実行</td>
+          </tr>
+          <tr>
+            <td><code>"&gt;</code></td>
+            <td>HTML属性を切り上げスクリプト挿入</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+ </div> <!-- wrapper -->
 
   <script src="script.js"></script>
 </body>

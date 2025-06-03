@@ -1,22 +1,21 @@
-    /* ===== CSS変数（カラーパレット） ===== */
-    :root {
-      --primary-bg: #111111;        /* ダークなベース背景 */
-      --text-color: #CCCCCC;        /* ライトグレー文字 */
-      --button-bg: #00CC6A;         /* ネオングリーンボタン */
-      --button-hover: #00FF88;      /* ホバー時はちょい深めのグリーン */
-      --input-hover: #1F1F1F;       /* 入力フォームホバーで濃いグレー */
-      --code-bg: #002B1F;           /* コード背景：ダークグリーン */
-      --code-hover: #004433;        /* コードホバー背景：ちょっと明るいグリーン */
-      --code-text: #00FF88;         /* コード文字：ネオングリーン */
-      --code-hover-text: #66FFCC;   /* コードホバー文字：淡いネオンブルー */
-      --card-bg: #1e1e1e; 
-      --border-color: #333333;      /* 枠線：地味なダークグレー */
-      --border-accent: #00FF88;     /* アクセントのネオングリーン（細線とか） */
-      
-    }
-    
-    /* ===== ベーススタイル ===== */
-    * {
+/* ===== CSS変数（カラーパレット） ===== */
+:root {
+  --primary-bg: #111111;        /* ダークなベース背景 */
+  --text-color: #CCCCCC;        /* ライトグレー文字 */
+  --button-bg: #00CC6A;         /* ネオングリーンボタン */
+  --button-hover: #00FF88;      /* ホバー時はちょい深めのグリーン */
+  --input-hover: #1F1F1F;       /* 入力フォームホバーで濃いグレー */
+  --code-bg: #002B1F;           /* コード背景：ダークグリーン */
+  --code-hover: #004433;        /* コードホバー背景：ちょっと明るいグリーン */
+  --code-text: #66FFCC;        /* コード文字：ミントグリーン */
+  --code-hover-text: #66FFCC;   /* コードホバー文字：淡いネオンブルー */
+  --card-bg: #1e1e1e; 
+  --border-color: #333333;      /* 枠線：地味なダークグレー */
+  --border-accent: #00FF88;     /* アクセントのネオングリーン（細線とか） */
+}
+
+/* ===== ベーススタイル ===== */
+* {
   box-sizing: border-box;
 }
 
@@ -29,333 +28,351 @@ html, body {
 }
 
 body {
-      font-family: 'Helvetica Neue', sans-serif;
-      /* font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; */
-      background-color: var(--primary-bg);
-      color: var(--text-color);
-      line-height: 1.7;
-    }
-
-  
-    
-    .card {
-      background-color: #1e1e1e;
-      border: 2px solid #00ff99; /* 緑の枠 */
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 255, 153, 0.2);
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    
-    h2 {
-      font-size: 1.5em;
-      color: #00ff99;
-      margin-bottom: 10px;
-    }
-    
-    h4 {
-      font-size: 1.2em;
-      color: #00ff99;
-      border-bottom: 1px solid #00ff99;
-    }
-    
-    p, ul {
-      font-size: 1em;
-      line-height: 1.7;
-      color: #eeeeee;
-    }
-    
-    ul {
-      padding-left: 20px;
-    }
-    
-    li {
-      margin-bottom: 8px;
-    }
-    
-    code {
-      background-color: #fff3cd;
-      color: #333;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: monospace;
-      font-size: 0.95em;
-    }
-      
-
-
-/* headerを全体囲って固定 */
-.header {
-    /* position: fixed; */
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: var(--primary-bg);
-    z-index: 1000;
-    padding: 0px 20px;  /* 上下の余白を大きめに */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    height: 500px; /* ここを明示する */
-  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .header h1 {
-    text-shadow: 0 0 10px rgba(0, 255, 153, 0.9); /* シャープなネオン */
-    font-size: 3em;
-color: #ffffff;
-font-weight: 900;
-margin-bottom: 0;
-  }
-  .header p {
-    font-weight: 900;
-    font-size: 1.2em;
-    color:#fcf6f6; /* 明るいグレーにして見やすく */
-    margin-top: 0;
-  }
-
-
-  /* フォーム */
-  #loginForm {
-    background-color: var(--card-bg);       /* カード背景 */
-    border: 2px solid var(--border-accent); /* ネオングリーンの枠線 */
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 255, 153, 0.5); /* 他の枠線よりもネオンつよめ */
-    padding: 2em;
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  
-  
-  button[type="submit"]:last-child {
-    background: #00cc88; /* 少しダークなグリーン */
-    box-shadow: 0 0 10px rgba(0, 255, 153, 0.3); /* ネオン */
-  }
-  
-
-  #loginForm button[type="submit"]:first-child {
-    background-color: #555555; /* ちょっと明るめグレー */
-  }
-  
-  /* スクロールエリア */
-  .wrapper {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: auto;
-    padding: 20px;
-    background-color: #FFF9F2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: left;
-    top: 500px; /* ヘッダーと同じ高さに揃える */
-    margin-top: 5px; 
-    background-color: var(--primary-bg);
-
-    
-  }
-  
-  
-
-    .instructions {
-      background-color: #1e1e1e;
-      background-color: var(--primary-bg);
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 255, 153, 0.2);
-      border-radius: 12px;
-      margin: 0 auto 2em;
-      width: 90%;
-      max-width: 600px;
-      margin-bottom: 0;
-      
-
-    }
-
-    
-  
-    /* ===== コンテンツスタイル ===== */
-    .instructions h2 {
-      margin-top: 0;
-    }
-    .instructions h3 {
-    font-weight: bold;
-    border-bottom: 2px solid var(--border-accent);
-    display: inline-block;
-    margin-bottom: 0.5em;
+  font-family: 'Helvetica Neue', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; */
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  line-height: 1.7;
 }
 
-    /* ===== フォーム要素 ===== */
-    /* 固定フォーム */
+/* ===== ヘッダー部分 ===== */
+/* headerを全体囲って固定 */
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--primary-bg);
+  z-index: 1000;
+  padding: 0px 20px;  /* 上下の余白を大きめに */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.header h1 {
+  text-shadow: 0 0 10px rgba(0, 255, 153, 0.9); /* シャープなネオン */
+  font-size: 3em;
+  color: #ffffff;
+  font-weight: 900;
+  margin-bottom: 0;
+}
+
+.header p {
+  font-weight: 900;
+  font-size: 1.2em;
+  color:#fcf6f6; /* 明るいグレーにして見やすく */
+  margin-top: 0;
+}
+
+/* ===== メインコンテンツエリア ===== */
+/* スクロールエリア */
+.wrapper {
+  padding: 20px;
+  background-color: var(--primary-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  margin-top: 2em;
+}
+
+
+/* ===== フォーム部分 ===== */
+/* フォーム */
+#loginForm {
+  position: static; /* 固定解除！ */
+  margin: 2em auto 0 auto;
+  background-color: var(--card-bg);       /* カード背景 */
+  border: 2px solid var(--border-accent); /* ネオングリーンの枠線 */
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 255, 153, 0.5); /* 他の枠線よりもネオンつよめ */
+  padding: 2em;
+  width: 100%;
+  max-width: 400px;
+}
+
+#message {
+  margin-top: 1em;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* 固定フォーム */
 form {
-    background-color: var(--primary-bg);
-    padding: 2em;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-    label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: bold;
-      text-align: left; /* ラベルを左寄せに変更 */
-      width: 100%; /* 幅を100%にして左寄せを確実にする */
-    }
+  background-color: var(--primary-bg);
+  padding: 2em;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    
+/* ラベル要素 */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: left; /* ラベルを左寄せに変更 */
+  width: 100%; /* 幅を100%にして左寄せを確実にする */
+}
 
-    input[type="text"],
-    input[type="password"] {
-      background-color: #1A1A1A; /* ダークグレーにして統一感 */
-      color: #EEEEEE; /* テキストも明るめ */
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: all 0.3s ease;
-    }
+/* 入力フィールド */
+input[type="text"],
+input[type="password"] {
+  background-color: #1A1A1A; /* ダークグレーにして統一感 */
+  color: #EEEEEE; /* テキストも明るめ */
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
 
-    input[type="text"]:hover,
-    input[type="password"]:hover {
-      background-color: var(--input-hover);
-      border-color: var(--button-hover);
-    }
+input[type="text"]:hover,
+input[type="password"]:hover {
+  background-color: var(--input-hover);
+  border-color: var(--button-hover);
+}
 
-    input[type="text"]:focus,
-    input[type="password"]:focus {
-      background-color: var(--input-hover);
-      border-color: var(--button-bg);
-      outline: none;
-    }
-    
-    
-    .button-group {
-      display: flex;
-      gap: 15px; /* ボタン間の間隔 */
-      justify-content: center; /* 中央揃え */
-    }
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: var(--input-hover);
+  border-color: var(--button-bg);
+  outline: none;
+}
 
-      /* 基本のボタンスタイル */
-      button, input[type="submit"] {
-        -webkit-appearance: none;
-        appearance: none;
-        border: none;
-        padding: 10px 15px; /* パディングを調整してコンパクトに */
-        border-radius: 5px;
-        font-size: 14px; /* 少し小さくして文字が収まるように */
-        color: #fff;
-        cursor: pointer;
-        width: auto; /* 自動幅にして内容に応じたサイズ */
-        min-width: 80px; /* 最小幅を設定 */
-        white-space: nowrap; /* テキストを改行させない */
-      }
-      
-      /* リセットボタンの色（グレー系） */
-      button[type="button"]:first-child {
-        background: #888;
-      }
-      
-      button[type="button"]:first-child:hover {
-        background: #999;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-      }
-      
-      /* ログインボタンの色（元の緑色） */
-      button[type="submit"]:last-child {
-        background: var(--button-bg);
-      }
-      
-      button[type="submit"]:last-child:hover {
-        background: var(--button-hover);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-      }
-      
-      /* focus状態 */
-      button:focus, input[type="submit"]:focus {
-        outline: none;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-      }
-      
+/* ===== ボタン部分 ===== */
+/* ボタングループレイアウト */
+.button-group {
+  display: flex;
+  gap: 15px; /* ボタン間の間隔 */
+  justify-content: center; /* 中央揃え */
+}
 
+/* 基本のボタンスタイル */
+button, input[type="submit"] {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  padding: 10px 15px; /* パディングを調整してコンパクトに */
+  border-radius: 5px;
+  font-size: 14px; /* 少し小さくして文字が収まるように */
+  color: #fff;
+  cursor: pointer;
+  width: auto; /* 自動幅にして内容に応じたサイズ */
+  min-width: 80px; /* 最小幅を設定 */
+  white-space: nowrap; /* テキストを改行させない */
+}
 
+/* リセットボタンの色（グレー系） */
+button[type="button"]:first-child {
+  background: #888;
+}
 
-    
+button[type="button"]:first-child:hover {
+  background: #999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
 
-    /* ===== コードスタイル ===== */
-    code {
-      background-color: var(--code-bg);
-      color: var(--code-text); /* さっきの提案ならこれ */
-      padding: 0.3em 0.5em;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      text-decoration: none;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9em;
-      font-weight: bold;
-    }
-    
-    /* hover */
-    code:hover {
-      background-color: var(--code-hover);
-    }
-    
-    /* 共通で copy 表示 */
-    code::after {
-      content: ' copy';
-      font-size: 0.7em;
-      color: #aaa;
-    }
-    
-    /* テーブル用カスタマイズだけ */
-    .attack-table code {
-      font-size: 0.8em;       /* ちょっと小さく */
-      padding: 0.2em 0.4em;   /* 余白ちょい小さく */
-      font-weight: bold;
-    }
-    
-    
-    
+/* ログインボタンの色（元の緑色） */
+button[type="submit"]:last-child {
+  background: var(--button-bg);
+}
 
-    /* ===== テーブルスタイル ===== */
-    .attack-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1.5em;
-      font-size: 1em;
-    }
+button[type="submit"]:last-child:hover {
+  background: var(--button-hover);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
 
-    .attack-table th {
-      font-size: 0.8em;
-      padding: 0.5em;
-      color: var(--text-color);
-      border: 1px solid var(--border-color);
-      text-align: center;
-      background-color: #222; /* 少し濃いめの黒グレーに */
+/* フォーム内の特定ボタンスタイル */
+button[type="submit"]:last-child {
+  background: #00cc88; /* 少しダークなグリーン */
+  box-shadow: 0 0 10px rgba(0, 255, 153, 0.3); /* ネオン */
+}
+
+#loginForm button[type="submit"]:first-child {
+  background-color: #555555; /* ちょっと明るめグレー */
+}
+
+/* focus状態 */
+button:focus, input[type="submit"]:focus {
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== コンテンツボックス・カード部分 ===== */
+/* 基本のボワボワネオン */
+.box {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 255, 153, 0.3); /* 💡ボワボワ度：中 */
+  padding: 2em;
+  margin: 2em 0;
+  width: 90%;
+  max-width: 600px;
+}
+
+/* セクション全体ボワボワ強め */
+.instructions {
+  border: 2px solid var(--border-accent);
+  box-shadow: 0 0 20px rgba(0, 255, 153, 0.4); /* ネオン感 */
+  margin: 2em 0;
+}
+
+/* ミッション・カード単体 */
+.card {
+  background-color: #1e1e1e;
+  border: 2px solid #00ff99; /* 緑の枠 */
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px solid var(--border-accent);
+  background-color: var(--primary-bg);
+  padding: 1.5em;
+  box-shadow: 0 0 15px rgba(0, 255, 153, 0.2); /* 💡ボワボワ度：中 */
+  margin: 2em 0;
+}
+
+.instructions, .card {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== 見出し・テキスト部分 ===== */
+h2 {
+  font-size: 1.5em;
+  color: #00ff99;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 1.2em;
+  color: #00ff99;
+  border-bottom: 1px solid #00ff99;
+}
+
+p, ul {
+  font-size: 1em;
+  line-height: 1.7;
+  color: #eeeeee;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* インストラクション部分 */
+.instructions h2 {
+  margin-top: 0;
+}
+
+.instructions h3 {
+  font-weight: bold;
+  border-bottom: 2px solid var(--border-accent);
+  display: inline-block;
+  margin-bottom: 0.5em;
+}
+
+.instructions p {
+  font-size: 1em; 
+  color: #CCC;
+}
+
+/* 箇条書きの改行インデント調整 */
+.bullet-list {
+  text-indent: -1.2em;
+  padding-left: 1.2em;
+}
+
+.instructions-text {
+  text-align: center;
+}
+
+.instructions-text h1 {
+  font-weight: bold; 
+  font-size: 2.5em;
+}
+
+/* ===== コードスタイル ===== */
+code {
+  background-color: #fff3cd;
+  color: #333;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95em;
+  background-color: var(--code-bg);
+  color: var(--code-text); /* さっきの提案ならこれ */
+  padding: 0.3em 0.5em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+/* hover */
+code:hover {
+  background-color: var(--code-hover);
+}
+
+/* 共通で copy 表示 */
+code::after {
+  content: ' copy';
+  font-size: 0.7em;
+  color: #aaa;
+}
+
+/* テーブル用カスタマイズだけ */
+.attack-table code {
+  font-size: 0.8em;       /* ちょっと小さく */
+  padding: 0.2em 0.4em;   /* 余白ちょい小さく */
+  font-weight: bold;
+}
+
+/* ===== テーブルスタイル ===== */
+.attack-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5em;
+  font-size: 1em;
+}
+
+.attack-table th {
+  font-size: 0.8em;
+  padding: 0.5em;
+  color: var(--text-color);
   border: 1px solid var(--border-color);
-    }
+  text-align: center;
+  background-color: #222; /* 少し濃いめの黒グレーに */
+  border: 1px solid var(--border-color);
+}
 
-    .attack-table td {
-      padding: 12px 8px;
-      text-align: center;
-      word-break: break-word;
-      border: 1px solid var(--border-color);
-    }
+.attack-table td {
+  padding: 12px 8px;
+  text-align: center;
+  word-break: break-word;
+  border: 1px solid var(--border-color);
+}
 
-    
-    /* 最初の列だけ縦書き */
+/* 最初の列だけ縦書き */
 .attack-table td.method {
   writing-mode: vertical-rl;
   text-orientation: upright;
@@ -363,84 +380,98 @@ form {
   font-size: 1.2em;
 }
 
-.card,
-.instructions {
-  margin: 2em 0;
-}
+/* ===== ユーティリティクラス ===== */
 .br-mobile {
   display: none;
 }
 
-
-
-    /* ===== レスポンシブデザイン ===== */
-    @media (max-width: 600px) {
-      body{
-        max-width: 400px;
-      }
-      form {
-        width: 95%;
-        padding: 1.2em;
-      }
-      .br-mobile {
-        display: block;
-        height: 0;
-        visibility: hidden;
-      }
-
-      .header p {
-        font-size: 1em;
-      }
-      .instructions {
-        width: 95%;
-        padding: 1.2em;
-      }
-
-      input[type="text"],
-      input[type="password"] {
-        font-size: 1em;
-        padding: 12px;
-      }
-
-      button {
-        width: auto; /* 自動幅 */
-        min-width: 70px; /* スマホでは少し小さく */
-        font-size: 13px; /* スマホ用にさらに調整 */
-        padding: 10px 12px;
-      }
-
-      /* スマホ版でもボタンの色を個別設定 */
-      button[type="submit"]:first-child {
-        background: #888 !important;
-      }
-      
-      button[type="submit"]:first-child:hover {
-        background: #999 !important;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
-      }
-      
-      button[type="submit"]:last-child {
-        background: var(--button-bg) !important;
-      }
-      
-      button[type="submit"]:last-child:hover {
-        background: var(--button-hover) !important;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
-      }
-
-      .wrapper {
-        top: 150px; /* モバイルではフォームがより小さいので調整 */
-         margin-top: 350px; /* スマホならちょっと浅く */
-        }
-    
-
-      .attack-table {
-        font-size: 0.85em;
-      }
-
-      .instructions-text {
-        max-width: 400px; /* スマホだけ400px制限 */
-        width: 100%;
-      }
-    }
+/* ===== レスポンシブデザイン（スマホ対応） ===== */
+@media (max-width: 600px) {
+  /* ベーススタイル調整 */
+  body {
+    max-width: 400px;
+    height: auto; /* ←スマホだけ高さ制限解除 */
+  }
   
+  /* フォーム調整 */
+  form {
+    width: 95%;
+    padding: 1.2em;
+  }
+  
+  /* モバイル改行表示 */
+  .br-mobile {
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+
+  /* ヘッダー調整 */
+  .header p {
+    font-size: 1em;
+  }
+  
+  /* インストラクション調整 */
+  .instructions {
+    width: 95%;
+    padding: 1.2em;
+  }
+
+  /* 入力フィールド調整 */
+  input[type="text"],
+  input[type="password"] {
+    font-size: 1em;
+    padding: 12px;
+  }
+
+  /* ボタン調整 */
+  button {
+    width: auto; /* 自動幅 */
+    min-width: 70px; /* スマホでは少し小さく */
+    font-size: 13px; /* スマホ用にさらに調整 */
+    padding: 10px 12px;
+  }
+
+  /* スマホ版でもボタンの色を個別設定 */
+  button[type="submit"]:first-child {
+    background: #888 !important;
+  }
+  
+  button[type="submit"]:first-child:hover {
+    background: #999 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  button[type="submit"]:last-child {
+    background: var(--button-bg) !important;
+  }
+  
+  button[type="submit"]:last-child:hover {
+    background: var(--button-hover) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* レイアウト調整 */
+
+
+  /* テーブル調整 */
+  .attack-table {
+    font-size: 0.85em;
+  }
+
+  /* ---- 枠の統一スタイル ---- */
+  .box {
+    padding: 1.2em;
+    margin: 1.5em 0;
+    box-shadow: 0 2px 8px rgba(0, 255, 153, 0.2); /* 💡ボワボワ減らす */
+  }
+
+  .instructions {
+    box-shadow: 0 0 10px rgba(0, 255, 153, 0.3); /* 💡セクションも控えめ */
+  }
+
+  .card {
+    padding: 1em;
+    box-shadow: 0 0 8px rgba(0, 255, 153, 0.2); /* 💡カードも優しく */
+  }
+}
