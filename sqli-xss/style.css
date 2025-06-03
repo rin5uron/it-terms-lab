@@ -391,12 +391,22 @@ code::after {
   body {
     max-width: 400px;
     height: auto; /* ←スマホだけ高さ制限解除 */
+    color: #ccc; /* 白すぎず */
   }
+
+  
   
   /* フォーム調整 */
   form {
     width: 95%;
     padding: 1.2em;
+  }
+
+  .box {
+    box-shadow: 0 0 6px rgba(0, 255, 153, 0.2); /* さらに控えめネオン */
+    border-color: #66ffcc; /* ボーダーもちょっと優しい色 */
+    max-width: 400px;
+    width: 95%;
   }
   
   /* モバイル改行表示 */
@@ -462,8 +472,10 @@ code::after {
   /* ---- 枠の統一スタイル ---- */
   .box {
     padding: 1.2em;
-    margin: 1.5em 0;
+    margin: 1.5em auto;
     box-shadow: 0 2px 8px rgba(0, 255, 153, 0.2); /* 💡ボワボワ減らす */
+
+    
   }
 
   .instructions {

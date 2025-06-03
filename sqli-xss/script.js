@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     for (let tag of dangerousXSS) {
     if (inputText.includes(tag)) {
-    message.textContent = "⚠️ クロスサイトスクリプティングが検出されました（XSS攻撃の可能性）";
+    message.textContent = "⚠️ クロスサイトスクリプティングが検出されました<br>XSS攻撃の可能性";
     message.style.color = "#FF4444"; 
       return;
       }
