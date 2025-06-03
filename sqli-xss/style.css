@@ -1,18 +1,19 @@
 /* ===== CSS変数（カラーパレット） ===== */
 :root {
-  --primary-bg: #111111;        /* ダークなベース背景 */
-  --text-color: #CCCCCC;        /* ライトグレー文字 */
-  --button-bg: #00CC6A;         /* ネオングリーンボタン */
-  --button-hover: #00FF88;      /* ホバー時はちょい深めのグリーン */
-  --input-hover: #1F1F1F;       /* 入力フォームホバーで濃いグレー */
-  --code-bg: #002B1F;           /* コード背景：ダークグリーン */
-  --code-hover: #004433;        /* コードホバー背景：ちょっと明るいグリーン */
-  --code-text: #66FFCC;        /* コード文字：ミントグリーン */
-  --code-hover-text: #66FFCC;   /* コードホバー文字：淡いネオンブルー */
-  --card-bg: #1e1e1e; 
-  --border-color: #333333;      /* 枠線：地味なダークグレー */
-  --border-accent: #00FF88;     /* アクセントのネオングリーン（細線とか） */
+  --primary-bg: #181818;         /* 黒に近いけど真っ黒じゃない */
+  --text-color: #DDDDDD;          /* 明るすぎないライトグレー */
+  --button-bg: #3ECF8E;           /* 柔らかいミントグリーン */
+  --button-hover: #5FD9A0;        /* ホバーは少し明るめ */
+  --input-hover: #222222;         /* ダークグレー */
+  --code-bg: #203A33;             /* 深い緑 */
+  --code-hover: #285347;          /* 少し明るい深緑 */
+  --code-text: #9EF7D1;           /* ミント系だけどくすみ寄り */
+  --code-hover-text: #B3FFDA;     /* ホバー文字も控えめ */
+  --card-bg: #1F1F1F;             /* 暗いグレー */
+  --border-color: #444444;        /* グレーで境界はっきりしすぎない */
+  --border-accent: #5FD9A0;       /* ネオンを柔らかくしたミント */
 }
+
 
 /* ===== ベーススタイル ===== */
 * {
@@ -53,7 +54,7 @@ body {
 }
 
 .header h1 {
-  text-shadow: 0 0 10px rgba(0, 255, 153, 0.9); /* シャープなネオン */
+  text-shadow: 0 0 10px rgba(83, 222, 166, 0.9); /* シャープなネオン */
   font-size: 3em;
   color: #ffffff;
   font-weight: 900;
@@ -198,7 +199,7 @@ button[type="submit"]:last-child:hover {
 /* フォーム内の特定ボタンスタイル */
 button[type="submit"]:last-child {
   background: #00cc88; /* 少しダークなグリーン */
-  box-shadow: 0 0 10px rgba(0, 255, 153, 0.3); /* ネオン */
+  box-shadow: 0 0 10px rgba(5, 172, 105, 0.3); /* ネオン */
 }
 
 #loginForm button[type="submit"]:first-child {
@@ -225,19 +226,18 @@ button:focus, input[type="submit"]:focus {
 
 /* セクション全体ボワボワ強め */
 .instructions {
-  border: 2px solid var(--border-accent);
-  box-shadow: 0 0 20px rgba(0, 255, 153, 0.4); /* ネオン感 */
+  box-shadow: 0 0 20px rgba(0, 255, 153, 0.7); /* ネオン感 */
   margin: 2em 0;
 }
 
 /* ミッション・カード単体 */
 .card {
   background-color: #1e1e1e;
-  border: 2px solid #00ff99; /* 緑の枠 */
+  border: 1px solid #71c1a1; /* 緑の枠 */
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
-  border: 2px solid var(--border-accent);
+  border: 1px solid var(--border-accent);
   background-color: var(--primary-bg);
   padding: 1.5em;
   box-shadow: 0 0 15px rgba(0, 255, 153, 0.2); /* 💡ボワボワ度：中 */
@@ -252,14 +252,14 @@ button:focus, input[type="submit"]:focus {
 /* ===== 見出し・テキスト部分 ===== */
 h2 {
   font-size: 1.5em;
-  color: #00ff99;
+  color: #15ee97;
   margin-bottom: 10px;
 }
 
 h4 {
   font-size: 1.2em;
-  color: #00ff99;
-  border-bottom: 1px solid #00ff99;
+  color: #4dd9a1;
+  border-bottom: 1px solid #1ed98e;
 }
 
 p, ul {
@@ -390,25 +390,11 @@ code::after {
   /* ベーススタイル調整 */
   body {
     max-width: 400px;
-    height: auto; /* ←スマホだけ高さ制限解除 */
-    color: #ccc; /* 白すぎず */
+    height: auto;
+    color: #ccc;
+    background-color: var(--primary-bg);
   }
 
-  
-  
-  /* フォーム調整 */
-  form {
-    width: 95%;
-    padding: 1.2em;
-  }
-
-  .box {
-    box-shadow: 0 0 6px rgba(0, 255, 153, 0.2); /* さらに控えめネオン */
-    border-color: #66ffcc; /* ボーダーもちょっと優しい色 */
-    max-width: 400px;
-    width: 95%;
-  }
-  
   /* モバイル改行表示 */
   .br-mobile {
     display: block;
@@ -416,81 +402,69 @@ code::after {
     visibility: hidden;
   }
 
-  /* ヘッダー調整 */
-  .header p {
-    font-size: 1em;
-  }
-  
-  /* インストラクション調整 */
-  .instructions {
-    width: 95%;
-    padding: 1.2em;
+  /* 箇条書きインデント調整（スマホ用） */
+  .bullet-list {
+    text-indent: -1em;
+    padding-left: 1em;
   }
 
-  /* 入力フィールド調整 */
+  /* ボックス・カード調整 */
+  .box {
+    box-shadow: 0 0 4px rgba(102, 255, 204, 0.15); /* 💡もっと優しいミント */
+    border-color: #66ffcc;
+    max-width: 400px;
+    width: 95%;
+  }
+
+  .instructions {
+    box-shadow: 0 0 6px rgba(102, 255, 204, 0.4);
+  }
+
+  .card {
+    box-shadow: 0 0 5px rgba(102, 255, 204, 0.15);
+    border-color: #51dcae;
+    padding: 1em;
+  }
+
+  /* コード・見出し調整 */
+  code {
+    background-color: #003322;  /* ダークグリーン */
+    color: #48a47c;             /* スマホ版少し暗め*/
+  }
+
+  h2, h3, h4 {
+    color: #3ecb9c; /* スマホ用少し暗め */
+  }
+
+  /* フォーム要素調整 */
+  button {
+    width: auto;
+    min-width: 70px;
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
   input[type="text"],
   input[type="password"] {
     font-size: 1em;
     padding: 12px;
   }
 
-  /* ボタン調整 */
-  button {
-    width: auto; /* 自動幅 */
-    min-width: 70px; /* スマホでは少し小さく */
-    font-size: 13px; /* スマホ用にさらに調整 */
-    padding: 10px 12px;
+  /* ヘッダー調整 */
+  .header p {
+    font-size: 1em;
   }
-
-  /* スマホ版でもボタンの色を個別設定 */
-  button[type="submit"]:first-child {
-    background: #888 !important;
-  }
-  
-  button[type="submit"]:first-child:hover {
-    background: #999 !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
-  }
-  
-  button[type="submit"]:last-child {
-    background: var(--button-bg) !important;
-  }
-  
-  button[type="submit"]:last-child:hover {
-    background: var(--button-hover) !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
-  }
-
-  /* レイアウト調整 */
-
 
   /* テーブル調整 */
   .attack-table {
     font-size: 0.85em;
   }
 
-  /* ---- 枠の統一スタイル ---- */
-  .box {
-    padding: 1.2em;
-    margin: 1.5em auto;
-    box-shadow: 0 2px 8px rgba(0, 255, 153, 0.2); /* 💡ボワボワ減らす */
-
-    
-  }
-
-  .instructions {
-    box-shadow: 0 0 10px rgba(0, 255, 153, 0.3); /* 💡セクションも控えめ */
-  }
-
-  .card {
-    padding: 1em;
-    box-shadow: 0 0 8px rgba(0, 255, 153, 0.2); /* 💡カードも優しく */
-  }
-
   .attack-table td.method {
-    font-size: 0.8em;
+    font-size: 0.5em;
   }
+  
   .attack-table td {
-    font-size: 0.7em;
+    font-size: 0.6em;
   }
 }
