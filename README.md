@@ -32,6 +32,11 @@ JavaScriptを使った実践演習を通して、IT用語・セキュリティ�
   - [📄 完成URL（デモURL）](https://gold-flicker-archer.glitch.me/)
   - [📄 README（仕様書）](./self-control-counter/README.md)
 
+
+- **SQLインジェクション、 XSS体験ページ**
+  入力フォームを実装し、
+  - [📄 完成URL（デモURL）](https://gold-flicker-archer.glitch.me/)
+  - [📄 README（仕様書）](./self-control-counter/README.md)
 ---
 
 ## 使用技術・ツール

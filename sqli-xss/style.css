@@ -404,8 +404,8 @@ code::after {
 
   /* 箇条書きインデント調整（スマホ用） */
   .bullet-list {
-    text-indent: -1em;
-    padding-left: 1em;
+    text-indent: -1.5em;
+    padding-left: 1.5em;
   }
 
   /* ボックス・カード調整 */
