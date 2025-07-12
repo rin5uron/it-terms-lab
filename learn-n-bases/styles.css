@@ -429,3 +429,20 @@ details summary:hover {
     font-size: 0.875rem;
   }
 } 
+
+/* --- スマホ専用改行＆字下げ --- */
+br-mobile {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  br-mobile {
+    display: block;
+    height: 0;
+    content: "";
+  }
+  br-mobile + * {
+    text-indent: 1.5em;
+    display: block;
+  }
+} 
