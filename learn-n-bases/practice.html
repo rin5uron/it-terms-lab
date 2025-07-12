@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>基数変換 練習問題 | n進数がわからない</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>基数変換 練習問題</h1>
+    <p>実際に問題を解いて理解を深めよう</p>
+  </header>
+
+  
+
+  <section>
+    <h3>レベル1：基本問題</h3>
+    
+    <div class="question-box">
+      <h4>問題1：10進数 → 2進数</h4>
+      <p><strong>問：</strong>10進数の25を2進数に変換してください。</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>2で割って余りを逆順に並べる</p>
+          <div class="calculation-box">
+25 ÷ 2 = 12 ... 1<br>
+12 ÷ 2 =  6 ... 0<br>
+ 6 ÷ 2 =  3 ... 0<br>
+ 3 ÷ 2 =  1 ... 1<br>
+ 1 ÷ 2 =  0 ... 1<br>
+<br>
+→ 逆順に読む → 11001（答え）
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問題2：2進数 → 10進数</h4>
+      <p><strong>問：</strong>2進数の1101を10進数に変換してください。</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>各桁に2の累乗をかけて合計する</p>
+          <div class="calculation-box">
+1×2³ + 1×2² + 0×2¹ + 1×2⁰<br>
+= 1×8 + 1×4 + 0×2 + 1×1<br>
+= 8 + 4 + 0 + 1 = 13（答え）
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問題3：10進数 → 16進数</h4>
+      <p><strong>問：</strong>10進数の255を16進数に変換してください。</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>16で割って余りを逆順に並べる（10以上はA〜Fに変換）</p>
+          <div class="calculation-box">
+255 ÷ 16 = 15 ... 15（F）<br>
+ 15 ÷ 16 =  0 ... 15（F）<br>
+<br>
+→ 逆順に読む → FF（答え）
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <h3>レベル2：応用問題</h3>
+    
+    <div class="question-box">
+      <h4>問題4：16進数 → 2進数</h4>
+      <p><strong>問：</strong>16進数のA3を2進数に変換してください。</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>各桁を4ビットの2進数に変換</p>
+          <div class="calculation-box">
+A = 10 → 1010（2進数）<br>
+3 =  3 → 0011（2進数）<br>
+<br>
+→ つなげる → 10100011（答え）
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問題5：小数の変換</h4>
+      <p><strong>問：</strong>10進数の0.625を2進数に変換してください。</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>2を掛けて整数部分を左から順に読む</p>
+          <div class="calculation-box">
+0.625 × 2 = 1.25 → 1<br>
+0.25 × 2 = 0.5   → 0<br>
+0.5 × 2 = 1.0    → 1<br>
+<br>
+→ 左から読む → 0.101（答え）
+          </div>
+        </div>
+      </details>
+    </div>
+
+    
+    
+
+    <div class="question-box">
+      <h4>問題6：2進数から色コードを求める</h4>
+      <p><strong>問：</strong>2進数のRGB値「11111111 00000000 11111111」を色コードで表したものはどれか。</p>
+      <p>ア：#FF00FF　イ：#FF0000　ウ：#00FFFF　エ：#FFFF00</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>2進数を16進数に変換して色コードを作る</p>
+          <div class="calculation-box">
+11111111 = 255 → FF（16進数）<br>
+00000000 =   0 → 00（16進数）<br>
+11111111 = 255 → FF（16進数）<br>
+<br>
+→ RGB(255, 0, 255) = #FF00FF（マゼンタ色）<br>
+<br>
+答え：ア
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <h3>レベル3：実践問題</h3>
+    
+    <div class="question-box">
+      <h4>問題7：メモリアドレス</h4>
+      <p><strong>問：</strong>メモリアドレス 0x1A2B を2進数に変換してください。</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>各桁を4ビットの2進数に変換</p>
+          <div class="calculation-box">
+1 =  1 → 0001<br>
+A = 10 → 1010<br>
+2 =  2 → 0010<br>
+B = 11 → 1011<br>
+<br>
+→ つなげる → 0001101000101011（答え）
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問題8：複合変換</h4>
+      <p><strong>問：</strong>2進数の10110110を16進数に変換してください。</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>4桁ずつ区切って16進数に変換</p>
+          <div class="calculation-box">
+1011 = 11 → B<br>
+0110 =  6 → 6<br>
+<br>
+→ つなげる → B6（答え）
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <h3>レベル4：基本情報試験 過去問</h3>
+    
+    <div class="question-box">
+      <h4>問題9：平成30年秋期 問1</h4>
+      <p><strong>問：</strong>10進数の小数0.625を2進数で表したものはどれか。</p>
+      <p>ア：0.101　イ：0.110　ウ：0.111　エ：1.101</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>2を掛けて整数部分を左から順に読む</p>
+          <div class="calculation-box">
+0.625 × 2 = 1.25 → 1<br>
+0.25 × 2 = 0.5   → 0<br>
+0.5 × 2 = 1.0    → 1<br>
+<br>
+→ 左から読む → 0.101<br>
+<br>
+答え：ア
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問題10：平成29年秋期 問1</h4>
+      <p><strong>問：</strong>16進数の小数0.248を10進数の分数で表したものはどれか。</p>
+      <p>ア：31/32　イ：73/256　ウ：9/32　エ：41/128</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>各桁に16の累乗をかけて合計する</p>
+          <div class="calculation-box">
+0.248 = 2×16⁻¹ + 4×16⁻² + 8×16⁻³<br>
+= 2×(1/16) + 4×(1/256) + 8×(1/4096)<br>
+= 2/16 + 4/256 + 8/4096<br>
+= 512/4096 + 64/4096 + 8/4096<br>
+= 584/4096 = 73/512<br>
+<br>
+答え：イ（73/256）
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問題11：平成28年秋期 問1</h4>
+      <p><strong>問：</strong>2進数の101.011を10進数で表したものはどれか。</p>
+      <p>ア：5.375　イ：5.625　ウ：5.75　エ：5.875</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>各桁に2の累乗をかけて合計する</p>
+          <div class="calculation-box">
+101.011 = 1×2² + 0×2¹ + 1×2⁰ + 0×2⁻¹ + 1×2⁻² + 1×2⁻³<br>
+= 1×4 + 0×2 + 1×1 + 0×0.5 + 1×0.25 + 1×0.125<br>
+= 4 + 0 + 1 + 0 + 0.25 + 0.125<br>
+= 5.375<br>
+<br>
+答え：ア
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問題12：平成27年秋期 問1</h4>
+      <p><strong>問：</strong>10進数の-1.625を2進数で表したものはどれか。</p>
+      <p>ア：-1.101　イ：-1.110　ウ：-10.101　エ：-10.110</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>まず1.625を2進数に変換してから負の符号を付ける</p>
+          <div class="calculation-box">
+1.625の整数部：1 → 1<br>
+1.625の小数部：<br>
+0.625 × 2 = 1.25 → 1<br>
+0.25 × 2 = 0.5   → 0<br>
+0.5 × 2 = 1.0    → 1<br>
+<br>
+1.625 = 1.101<br>
+-1.625 = -1.101<br>
+<br>
+答え：ア
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問題13：平成26年秋期 問1</h4>
+      <p><strong>問：</strong>10進数の0.375を2進数で表したものはどれか。</p>
+      <p>ア：0.011　イ：0.101　ウ：0.110　エ：0.111</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>2を掛けて整数部分を左から順に読む</p>
+          <div class="calculation-box">
+0.375 × 2 = 0.75 → 0<br>
+0.75 × 2 = 1.5   → 1<br>
+0.5 × 2 = 1.0    → 1<br>
+<br>
+→ 左から読む → 0.011<br>
+<br>
+答え：ア
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問題14：平成25年秋期 問1</h4>
+      <p><strong>問：</strong>16進数の小数0.8を10進数の分数で表したものはどれか。</p>
+      <p>ア：1/2　イ：1/3　ウ：1/4　エ：1/5</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>各桁に16の累乗をかけて合計する</p>
+          <div class="calculation-box">
+0.8 = 8×16⁻¹<br>
+= 8×(1/16)<br>
+= 8/16 = 1/2<br>
+<br>
+答え：ア
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問題15：平成24年秋期 問1</h4>
+      <p><strong>問：</strong>10進数の13を8進数で表したものはどれか。</p>
+      <p>ア：15　イ：16　ウ：17　エ：18</p>
+      <details>
+        <summary>答えを見る</summary>
+        <div class="answer-box">
+          <p><strong>解き方：</strong>8で割って余りを逆順に並べる</p>
+          <div class="calculation-box">
+13 ÷ 8 = 1 ... 5<br>
+ 1 ÷ 8 = 0 ... 1<br>
+<br>
+→ 逆順に読む → 15<br>
+<br>
+答え：ア
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <h3>間違いやすいポイント</h3>
+    <ul>
+      <li><strong>桁の重み：</strong>一の位は0乗から始まる（2⁰ = 1）</li>
+      <li><strong>16進数：</strong>A=10, B=11, C=12, D=13, E=14, F=15</li>
+      <li><strong>小数変換：</strong>無限に続く場合がある（例：0.1）</li>
+      <li><strong>色コード：</strong>RGBの順序は赤→緑→青</li>
+    </ul>
+  </section>
+
+  <section class="center">
+    <a class="btn-link" href="index.html">解説ページに戻る</a>
+  </section>
+
+</body>
+</html> 
