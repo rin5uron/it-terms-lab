@@ -5,542 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="体験しながら学べる実践型IT用語辞典。ITパスポートや基本情報技術者試験に役立つ用語を解説＆体験。">
   <title>実践型IT用語辞典 | Jissen IT</title>
-  <style>
-    /* CSSカスタムプロパティ定義 */
-    :root {
-      --bg-color: #f5f5f7;
-      --text-color: #1d1d1f;
-      --card-bg-color: white;
-      --header-bg: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-      --footer-bg: #1f2937;
-      --link-color: #3b82f6;
-      --hero-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-      --demo-bg: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-      --tag-bg: #3b82f6;
-      --tag-text: white;
-      --code-bg: #1f2937;
-      --code-text: #10b981;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg-color: #121212;
-        --text-color: #e0e0e0;
-        --card-bg-color: #1e1e1e;
-        --header-bg: #1f2937;
-        --footer-bg: #111827;
-        --link-color: #60a5fa;
-        --hero-bg: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-        --demo-bg: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-        --tag-bg: #60a5fa;
-        --tag-text: #121212;
-        --code-bg: #2d3748;
-        --code-text: #6ee7b7;
-      }
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-      line-height: 1.6;
-      color: var(--text-color);
-      background: var(--bg-color);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    
-    header {
-      background: var(--header-bg);
-      color: white;
-      padding: 4rem 0;
-      text-align: center;
-      position: relative;
-    }
-    
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-    }
-    
-    header .subtitle {
-      font-size: 1.375rem;
-      font-weight: 400;
-      opacity: 0.9;
-      margin-bottom: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 0.875rem 1.5rem;
-      border-radius: 2rem;
-      transition: all 0.2s ease;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      font-weight: 500;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    nav a:hover {
-      background: rgba(255,255,255,0.25);
-      transform: translateY(-1px);
-    }
-    
-    main {
-      padding: 4rem 0;
-    }
-    
-    section {
-      background: var(--card-bg-color);
-      margin: 3rem 0;
-      padding: 3rem;
-      border-radius: 1.5rem;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-      border: 1px solid rgba(0,0,0,0.05);
-      transition: background-color 0.3s;
-    }
-    
-    h2 {
-      color: var(--text-color);
-      margin-bottom: 1.5rem;
-      font-size: 2.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    
-    h3 {
-      color: var(--text-color);
-      margin: 2rem 0 1rem;
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-    
-    p {
-      font-size: 1.125rem;
-      line-height: 1.7;
-      color: var(--text-color);
-      margin: 1rem 0;
-    }
-    
-    .hero {
-      text-align: center;
-      background: var(--hero-bg);
-      color: var(--text-color);
-      padding: 4rem 3rem;
-    }
-    
-    .hero h2 {
-      color: var(--text-color);
-      font-size: 2.75rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .hero p {
-      font-size: 1.25rem;
-      margin: 1.5rem 0;
-    }
-    
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-    
-    .feature-card {
-      background: var(--bg-color);
-      padding: 2.5rem;
-      border-radius: 1rem;
-      border: 1px solid rgba(0,0,0,0.08);
-      transition: all 0.2s ease;
-    }
-    
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-    }
-    
-    .feature-card h4 {
-      color: var(--text-color);
-      margin-bottom: 1rem;
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-    
-    .feature-card p {
-      font-size: 1rem;
-    }
-    
-    .search-box {
-      background: var(--bg-color);
-      padding: 2rem;
-      border-radius: 1rem;
-      margin: 2rem 0;
-      border: 1px solid rgba(0,0,0,0.06);
-    }
-    
-    .search-box input {
-      width: 100%;
-      padding: 1.25rem 1.5rem;
-      border: 2px solid #e5e7eb;
-      border-radius: 1rem;
-      font-size: 1.125rem;
-      transition: all 0.2s ease;
-      background: var(--card-bg-color);
-      color: var(--text-color);
-      font-family: inherit;
-    }
-    
-    .search-box input:focus {
-      outline: none;
-      border-color: var(--link-color);
-      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-    }
-    
-    .word-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .word-card {
-      background: var(--card-bg-color);
-      padding: 2rem;
-      border-radius: 1.25rem;
-      border: 1px solid rgba(0,0,0,0.08);
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-    
-    .word-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-      border-color: var(--link-color);
-    }
-    
-    .word-card h4 {
-      color: var(--text-color);
-      margin-bottom: 1rem;
-      font-size: 1.375rem;
-      font-weight: 600;
-    }
-    
-    .word-card p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .word-card .tag {
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      padding: 0.5rem 1rem;
-      border-radius: 1.5rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-    }
-    
-    .cta-button {
-      display: inline-block;
-      background: var(--link-color);
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 1.5rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      margin: 1rem 0.5rem;
-      font-size: 1.125rem;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-    }
-    
-    .cta-button:hover {
-      opacity: 0.8;
-      transform: translateY(-2px);
-    }
-    
-    .demo-section {
-      background: var(--demo-bg);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-    }
-    
-    .demo-area {
-      background: var(--card-bg-color);
-      padding: 2.5rem;
-      border-radius: 1rem;
-      margin: 2rem 0;
-      border: 1px solid rgba(0,0,0,0.06);
-    }
-    
-    .demo-area h3 {
-      margin-top: 0;
-      color: var(--text-color);
-      margin-bottom: 1.5rem;
-    }
-    
-    .demo-area label {
-      display: block;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    
-    .demo-area input {
-      width: 100%;
-      padding: 1rem 1.25rem;
-      border: 2px solid #e5e7eb;
-      border-radius: 0.75rem;
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      transition: all 0.2s ease;
-      font-family: inherit;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-    }
-    
-    .demo-area input:focus {
-      outline: none;
-      border-color: var(--link-color);
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-    }
-    
-    .demo-output {
-      background: var(--code-bg);
-      color: var(--code-text);
-      padding: 2rem;
-      border-radius: 1rem;
-      font-family: SF Mono, Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-      margin: 2rem 0;
-      font-size: 1rem;
-      line-height: 1.6;
-      overflow-x: auto;
-    }
-    
-    footer {
-      background: var(--footer-bg);
-      color: white;
-      text-align: center;
-      padding: 4rem 0;
-      margin-top: 4rem;
-    }
-    
-    footer p {
-      font-size: 1rem;
-      color: #9ca3af;
-      margin: 0.5rem 0;
-    }
-
-    .footer-links {
-      margin: 2rem 0;
-    }
-
-    .footer-links a {
-      color: #9ca3af;
-      text-decoration: none;
-      margin: 0 1rem;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: white;
-    }
-
-    .sns-share {
-      margin-top: 1.5rem;
-    }
-
-    .sns-share a {
-      display: inline-block;
-      margin: 0 0.75rem;
-      opacity: 0.8;
-      transition: opacity 0.2s;
-    }
-
-    .sns-share a:hover {
-      opacity: 1;
-    }
-    
-    blockquote {
-      background: var(--bg-color);
-      padding: 2rem;
-      border-left: 4px solid var(--link-color);
-      margin: 2rem 0;
-      border-radius: 0.5rem;
-      font-style: italic;
-    }
-    
-    ul {
-      padding-left: 1.5rem;
-      margin: 1.5rem 0;
-    }
-    
-    li {
-      margin-bottom: 0.75rem;
-    }
-
-    /* Hamburger Menu */
-    .hamburger-menu {
-      display: none;
-      cursor: pointer;
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      z-index: 100;
-    }
-
-    .hamburger-menu .bar {
-      display: block;
-      width: 25px;
-      height: 3px;
-      margin: 5px auto;
-      background-color: white;
-      transition: all 0.3s ease-in-out;
-    }
-    
-    /* レスポンシブ対応 */
-    @media (max-width: 768px) {
-      .container {
-        padding: 0 1.5rem;
-      }
-      
-      header {
-        padding: 3rem 0;
-      }
-      
-      header h1 {
-        font-size: 2.25rem;
-      }
-      
-      header .subtitle {
-        font-size: 1.125rem;
-      }
-      
-      nav {
-        display: none;
-        margin-top: 2rem;
-      }
-
-      nav.active {
-        display: block;
-      }
-      
-      nav ul {
-        flex-direction: column;
-        gap: 0.75rem;
-        align-items: center;
-      }
-      
-      main {
-        padding: 2rem 0;
-      }
-      
-      section {
-        margin: 2rem 0;
-        padding: 2rem;
-      }
-      
-      .hero {
-        padding: 3rem 2rem;
-      }
-      
-      .hero h2 {
-        font-size: 2rem;
-      }
-      
-      .features {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
-      .word-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .feature-card, .demo-area {
-        padding: 2rem;
-      }
-      
-      h2 {
-        font-size: 1.875rem;
-      }
-      
-      h3 {
-        font-size: 1.25rem;
-      }
-
-      .hamburger-menu {
-        display: block;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 1rem;
-      }
-      
-      header h1 {
-        font-size: 2rem;
-      }
-      
-      section {
-        padding: 1.5rem;
-      }
-      
-      .hero {
-        padding: 2rem 1.5rem;
-      }
-      
-      .feature-card, .demo-area {
-        padding: 1.5rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <header>
     <div class="container">
-    <h1>実践型IT用語辞典</h1>
+      <div class="hamburger-menu" id="hamburgerMenu" role="button" aria-label="メニューを開閉する" aria-controls="navMenu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <h1>実践型IT用語辞典</h1>
       <p class="subtitle">「読んで終わり」じゃなく、「動かして理解する」</p>
-    <nav>
-      <ul>
-        <li><a href="#popular">人気用語</a></li>
+      <nav id="navMenu">
+        <ul>
+          <li><a href="#popular">人気用語</a></li>
           <li><a href="#demo">体験デモ</a></li>
           <li><a href="#new">新着用語</a></li>
           <li><a href="#about">制作背景</a></li>
-      </ul>
-    </nav>
+          <li><a href="form/request.html">用語リクエスト</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
+  <section id="search">
+    <h2>用語を検索する</h2>
+    <div class="search-box">
+      <input type="text" placeholder="例：SQL、IPアドレス、DNS..." id="searchInput" aria-label="用語検索">
+    </div>
+    <p>※検索機能はデモ版です。実際の検索機能は今後実装予定です。</p>
+  </section>
 
   <main class="container">
     <section class="hero">
@@ -551,30 +46,23 @@
       <a href="#demo" class="cta-button">体験デモを見る</a>
     </section>
 
-    <section id="search">
-      <h2>用語を検索する</h2>
-      <div class="search-box">
-        <input type="text" placeholder="例：SQL、IPアドレス、DNS..." id="searchInput">
-      </div>
-      <p>※検索機能はデモ版です。実際の検索機能は今後実装予定です。</p>
-    </section>
-
+    
     <section id="popular">
       <h2>人気の用語</h2>
       <div class="word-grid">
-        <div class="word-card" onclick="openWord('sql')">
+        <div class="word-card" role="button" tabindex="0" data-href="sql-insert.html">
           <h4>SQL（INSERT文）</h4>
-          <p>データベースにデータを追加するためのSQL文を実際に体験できます。</p>
+          <p>データベースにデータを追加するためのSQL文を実際に体験できます。</p>。
           <span class="tag">データベース</span>
           <span class="tag">体験あり</span>
         </div>
-        <div class="word-card" onclick="openWord('ip')">
+        <div class="word-card" role="button" tabindex="0" data-href="ip-address.html">
           <h4>IPアドレス</h4>
           <p>インターネット上の住所。実際のIPアドレスを調べて体験できます。</p>
           <span class="tag">ネットワーク</span>
           <span class="tag">体験あり</span>
         </div>
-        <div class="word-card" onclick="openWord('dns')">
+        <div class="word-card" role="button" tabindex="0" data-href="dns">
           <h4>DNS</h4>
           <p>ドメイン名とIPアドレスを変換する仕組みを体験できます。</p>
           <span class="tag">ネットワーク</span>
@@ -589,21 +77,21 @@
       
       <div class="demo-area">
         <h3>ユーザー情報を追加</h3>
-        <label>名前</label>
+        <label for="userName">名前</label>
         <input type="text" id="userName" placeholder="田中太郎">
         
-        <label>年齢</label>
+        <label for="userAge">年齢</label>
         <input type="number" id="userAge" placeholder="25">
         
         <button onclick="insertUser()" class="cta-button">INSERT実行</button>
       </div>
       
-      <div class="demo-output" id="sqlOutput">
+      <div class="demo-output" id="sqlOutput" aria-live="polite">
         -- ここにSQL文と結果が表示されます --
       </div>
       
       <h3>現在のデータベース内容</h3>
-      <div class="demo-output" id="dbContent">
+      <div class="demo-output" id="dbContent" aria-live="polite">
         []
       </div>
     </section>
@@ -652,13 +140,13 @@
     <section id="new">
       <h2>新着用語</h2>
       <div class="word-grid">
-        <div class="word-card">
+        <div class="word-card" role="button" tabindex="0">
           <h4>DNS</h4>
           <p>ドメイン名とIPアドレスを変換する仕組み</p>
           <span class="tag">ネットワーク</span>
           <span class="tag">新着</span>
         </div>
-        <div class="word-card">
+        <div class="word-card" role="button" tabindex="0">
           <h4>API</h4>
           <p>アプリケーション同士が通信する仕組み</p>
           <span class="tag">開発</span>
@@ -667,26 +155,35 @@
       </div>
     </section>
 
-    <section>
-      <h2>対象読者</h2>
-      <ul>
-        <li>ITパスポート／基本情報の受験者</li>
-        <li>ITに興味があるけど、用語の意味がわからず困っている人</li>
-        <li>ただ読むだけじゃなく「納得して覚えたい」人</li>
-        <li>つまづきを"自分の教材"に変えたい学習者</li>
-      </ul>
-    </section>
+    
   </main>
 
   <footer>
     <div class="container">
+      <div class="footer-links">
+        <a href="form/request.html">用語リクエスト</a>
+        <a href="rss.xml" target="_blank">RSS</a>
+      </div>
+      <div class="sns-share">
+        <a href="#" id="shareTwitter" target="_blank" aria-label="Twitterでシェア">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" id="shareFacebook" target="_blank" aria-label="Facebookでシェア">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
       <p>&copy; 2025 実践型IT用語辞典 | Jissen IT</p>
       <p>このサイトは公開学習＆試行錯誤の場です。暖かく見守っていただけたら嬉しいです。</p>
-      <p>最終更新：2025年7月10日</p>
+      <p>最終更新：2025年7月12日</p>
     </div>
   </footer>
 
   <script>
+    // Hamburger Menu
+    document.getElementById('hamburgerMenu').addEventListener('click', function() {
+      document.getElementById('navMenu').classList.toggle('active');
+    });
+
     // 簡単な検索機能のデモ
     document.getElementById('searchInput').addEventListener('input', function(e) {
       const query = e.target.value.toLowerCase();
@@ -725,10 +222,20 @@ INSERT INTO users (name, age) VALUES ('${name}', ${age});
       document.getElementById('userAge').value = '';
     }
     
-    function openWord(wordType) {
-      // 実際の個別ページへのリンク（今後実装予定）
-      alert(`${wordType}の詳細ページは準備中です。`);
+    function openWord(page) {
+      if (page.endsWith('.html')) {
+        window.location.href = page;
+      } else {
+        alert(`${page}の詳細ページは準備中です。`);
+      }
     }
+
+    // SNS Share
+    const shareUrl = encodeURIComponent(window.location.href);
+    const shareText = encodeURIComponent('「実践型IT用語辞典」でIT用語を体験的に学ぼう！');
+    
+    document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}&hashtags=実践型IT用語辞典`;
+    document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
   </script>
 </body>
 </html>

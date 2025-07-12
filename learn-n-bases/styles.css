@@ -270,19 +270,28 @@ details {
   margin: 1rem 0;
 }
 
+/* アコーディオン（三角アイコン・summaryテキスト）カスタム */
 details summary {
+  color: var(--text-color); /* 本文と同じ黒系 */
+  font-weight: 600;        /* 太字 */
+  font-size: 1.125rem;     /* pと同じくらい */
   cursor: pointer;
-  padding: 1rem;
-  background: var(--question-bg);
-  border-radius: 0.75rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  font-weight: 600;
-  color: var(--primary-color);
-  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+details summary::-webkit-details-marker {
+  color: #1d1d1f; /* 黒色に */
+}
+
+details[open] summary {
+  color: var(--text-color); /* 開いても黒のまま */
 }
 
 details summary:hover {
-  background: linear-gradient(135deg, #e5e5ea 0%, #d1d1d6 100%);
+  background: rgba(0,0,0,0.04); /* ほんのりグレー */
+  border-radius: 0.5em;
+  transition: background 0.15s;
 }
 
 /* レスポンシブ対応 */
