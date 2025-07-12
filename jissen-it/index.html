@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="体験しながら学べる実践型IT用語辞典。ITパスポートや基本情報技術者試験に役立つ用語を解説＆体験。">
+  <title>実践型IT用語辞典 | Jissen IT</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      line-height: 1.6;
+      color: #1d1d1f;
+      background: #f5f5f7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    
+    header .subtitle {
+      font-size: 1.375rem;
+      font-weight: 400;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    nav {
+      margin-top: 2rem;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.875rem 1.5rem;
+      border-radius: 2rem;
+      transition: all 0.2s ease;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    nav a:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-1px);
+    }
+    
+    main {
+      padding: 4rem 0;
+    }
+    
+    section {
+      background: white;
+      margin: 3rem 0;
+      padding: 3rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    h2 {
+      color: #1d1d1f;
+      margin-bottom: 1.5rem;
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    
+    h3 {
+      color: #424245;
+      margin: 2rem 0 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    p {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: #424245;
+      margin: 1rem 0;
+    }
+    
+    .hero {
+      text-align: center;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      color: #1d1d1f;
+      padding: 4rem 3rem;
+    }
+    
+    .hero h2 {
+      color: #1d1d1f;
+      font-size: 2.75rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      margin: 1.5rem 0;
+      color: #424245;
+    }
+    
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .feature-card {
+      background: #fafafa;
+      padding: 2.5rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(0,0,0,0.08);
+      transition: all 0.2s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    
+    .feature-card h4 {
+      color: #1d1d1f;
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    
+    .feature-card p {
+      font-size: 1rem;
+      color: #6b7280;
+    }
+    
+    .search-box {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 1rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    
+    .search-box input {
+      width: 100%;
+      padding: 1.25rem 1.5rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 1rem;
+      font-size: 1.125rem;
+      transition: all 0.2s ease;
+      background: white;
+      font-family: inherit;
+    }
+    
+    .search-box input:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    }
+    
+    .word-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .word-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1.25rem;
+      border: 1px solid rgba(0,0,0,0.08);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    
+    .word-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      border-color: #3b82f6;
+    }
+    
+    .word-card h4 {
+      color: #1d1d1f;
+      margin-bottom: 1rem;
+      font-size: 1.375rem;
+      font-weight: 600;
+    }
+    
+    .word-card p {
+      color: #6b7280;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .word-card .tag {
+      background: #3b82f6;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: #3b82f6;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 1.5rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      margin: 1rem 0.5rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .cta-button:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+    }
+    
+    .demo-section {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    
+    .demo-area {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 1rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    
+    .demo-area h3 {
+      margin-top: 0;
+      color: #1d1d1f;
+      margin-bottom: 1.5rem;
+    }
+    
+    .demo-area label {
+      display: block;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: #374151;
+      font-size: 1rem;
+    }
+    
+    .demo-area input {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    
+    .demo-area input:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+    
+    .demo-output {
+      background: #1f2937;
+      color: #10b981;
+      padding: 2rem;
+      border-radius: 1rem;
+      font-family: SF Mono, Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+      margin: 2rem 0;
+      font-size: 1rem;
+      line-height: 1.6;
+      overflow-x: auto;
+    }
+    
+    footer {
+      background: #1f2937;
+      color: white;
+      text-align: center;
+      padding: 4rem 0;
+      margin-top: 4rem;
+    }
+    
+    footer p {
+      font-size: 1rem;
+      color: #9ca3af;
+      margin: 0.5rem 0;
+    }
+    
+    blockquote {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-left: 4px solid #3b82f6;
+      margin: 2rem 0;
+      border-radius: 0.5rem;
+      font-style: italic;
+      color: #374151;
+    }
+    
+    ul {
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    li {
+      margin-bottom: 0.75rem;
+      color: #374151;
+      font-size: 1.125rem;
+    }
+    
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      
+      header {
+        padding: 3rem 0;
+      }
+      
+      header h1 {
+        font-size: 2.25rem;
+      }
+      
+      header .subtitle {
+        font-size: 1.125rem;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+      }
+      
+      main {
+        padding: 2rem 0;
+      }
+      
+      section {
+        margin: 2rem 0;
+        padding: 2rem;
+      }
+      
+      .hero {
+        padding: 3rem 2rem;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .features {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .word-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .feature-card, .demo-area {
+        padding: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.875rem;
+      }
+      
+      h3 {
+        font-size: 1.25rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      section {
+        padding: 1.5rem;
+      }
+      
+      .hero {
+        padding: 2rem 1.5rem;
+      }
+      
+      .feature-card, .demo-area {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+    <h1>実践型IT用語辞典</h1>
+      <p class="subtitle">「読んで終わり」じゃなく、「動かして理解する」</p>
+    <nav>
+      <ul>
+        <li><a href="#popular">人気用語</a></li>
+          <li><a href="#demo">体験デモ</a></li>
+          <li><a href="#new">新着用語</a></li>
+          <li><a href="#about">制作背景</a></li>
+      </ul>
+    </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>体験しながら学ぶIT用語</h2>
+      <p>ITパスポートや基本情報技術者試験でよく出る用語を、<br>
+      <strong>実際に手を動かして体験しながら学べる</strong>ようにまとめています。</p>
+      <a href="#popular" class="cta-button">用語を探す</a>
+      <a href="#demo" class="cta-button">体験デモを見る</a>
+    </section>
+
+    <section id="search">
+      <h2>用語を検索する</h2>
+      <div class="search-box">
+        <input type="text" placeholder="例：SQL、IPアドレス、DNS..." id="searchInput">
+      </div>
+      <p>※検索機能はデモ版です。実際の検索機能は今後実装予定です。</p>
+    </section>
+
+    <section id="popular">
+      <h2>人気の用語</h2>
+      <div class="word-grid">
+        <div class="word-card" onclick="openWord('sql')">
+          <h4>SQL（INSERT文）</h4>
+          <p>データベースにデータを追加するためのSQL文を実際に体験できます。</p>
+          <span class="tag">データベース</span>
+          <span class="tag">体験あり</span>
+        </div>
+        <div class="word-card" onclick="openWord('ip')">
+          <h4>IPアドレス</h4>
+          <p>インターネット上の住所。実際のIPアドレスを調べて体験できます。</p>
+          <span class="tag">ネットワーク</span>
+          <span class="tag">体験あり</span>
+        </div>
+        <div class="word-card" onclick="openWord('dns')">
+          <h4>DNS</h4>
+          <p>ドメイン名とIPアドレスを変換する仕組みを体験できます。</p>
+          <span class="tag">ネットワーク</span>
+          <span class="tag">体験あり</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="demo" class="demo-section">
+      <h2>体験デモ - SQL INSERT文</h2>
+      <p>実際にボタンを押して、データベースへの挿入を体験してみましょう！</p>
+      
+      <div class="demo-area">
+        <h3>ユーザー情報を追加</h3>
+        <label>名前</label>
+        <input type="text" id="userName" placeholder="田中太郎">
+        
+        <label>年齢</label>
+        <input type="number" id="userAge" placeholder="25">
+        
+        <button onclick="insertUser()" class="cta-button">INSERT実行</button>
+      </div>
+      
+      <div class="demo-output" id="sqlOutput">
+        -- ここにSQL文と結果が表示されます --
+      </div>
+      
+      <h3>現在のデータベース内容</h3>
+      <div class="demo-output" id="dbContent">
+        []
+      </div>
+    </section>
+
+    <section id="features">
+      <h2>この辞典の特長</h2>
+      <div class="features">
+        <div class="feature-card">
+          <h4>用語ごとに専用ページ</h4>
+          <p>1ページ1テーマのシンプル構成で、集中して学習できます。</p>
+        </div>
+        <div class="feature-card">
+          <h4>体験要素あり</h4>
+          <p>JavaScriptやAPIで、見て・触れて・わかる体験を提供します。</p>
+        </div>
+        <div class="feature-card">
+          <h4>SEO対応済み</h4>
+          <p>検索から各用語ページにダイレクトアクセス可能です。</p>
+        </div>
+        <div class="feature-card">
+          <h4>学習ログ機能</h4>
+          <p>自分の「つまづき」もログとして可視化できます。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>制作の背景と意図</h2>
+      <p>この辞典は、<strong>エンジニア見習いの私が"自分のつまづき"から生まれたプロジェクト</strong>です。</p>
+      
+      <p>プログラミングを学び始めて100日目。<br>
+      ITパスポートの勉強中に、「用語の意味はわかるけど、<strong>実感として理解できない</strong>」というモヤモヤをたくさん抱えました。</p>
+      
+      <blockquote>
+        たとえば「IPアドレスとは」「SQLとは」って言われても、<br>
+        実際に見たり、書いたり、動かしてみないと、<strong>なんだか腑に落ちない。</strong>
+      </blockquote>
+      
+      <p>そう感じた私は、<br>
+      <strong>「だったら、自分がつまづいた言葉を"実践付き"でまとめていこう！」</strong>と決めました。</p>
+      
+      <p>このサイトは、自分の学びを可視化する記録であり、<br>
+      同じように悩んだ誰かが、<strong>"わかる"を体験できる場所</strong>でありたいと願っています。</p>
+    </section>
+
+    <section id="new">
+      <h2>新着用語</h2>
+      <div class="word-grid">
+        <div class="word-card">
+          <h4>DNS</h4>
+          <p>ドメイン名とIPアドレスを変換する仕組み</p>
+          <span class="tag">ネットワーク</span>
+          <span class="tag">新着</span>
+        </div>
+        <div class="word-card">
+          <h4>API</h4>
+          <p>アプリケーション同士が通信する仕組み</p>
+          <span class="tag">開発</span>
+          <span class="tag">準備中</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>対象読者</h2>
+      <ul>
+        <li>ITパスポート／基本情報の受験者</li>
+        <li>ITに興味があるけど、用語の意味がわからず困っている人</li>
+        <li>ただ読むだけじゃなく「納得して覚えたい」人</li>
+        <li>つまづきを"自分の教材"に変えたい学習者</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 実践型IT用語辞典 | Jissen IT</p>
+      <p>このサイトは公開学習＆試行錯誤の場です。暖かく見守っていただけたら嬉しいです。</p>
+      <p>最終更新：2025年7月10日</p>
+    </div>
+  </footer>
+
+  <script>
+    // 簡単な検索機能のデモ
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase();
+      console.log('検索中:', query);
+      // 実際の検索機能は今後実装予定
+    });
+
+    // SQL INSERT体験デモ
+    let users = [];
+    
+    function insertUser() {
+      const name = document.getElementById('userName').value;
+      const age = document.getElementById('userAge').value;
+      
+      if (!name || !age) {
+        alert('名前と年齢を入力してください');
+        return;
+      }
+      
+      const user = { name, age: parseInt(age) };
+      users.push(user);
+      
+      // SQL文を表示
+      const sqlOutput = document.getElementById('sqlOutput');
+      sqlOutput.innerHTML = `
+INSERT INTO users (name, age) VALUES ('${name}', ${age});
+-- ✅ 実行完了: 1行が挿入されました
+      `;
+      
+      // データベース内容を更新
+      const dbContent = document.getElementById('dbContent');
+      dbContent.innerHTML = JSON.stringify(users, null, 2);
+      
+      // 入力フィールドをクリア
+      document.getElementById('userName').value = '';
+      document.getElementById('userAge').value = '';
+    }
+    
+    function openWord(wordType) {
+      // 実際の個別ページへのリンク（今後実装予定）
+      alert(`${wordType}の詳細ページは準備中です。`);
+    }
+  </script>
+</body>
+</html>

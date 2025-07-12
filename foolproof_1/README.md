@@ -11,12 +11,15 @@ ChatGPTにサンプルコードを作ってもらい、コードの分析とデ�
 <br>
 また、「リファクタリング」という用語も学んだため、Cursor AIを活用してコードの整理や改善をしました。用語理解から実装・記録・改善まで、一連の学習として取り組んだ演習です。
 <br><br>
+
+## 実装ページ  
+🔗 [フールプルーフ演習①](https://study-web-y9ua.vercel.app/)
+<br><br>
 ## 完成画像
 <img src="images/image1.png" width="500" alt="完成画面">
 <img src="images/code.png" width="500" alt="JavaScriptコード">
 <br><br>
-## 実装ページ  
-🔗 [フールプルーフ演習①](https://study-web-y9ua.vercel.app/)
+
 
 <br><br>
 

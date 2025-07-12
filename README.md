@@ -23,7 +23,7 @@ JavaScriptを使った実践演習を通して、IT用語・セキュリティ�
 - **フールプルーフ体験ページ①**  
   文字入力間違いをアラート。年齢入力フォームを作り、全角半角間違いと有効な年齢をアラートするJavaScriptを実装。
   - [📄 完成URL（デモURL）](https://wooden-smooth-milkshake.glitch.me/) 
-  - [📄 README（仕様書）](./negaposi-counter/README.md)
+  - [📄 README（仕様書）](https://github.com/rin5uron/it-terms-lab/tree/main/foolproof_1)
   - [📝 プロセスログ（制作の経過と学び）](./negaposi-counter/docs_negaposi/prosess_log)
   - [🧠 制作メモ（制作構想段階のメモ）](./negaposi-counter/docs_negaposi/countermemo.md)
 

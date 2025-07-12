@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SQL INSERT文の実践例とわかりやすい解説ページ。体験しながら学べるIT用語辞典。">
+  <title>【SQL実践例】INSERT文の使い方｜実践型IT用語辞典</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f8f9fa;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .breadcrumb {
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .breadcrumb a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+    }
+    
+    .breadcrumb a:hover {
+      color: white;
+    }
+    
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    main {
+      padding: 2rem 0;
+    }
+    
+    section {
+      background: white;
+      margin: 2rem 0;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    h2 {
+      color: #667eea;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 0.5rem;
+    }
+    
+    h3 {
+      color: #555;
+      margin: 1.5rem 0 1rem;
+      font-size: 1.3rem;
+    }
+    
+    .learning-objectives {
+      background: #e8f4f8;
+      border-left: 4px solid #667eea;
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+    
+    .learning-objectives h3 {
+      color: #667eea;
+      margin-top: 0;
+    }
+    
+    .code-block {
+      background: #2d3436;
+      color: #00b894;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 1rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    .demo-area {
+      background: #f1f3f4;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+    }
+    
+    .input-group {
+      margin: 1rem 0;
+    }
+    
+    .input-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #555;
+    }
+    
+    .input-group input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #ddd;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    
+    .input-group input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin: 0.5rem 0.5rem 0.5rem 0;
+    }
+    
+    .btn:hover {
+      background: #764ba2;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: #636e72;
+    }
+    
+    .btn-secondary:hover {
+      background: #2d3436;
+    }
+    
+    .output {
+      background: #2d3436;
+      color: #00b894;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-family: monospace;
+      margin: 1rem 0;
+      min-height: 100px;
+      white-space: pre-wrap;
+    }
+    
+    .table-container {
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+      background: #667eea;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .highlight {
+      background: #fff3cd;
+      padding: 1rem;
+      border-left: 4px solid #ffc107;
+      margin: 1rem 0;
+      border-radius: 0.25rem;
+    }
+    
+    .related-terms {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+    }
+    
+    .related-terms ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .related-terms li {
+      margin: 0.5rem 0;
+    }
+    
+    .related-terms a {
+      color: #667eea;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      transition: background 0.3s;
+    }
+    
+    .related-terms a:hover {
+      background: #e8f4f8;
+    }
+    
+    footer {
+      background: #2d3436;
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      section {
+        padding: 1.5rem;
+      }
+      
+      .demo-area {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">🏠 トップ</a> / <a href="index.html#popular">人気用語</a> / SQL INSERT文
+      </div>
+      <h1>🗄️ SQL INSERT文</h1>
+      <p class="subtitle">データベースにデータを追加する基本のSQL文</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="learning-objectives">
+      <h3>📚 このページで学べること</h3>
+      <ul>
+        <li>INSERT文の基本的な書き方</li>
+        <li>実際にデータを挿入する体験</li>
+        <li>エラーを回避する方法</li>
+        <li>複数行を一度に挿入する方法</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🤔 INSERT文とは？</h2>
+      <p>INSERT文は、データベースのテーブルに新しいレコード（行）を追加するためのSQL文です。</p>
+      <p>簡単に言うと、<strong>「データベースの表に新しい情報を書き込む」</strong>ための命令です。</p>
+      
+      <h3>基本的な書き方</h3>
+      <div class="code-block">INSERT INTO テーブル名 (カラム1, カラム2, ...) VALUES (値1, 値2, ...);</div>
+      
+      <h3>具体例</h3>
+      <div class="code-block">INSERT INTO users (name, age, email) VALUES ('田中太郎', 25, 'tanaka@example.com');</div>
+      
+      <div class="highlight">
+        💡 <strong>ポイント：</strong> カラム名と値の順序は一致させる必要があります！
+      </div>
+    </section>
+
+    <section>
+      <h2>🧪 実際に体験してみよう！</h2>
+      <p>下のフォームに情報を入力して、実際にINSERT文を実行してみましょう。</p>
+      
+      <div class="demo-area">
+        <h3>ユーザー情報の追加</h3>
+        
+        <div class="input-group">
+          <label for="userName">名前</label>
+          <input type="text" id="userName" placeholder="田中太郎">
+        </div>
+        
+        <div class="input-group">
+          <label for="userAge">年齢</label>
+          <input type="number" id="userAge" placeholder="25" min="1" max="150">
+        </div>
+        
+        <div class="input-group">
+          <label for="userEmail">メールアドレス</label>
+          <input type="email" id="userEmail" placeholder="tanaka@example.com">
+        </div>
+        
+        <button class="btn" onclick="insertUser()">📝 INSERT実行</button>
+        <button class="btn btn-secondary" onclick="clearDatabase()">🗑️ データベースクリア</button>
+      </div>
+      
+      <h3>生成されたSQL文</h3>
+      <div class="output" id="sqlOutput">-- ここに生成されたSQL文が表示されます --</div>
+      
+      <h3>データベースの内容</h3>
+      <div class="table-container">
+        <table id="userTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>名前</th>
+              <th>年齢</th>
+              <th>メールアドレス</th>
+              <th>登録日時</th>
+            </tr>
+          </thead>
+          <tbody id="userTableBody">
+            <tr>
+              <td colspan="5" style="text-align: center; color: #666;">データがありません</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>📝 INSERT文の応用</h2>
+      
+      <h3>複数行を一度に挿入</h3>
+      <div class="code-block">INSERT INTO users (name, age, email) VALUES 
+('田中太郎', 25, 'tanaka@example.com'),
+('佐藤花子', 30, 'sato@example.com'),
+('鈴木次郎', 28, 'suzuki@example.com');</div>
+      
+      <button class="btn" onclick="insertMultipleUsers()">📝 複数ユーザーを一度に追加</button>
+      
+      <h3>よくあるエラーと対処法</h3>
+      <ul>
+        <li><strong>NOT NULL制約エラー:</strong> 必須項目が入力されていない</li>
+        <li><strong>データ型エラー:</strong> 数値項目に文字列を入力した</li>
+        <li><strong>重複エラー:</strong> 既に存在するユニークな値を追加しようとした</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🎯 実用的な使い方</h2>
+      <p>実際の現場では、INSERT文は以下のような場面で使われます：</p>
+      <ul>
+        <li>会員登録システム</li>
+        <li>商品登録システム</li>
+        <li>ログデータの保存</li>
+        <li>アンケート結果の保存</li>
+      </ul>
+      
+      <div class="highlight">
+        💡 <strong>プロのコツ：</strong> 本番環境では、必ずバックアップを取ってからデータを挿入しましょう！
+      </div>
+    </section>
+
+    <section class="related-terms">
+      <h2>🔗 関連用語</h2>
+      <ul>
+        <li><a href="sql-select.html">🔍 SELECT文 - データを取得する</a></li>
+        <li><a href="sql-update.html">✏️ UPDATE文 - データを更新する</a></li>
+        <li><a href="sql-delete.html">🗑️ DELETE文 - データを削除する</a></li>
+        <li><a href="database.html">🗄️ データベース - データを保存する仕組み</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 実践型IT用語辞典 | Jissen IT</p>
+      <p><a href="index.html" style="color: #74b9ff;">← トップページに戻る</a></p>
+    </div>
+  </footer>
+
+  <script>
+    let users = [];
+    let nextId = 1;
+
+    function insertUser() {
+      const name = document.getElementById('userName').value.trim();
+      const age = document.getElementById('userAge').value;
+      const email = document.getElementById('userEmail').value.trim();
+      
+      // バリデーション
+      if (!name) {
+        alert('名前を入力してください');
+        return;
+      }
+      
+      if (!age || age < 1 || age > 150) {
+        alert('有効な年齢を入力してください（1-150）');
+        return;
+      }
+      
+      if (!email || !email.includes('@')) {
+        alert('有効なメールアドレスを入力してください');
+        return;
+      }
+      
+      // 重複チェック
+      if (users.find(user => user.email === email)) {
+        alert('同じメールアドレスのユーザーが既に存在します');
+        return;
+      }
+      
+      // ユーザーを追加
+      const user = {
+        id: nextId++,
+        name,
+        age: parseInt(age),
+        email,
+        createdAt: new Date().toLocaleString('ja-JP')
+      };
+      
+      users.push(user);
+      
+      // SQL文を表示
+      const sqlOutput = document.getElementById('sqlOutput');
+      sqlOutput.textContent = `INSERT INTO users (name, age, email) VALUES ('${name}', ${age}, '${email}');
+-- ✅ 実行成功: 1行が挿入されました
+-- 新しいユーザー ID: ${user.id}`;
+      
+      // テーブルを更新
+      updateUserTable();
+      
+      // フォームをクリア
+      document.getElementById('userName').value = '';
+      document.getElementById('userAge').value = '';
+      document.getElementById('userEmail').value = '';
+    }
+    
+    function insertMultipleUsers() {
+      const sampleUsers = [
+        { name: '田中太郎', age: 25, email: 'tanaka@example.com' },
+        { name: '佐藤花子', age: 30, email: 'sato@example.com' },
+        { name: '鈴木次郎', age: 28, email: 'suzuki@example.com' }
+      ];
+      
+      let addedCount = 0;
+      
+      sampleUsers.forEach(userData => {
+        // 重複チェック
+        if (!users.find(user => user.email === userData.email)) {
+          const user = {
+            id: nextId++,
+            name: userData.name,
+            age: userData.age,
+            email: userData.email,
+            createdAt: new Date().toLocaleString('ja-JP')
+          };
+          users.push(user);
+          addedCount++;
+        }
+      });
+      
+      if (addedCount > 0) {
+        // SQL文を表示
+        const sqlOutput = document.getElementById('sqlOutput');
+        sqlOutput.textContent = `INSERT INTO users (name, age, email) VALUES 
+('田中太郎', 25, 'tanaka@example.com'),
+('佐藤花子', 30, 'sato@example.com'),
+('鈴木次郎', 28, 'suzuki@example.com');
+-- ✅ 実行成功: ${addedCount}行が挿入されました`;
+        
+        // テーブルを更新
+        updateUserTable();
+      } else {
+        alert('追加可能なユーザーがありません（重複のため）');
+      }
+    }
+    
+    function clearDatabase() {
+      if (confirm('データベースの内容をすべて削除しますか？')) {
+        users = [];
+        nextId = 1;
+        updateUserTable();
+        
+        const sqlOutput = document.getElementById('sqlOutput');
+        sqlOutput.textContent = '-- データベースがクリアされました';
+      }
+    }
+    
+    function updateUserTable() {
+      const tbody = document.getElementById('userTableBody');
+      
+      if (users.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #666;">データがありません</td></tr>';
+        return;
+      }
+      
+      tbody.innerHTML = users.map(user => `
+        <tr>
+          <td>${user.id}</td>
+          <td>${user.name}</td>
+          <td>${user.age}</td>
+          <td>${user.email}</td>
+          <td>${user.createdAt}</td>
+        </tr>
+      `).join('');
+    }
+  </script>
+</body>
+</html> 
