@@ -65,25 +65,30 @@ h3 {
   color: var(--secondary-color);
   font-size: 1.5rem;
   font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-top: 2.5em;
+  margin-bottom: 0.5em;
 }
 
 h4 {
   color: var(--secondary-color);
   font-size: 1.25rem;
   font-weight: 600;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
+  margin-top: 2.5em;
+  margin-bottom: 0.5em;
 }
 
 section {
   background: var(--section-bg);
-  padding: 2.5rem;
+  padding: 3rem;
   border-radius: 1.5rem;
   margin-bottom: 2rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+p {
+  margin: 1em 0;
+  padding: 0;
 }
 
 .btn-link {
@@ -118,7 +123,9 @@ section {
   color: #374151;
   border-radius: 1rem;
   padding: 2rem;
-  margin: 2rem 0;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+
   font-family: SF Mono, Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
   font-size: 1rem;
   line-height: 1.6;
@@ -132,7 +139,8 @@ section {
   padding: 2rem;
   margin: 2rem 0;
   border-radius: 1rem;
-  font-size: 1.125rem;
+  font-size: 1.5rem;
+  font-weight: 700;
   line-height: 1.7;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -140,8 +148,14 @@ section {
 .highlight strong {
   color: var(--primary-color);
   font-weight: 600;
+  font-size: 1.1rem;
 }
-
+.point {
+  padding: 2rem;
+  margin: 2rem 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
 .question-box {
   background: var(--question-bg);
   padding: 2rem;
@@ -182,7 +196,6 @@ th {
 }
 
 .flow-diagram {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   border: 1px solid rgba(0, 122, 255, 0.2);
   border-radius: 1rem;
   padding: 2rem;
@@ -190,25 +203,25 @@ th {
   text-align: left;
   font-size: 1.125rem;
   line-height: 1.8;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 ul, ol {
   padding-left: 2rem;
-  margin: 1.5rem 0;
+  margin: 1.5em 0;
 }
 
 li {
   margin-bottom: 0.75rem;
   font-size: 1.125rem;
-  line-height: 1.7;
+  line-height: 1.8;
   color: var(--secondary-color);
 }
 
 p {
   margin: 1rem 0;
   font-size: 1.125rem;
-  line-height: 1.7;
+  line-height: 1.8;
   color: var(--secondary-color);
 }
 
@@ -257,7 +270,7 @@ strong {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
   padding: 2rem;
-  margin: 2rem 0;
+  margin-top: 2rem 0;
 }
 
 .example-box h4 {
@@ -292,6 +305,32 @@ details summary:hover {
   background: rgba(0,0,0,0.04); /* ほんのりグレー */
   border-radius: 0.5em;
   transition: background 0.15s;
+}
+
+.summary-box {
+  background: #eef7ff;
+  border: 1px solid #a9d7ff;
+  border-radius: 1rem;
+  padding: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.summary-box h4 {
+  color: #005a9e;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem; /* フォントサイズを調整 */
+}
+
+.summary-box p {
+  margin: 0;
+  color: #005a9e;
+  font-size: 0.9rem; /* フォントサイズを調整 */
+}
+
+h2 .fas {
+  margin-right: 1rem;
+  color: var(--primary-color);
 }
 
 /* レスポンシブ対応 */
@@ -454,4 +493,21 @@ br-mobile {
     text-indent: 1.5em;
     display: block;
   }
+} 
+
+.example {
+  font-size: 0.95rem;
+  margin-top: 4em;
+  margin-bottom: 0.5em;
+} 
+
+.section-block {
+  padding: 2.5em 2em;
+  margin: 2.5em 0;
+}
+.base-block {
+  margin-bottom: 2em;
+}
+.base-block:last-child {
+  margin-bottom: 0;
 } 
