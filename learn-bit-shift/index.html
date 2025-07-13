@@ -9,7 +9,6 @@
 </head>
 <body>
 
-  
   <header>
     <h1>シフト演算</h1>
     <p>ビットをずらすことで高速な計算を実現する</p>
@@ -17,16 +16,12 @@
 
   <section>
     <div class="summary-box">
-      <p>ビット（桁）を左右にずらすことで、数値の ×2 や ÷2 を高速で実現する演算です。</p>
+      <p>ビット（桁）を左右にずらすことで、2の累乗による掛け算・割り算をシンプルかつ高速に行う演算です。</p>
     </div>
-    <h2><i class="fas fa-arrows-alt-h"></i> シフト演算ってなに？</h2>
+    <h2><i class="fas fa-arrows-alt-h"></i> シフト演算とは？</h2>
     <div class="highlight">
-      <strong>2進数において、ビット（桁）を左右にずらすことで、数値の ×2 や ÷2 を高速で実現する演算。</strong>
+      <strong>2進数のビット（桁）を左右にずらすことで、2の累乗による掛け算・割り算をシンプルかつ高速に行う演算。</strong>
     </div>
-    <ul>
-      <li>左にずらす（左シフト） → ×2、×4、×8...</li>
-      <li>右にずらす（右シフト） → ÷2、÷4、÷8...</li>
-    </ul>
   </section>
 
   <section>
@@ -36,135 +31,144 @@
     <h2><i class="fas fa-calculator"></i> 10進数で考えてみる</h2>
     <div class="calculation-box">
 <pre>
-123 ← 1桁左にずらす → 1230（×10）
-123 ← 1桁右にずらす → 12.3（÷10）
+123 << 1 → 1230（×10）
+123 >> 1 → 12.3（÷10）
 </pre>
     </div>
+    <p>この「桁をずらす＝何倍・何分の1」という感覚を、<br>
+    <strong>2進数の世界でも同じように応用する</strong>のが「シフト演算」です。</p>
   </section>
 
   <section>
     <div class="summary-box">
-      <p>2進数では、1桁ずらすごとに2倍または1/2倍になります。</p>
+      <p>シフト演算が「2の累乗による掛け算・割り算」として機能するのは、2進数だからこそ成り立ちます。</p>
     </div>
-    <h2><i class="fas fa-binary"></i> 2進数でのシフト演算（基数が2なので ×2, ÷2）</h2>
-    <h3>例：5（10進） = 00000101（2進）</h3>
-    <div class="calculation-box">
-<pre>
-5 << 1  → 00001010 → 10（×2）
-5 << 2  → 00010100 → 20（×4）
-
-10 >> 1 → 00000101 → 5（÷2）
-20 >> 2 → 00000101 → 5（÷4）
-</pre>
-    </div>
+    <h2><i class="fas fa-binary"></i> 2進数でのシフト演算</h2>
+    <p>シフト演算が「2の累乗による掛け算・割り算」として機能するのは、**2進数だからこそ**成り立ちます。<br>
+    10進数では桁をずらすと10倍・10分の1になるように、2進数では桁をずらすと2倍・2分の1になります。<br>
+    これは、各桁の重みが2の累乗で表現される2進数の特性によるものです。</p>
   </section>
 
   <section>
     <div class="summary-box">
-      <p>シフト演算は、2の累乗の掛け算・割り算に特化した高速な計算方法です。</p>
+      <p>論理シフトは、空いた桁に「0」を詰める方法で、主に正の整数・非負整数で使われます。</p>
     </div>
-    <h2><i class="fas fa-table"></i> シフト演算の対応表</h2>
-    <table>
-      <tr>
-        <th>操作</th>
-        <th>意味</th>
-        <th>演算結果例（10進）</th>
-      </tr>
-      <tr><td>a << 1</td><td>a × 2</td><td>5 → 10</td></tr>
-      <tr><td>a << 2</td><td>a × 4</td><td>5 → 20</td></tr>
-      <tr><td>a >> 1</td><td>a ÷ 2</td><td>10 → 5</td></tr>
-      <tr><td>a >> 2</td><td>a ÷ 4</td><td>20 → 5</td></tr>
-    </table>
-  </section>
+    <h2><i class="fas fa-exchange-alt"></i> 論理シフト（Logical Shift）</h2>
+    <p><strong>→ 桁を左右にずらし、空いた桁に「0」を詰める方法。</strong></p>
+    <p>📌 主に正の整数・非負整数で使われ、<strong>左シフトで×2、右シフトで÷2</strong> になります。</p>
 
-  <section>
-    <div class="summary-box">
-      <p>シフト演算には、正負を考慮するか否かで論理シフトと算術シフトに分けられます。</p>
-    </div>
-    <h2><i class="fas fa-lightbulb"></i> 補足：論理シフトと算術シフト</h2>
-    <p>シフト演算には、大きく分けて<strong>論理シフト</strong>と<strong>算術シフト</strong>の2種類があります。</p>
-    <ul>
-      <li><strong>論理シフト（Logical Shift）</strong>:
-        <ul>
-          <li>符号ビットを考慮せず、単純にビットをずらします。</li>
-          <li>主に符号なし整数（非負の数）の演算に使われます。</li>
-          <li><strong>今話しているのは、基本的にこの論理シフトです。</strong></li>
-        </ul>
-      </li>
-      <li><strong>算術シフト（Arithmetic Shift）</strong>:
-        <ul>
-          <li>符号ビットを考慮してビットをずらします。</li>
-          <li>主に符号付き整数（正負の数）の演算に使われます。</li>
-          <li><strong>補数表現</strong>と密接に関連しており、負の数を扱う際に重要になります。</li>
-        </ul>
-      </li>
-    </ul>
-  </section>
-
-  <section>
-    <div class="summary-box">
-      <p>右シフトには、論理右シフトと算術右シフトがあります。</p>
-    </div>
-    <h2><i class="fas fa-arrow-right"></i> 右シフトの場合</h2>
-    <ul>
-      <li>論理右シフトの場合、左から0が挿入されます。</li>
-      <li>算術右シフトの場合、左から符号ビット（最上位ビット）と同じ値が挿入されます。これにより、負の数の除算でも符号が保持されます。</li>
-    </ul>
-  </section>
-
-  <section>
-    <div class="summary-box">
-      <p>論理右シフトの具体的な例を見てみましょう。</p>
-    </div>
-    <h2><i class="fas fa-arrow-right"></i> 右シフトの例</h2>
-    <h3>例：論理右シフト (8ビットの 10 (00001010) を1ビット右シフト)</h3>
+    <h3>🔹 例：論理左シフト (5 (0000 0101) を1ビット左シフト)</h3>
+    <p>元の値: 5</p>
     <div class="bit-string-example">
-      <span class="bit-box">0</span>
-      <span class="bit-box">0</span>
-      <span class="bit-box">0</span>
-      <span class="bit-box">0</span>
-      <span class="bit-box">1</span>
-      <span class="bit-box">0</span>
-      <span class="bit-box">1</span>
-      <span class="bit-box">0</span>
+      <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
+      <span class="bit-box">0</span><span class="bit-box">1</span><span class="bit-box">0</span><span class="bit-box">1</span>
+    </div>
+    <p class="arrow">↓ 1ビット左シフト</p>
+    <div class="bit-string-example shifted">
+      <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
+      <span class="bit-box">1</span><span class="bit-box">0</span><span class="bit-box">1</span><span class="bit-box new-bit">0</span>
+    </div>
+    <p>結果: 10</p>
+
+    <h3>🔹 例：論理左シフト (5 (0000 0101) を2ビット左シフト)</h3>
+    <p>元の値: 5</p>
+    <div class="bit-string-example">
+      <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
+      <span class="bit-box">0</span><span class="bit-box">1</span><span class="bit-box">0</span><span class="bit-box">1</span>
+    </div>
+    <p class="arrow">↓ 2ビット左シフト</p>
+    <div class="bit-string-example shifted">
+      <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">1</span>
+      <span class="bit-box">0</span><span class="bit-box">1</span><span class="bit-box new-bit">0</span><span class="bit-box new-bit">0</span>
+    </div>
+    <p>結果: 20</p>
+
+    <h3>🔹 例：論理右シフト (8 (0000 1000) を1ビット右シフト)</h3>
+    <p>元の値: 8</p>
+    <div class="bit-string-example">
+      <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
+      <span class="bit-box">1</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
     </div>
     <p class="arrow">↓ 1ビット右シフト</p>
     <div class="bit-string-example shifted">
-      <span class="bit-box new-bit">0</span>
-      <span class="bit-box">0</span>
-      <span class="bit-box">0</span>
-      <span class="bit-box">0</span>
-      <span class="bit-box">1</span>
-      <span class="bit-box">0</span>
-      <span class="bit-box">1</span>
-      <span class="bit-box">0</span>
+      <span class="bit-box new-bit">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
+      <span class="bit-box">0</span><span class="bit-box">1</span><span class="bit-box">0</span><span class="bit-box">0</span>
     </div>
-    <p>結果: 5 (00000101)</p>
+    <p>結果: 4</p>
 
-  <section>
-    <div class="summary-box">
-      <p>コンピュータ内部での負の数の表現方法です。</p>
+    <h3>🔹 例：論理右シフト (8 (0000 1000) を2ビット右シフト)</h3>
+    <p>元の値: 8</p>
+    <div class="bit-string-example">
+      <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
+      <span class="bit-box">1</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
     </div>
-    <h2><i class="fas fa-calculator"></i> 補数表現とは？</h2>
-    <p>コンピュータ内部では、負の数は<strong>補数（主に2の補数）</strong>で表現されます。<br>
-    例えば、8ビットの場合、<code>00000001</code>が<code>1</code>、<code>11111111</code>が<code>-1</code>を表します。<br>
-    算術右シフトは、この補数表現された負の数を正しく除算するために使われます。</p>
+    <p class="arrow">↓ 2ビット右シフト</p>
+    <div class="bit-string-example shifted">
+      <span class="bit-box new-bit">0</span><span class="bit-box new-bit">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
+      <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">1</span><span class="bit-box">0</span>
+    </div>
+    <p>結果: 2</p>
+
+    <p>※ 論理右シフトでは、常に左端に <strong>0</strong> が入ります。<br>
+    ※ 負の数には対応していません。</p>
   </section>
 
   <section>
     <div class="summary-box">
-      <p>シフト演算は2進数のビットを直接操作する演算です。<br>それ以外の計算は通常の掛け算・割り算を使います。</p>
+      <p>算術シフトは、左端の符号ビットを固定したまま右シフトする方法で、負の数も扱えます。</p>
     </div>
-    <h2><i class="fas fa-exclamation-triangle"></i> 注意点とまとめ</h2>
+    <h2><i class="fas fa-calculator"></i> 算術シフト（Arithmetic Shift）</h2>
+    <p><strong>→ 左端の符号ビットを固定したまま右シフトする方法。</strong></p>
     <ul>
-      <li><strong>シフト演算で扱えるのは「2の累乗（2, 4, 8, 16…）」だけ！</strong></li>
-      <li><strong>×3や×5はできない（それは通常の掛け算）</strong></li>
-      <li><strong>×1は「シフトなし」と同じ（値は変わらない）</strong></li>
+      <li>負の数もそのまま扱えるため、符号付き整数の除算によく用いられます。</li>
+      <li>CPUレベルでは「符号付き整数（signed int）」の演算に使われます。</li>
     </ul>
-    <p><strong>補足：</strong><br>
-    シフト演算は、<strong>2進数のビットを直接操作する演算</strong>で、主に<strong>CPU内部や低レイヤー処理</strong>で使われます。<br>
-    8進数や16進数では<strong>表記を簡略化する目的で使われることはあります</strong>が、<br>
-    <strong>実際の演算は必ず2進数に変換してから行われます。</strong></p>
+
+    <h3>🔹 例：算術右シフト（符号付き8ビット表現）</h3>
+    <p>元の値: -4</p>
+    <div class="bit-string-example">
+      <span class="bit-box">1</span><span class="bit-box">1</span><span class="bit-box">1</span><span class="bit-box">1</span>
+      <span class="bit-box">1</span><span class="bit-box">1</span><span class="bit-box">0</span><span class="bit-box">0</span>
+    </div>
+    <p class="arrow">↓ 1ビット算術右シフト</p>
+    <div class="bit-string-example shifted">
+      <span class="bit-box new-bit">1</span><span class="bit-box">1</span><span class="bit-box">1</span><span class="bit-box">1</span>
+      <span class="bit-box">1</span><span class="bit-box">1</span><span class="bit-box">1</span><span class="bit-box">0</span>
+    </div>
+    <p>結果: -2</p>
+  </section>
+
+  <section>
+    <div class="summary-box">
+      <p>左シフトでも、最上位ビットに1が入ると符号が変わることがあります（オーバーフロー）。</p>
+    </div>
+    <h2><i class="fas fa-exclamation-triangle"></i> 補足：オーバーフロー（左シフトでも負になることがある）</h2>
+    <p>左シフトでも、**最上位ビットに1が入ると符号が変わる**</p>
+
+    <h3>例：</h3>
+    <p>元の値: 64</p>
+    <div class="bit-string-example">
+      <span class="bit-box">0</span><span class="bit-box">1</span><span class="bit-box">0</span><span class="bit-box">0</span>
+      <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
+    </div>
+    <p class="arrow">↓ 1ビット左シフト</p>
+    <div class="bit-string-example shifted">
+      <span class="bit-box">1</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
+      <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box new-bit">0</span>
+    </div>
+    <p>結果: -128</p>
+    <p>→ 左シフトでも負になる！これは **桁あふれ（オーバーフロー）** によるものです。</p>
+  </section>
+
+  <section>
+    <div class="summary-box">
+      <p>シフト演算は2進数のビットを直接操作する演算で、主にCPU内部や低レイヤー処理で使われます。</p>
+    </div>
+    <h2><i class="fas fa-info-circle"></i> 注意書き（進数とシフト演算）</h2>
+    <p>シフト演算は、**2進数のビットを直接操作する演算**で、<br>
+    主に **CPU内部や低レイヤー処理**で使われます。</p>
+    <p>8進数や16進数では **表記を簡略化する目的で使われることはあります**が、<br>
+    **演算自体は常に2進数に戻して処理されます。**</p>
   </section>
 
   <section class="center">
