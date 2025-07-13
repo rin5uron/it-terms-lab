@@ -11,17 +11,19 @@
 
   <header>
     <h1>シフト演算</h1>
-    <p>ビットをずらすことで高速な計算を実現する</p>
+    <p>ビットシフトを使い、高速な計算を実現する</p>
   </header>
 
   <section>
     <div class="summary-box">
-      <p>ビット（桁）を左右にずらすことで、2の累乗による掛け算・割り算をシンプルかつ高速に行う演算です。</p>
+      <p>２進数の桁を左右にずらして行う計算手法です。シンプルなので高速に計算できます。</p>
     </div>
     <h2><i class="fas fa-arrows-alt-h"></i> シフト演算とは？</h2>
     <div class="highlight">
-      <strong>2進数のビット（桁）を左右にずらすことで、2の累乗による掛け算・割り算をシンプルかつ高速に行う演算。</strong>
+      <strong>シフト演算</strong>
+      <p>２進数のビット（桁）を左右にずらすことで、<br>2の累乗による掛け算・割り算をシンプルに行う演算手法。</p>
     </div>
+    計算がシンプルなのでコンピュータは大量データでも高速に計算できる
   </section>
 
   <section>
@@ -41,23 +43,40 @@
 
   <section>
     <div class="summary-box">
-      <p>シフト演算が「2の累乗による掛け算・割り算」として機能するのは、2進数だからこそ成り立ちます。</p>
+      <p>シフト演算は、2進数だからこそ成り立ちます。</p>
     </div>
     <h2><i class="fas fa-binary"></i> 2進数でのシフト演算</h2>
-    <p>シフト演算が「2の累乗による掛け算・割り算」として機能するのは、**2進数だからこそ**成り立ちます。<br>
-    10進数では桁をずらすと10倍・10分の1になるように、2進数では桁をずらすと2倍・2分の1になります。<br>
-    これは、各桁の重みが2の累乗で表現される2進数の特性によるものです。</p>
+    <p>シフト演算は、2進数のビット列を左右にずらす操作をします。<br>
+    桁を1つずらす操作は、10進数における「10倍」や「10分の1」の計算に相当します。</p>
+    <p>2進数の場合、ビットを1つ左にずらすと値は<strong>2倍</strong>に、右にずらすと<strong>2分の1</strong>になります。</p>
+
+    <div class="calculation-box bit-calculation-box">
+      <p><strong>例: 10（2進数: 1010）のシフト演算</strong></p>
+<pre>
+// 1ビット左シフト (2倍)
+1010 &lt;&lt; 1  →  10100 (20)
+
+// 1ビット右シフト (1/2)
+1010 &gt;&gt; 1  →  0101 (5)
+</pre>
+    </div>
+    
+    <div class="highlight">
+      <strong>ポイント</strong><br>
+      <p>シフト演算は、コンピュータが最も得意とするビット操作のため、非常に高速です。<br>
+      8進数や16進数で表記されることもありますが、実際の計算は必ず2進数で行われます。</p>
+    </div>
   </section>
 
   <section>
     <div class="summary-box">
-      <p>論理シフトは、空いた桁に「0」を詰める方法で、主に正の整数・非負整数で使われます。</p>
+      <p>論理シフトは、空いた桁に「0」を詰める方法です。負の数には対応していません。</p>
     </div>
-    <h2><i class="fas fa-exchange-alt"></i> 論理シフト（Logical Shift）</h2>
+    <h2><i class="fas fa-exchange-alt"></i> 論理シフト</h2>
     <p><strong>→ 桁を左右にずらし、空いた桁に「0」を詰める方法。</strong></p>
-    <p>📌 主に正の整数・非負整数で使われ、<strong>左シフトで×2、右シフトで÷2</strong> になります。</p>
+    <p><strong>左シフトで×2、右シフトで÷2</strong> になります。</p>
 
-    <h3>🔹 例：論理左シフト (5 (0000 0101) を1ビット左シフト)</h3>
+    <h3>論理左シフト </h3>
     <p>元の値: 5</p>
     <div class="bit-string-example">
       <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
@@ -70,7 +89,7 @@
     </div>
     <p>結果: 10</p>
 
-    <h3>🔹 例：論理左シフト (5 (0000 0101) を2ビット左シフト)</h3>
+    <h3>論理左シフト</h3>
     <p>元の値: 5</p>
     <div class="bit-string-example">
       <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
@@ -83,7 +102,7 @@
     </div>
     <p>結果: 20</p>
 
-    <h3>🔹 例：論理右シフト (8 (0000 1000) を1ビット右シフト)</h3>
+    <h3>論理右シフト</h3>
     <p>元の値: 8</p>
     <div class="bit-string-example">
       <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
@@ -96,7 +115,7 @@
     </div>
     <p>結果: 4</p>
 
-    <h3>🔹 例：論理右シフト (8 (0000 1000) を2ビット右シフト)</h3>
+    <h3>論理右シフト</h3>
     <p>元の値: 8</p>
     <div class="bit-string-example">
       <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
@@ -117,14 +136,14 @@
     <div class="summary-box">
       <p>算術シフトは、左端の符号ビットを固定したまま右シフトする方法で、負の数も扱えます。</p>
     </div>
-    <h2><i class="fas fa-calculator"></i> 算術シフト（Arithmetic Shift）</h2>
+    <h2><i class="fas fa-calculator"></i> 算術シフト</h2>
     <p><strong>→ 左端の符号ビットを固定したまま右シフトする方法。</strong></p>
     <ul>
       <li>負の数もそのまま扱えるため、符号付き整数の除算によく用いられます。</li>
       <li>CPUレベルでは「符号付き整数（signed int）」の演算に使われます。</li>
     </ul>
 
-    <h3>🔹 例：算術右シフト（符号付き8ビット表現）</h3>
+    <h3>算術右シフト</h3>
     <p>元の値: -4</p>
     <div class="bit-string-example">
       <span class="bit-box">1</span><span class="bit-box">1</span><span class="bit-box">1</span><span class="bit-box">1</span>
@@ -140,40 +159,42 @@
 
   <section>
     <div class="summary-box">
-      <p>左シフトでも、最上位ビットに1が入ると符号が変わることがあります（オーバーフロー）。</p>
+      <p>最上位ビットに1が入るとオーバーフロー（桁あふれ）し、負の数になることがあります。</p>
     </div>
-    <h2><i class="fas fa-exclamation-triangle"></i> 補足：オーバーフロー（左シフトでも負になることがある）</h2>
-    <p>左シフトでも、**最上位ビットに1が入ると符号が変わる**</p>
+    <h2><i class="fas fa-exclamation-triangle"></i> オーバーフロー</h2>
+    <p>左シフトは通常「×2」「×4」のように値を大きくしますが、<br>
+    <strong>符号付きの整数を左シフトして、最上位ビットに1が入ると、</strong><br>
+    <strong>符号が反転して“負の数”として扱われる</strong>ことがあります。</p>
+    <p>これは「桁あふれ（オーバーフロー）」と呼ばれる現象です。</p>
 
     <h3>例：</h3>
-    <p>元の値: 64</p>
-    <div class="bit-string-example">
-      <span class="bit-box">0</span><span class="bit-box">1</span><span class="bit-box">0</span><span class="bit-box">0</span>
-      <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
+    <div class="calculation-box">
+<pre>
+64（10進） = 01000000（2進）
+↓ &lt;&lt; 1（左に1ビットシフト）
+→ 10000000（2進） = -128（10進）
+</pre>
     </div>
-    <p class="arrow">↓ 1ビット左シフト</p>
-    <div class="bit-string-example shifted">
-      <span class="bit-box">1</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span>
-      <span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box">0</span><span class="bit-box new-bit">0</span>
+    <p> 本来なら「64 × 2 = 128」のつもりだったのに、<br>
+    <strong>8ビットの範囲では128を表せないため、結果が -128 になる！</strong></p>
+    <p>→ これは計算ミスではなく、<strong>ビット数の限界による仕様上の“落とし穴”</strong>です。</p>
+
+    <div class="highlight">
+      <strong>試験や問題集での注意点：</strong><br>
+      <p>試験や参考書の問題文では、以下のような補足がつくことがあります：</p>
+      <blockquote class="note-box">※ オーバーフローが発生した場合の動作は考慮しないものとする。</blockquote>
+      <p>この場合は、<strong>ビット数による符号反転や桁あふれの影響を無視し、<br>
+      純粋な「×2」や「÷2」として計算する必要があります。</strong></p>
+      <p>つまり、64 &lt;&lt; 1 は -128 ではなく <strong>128 を選ぶのが正解になる</strong> ということです！</p>
     </div>
-    <p>結果: -128</p>
-    <p>→ 左シフトでも負になる！これは **桁あふれ（オーバーフロー）** によるものです。</p>
+    <div class="center">
+      <a class="btn-link" href="practice.html">練習問題に挑戦する</a>
+    </div>
   </section>
 
-  <section>
-    <div class="summary-box">
-      <p>シフト演算は2進数のビットを直接操作する演算で、主にCPU内部や低レイヤー処理で使われます。</p>
-    </div>
-    <h2><i class="fas fa-info-circle"></i> 注意書き（進数とシフト演算）</h2>
-    <p>シフト演算は、**2進数のビットを直接操作する演算**で、<br>
-    主に **CPU内部や低レイヤー処理**で使われます。</p>
-    <p>8進数や16進数では **表記を簡略化する目的で使われることはあります**が、<br>
-    **演算自体は常に2進数に戻して処理されます。**</p>
-  </section>
+  
 
-  <section class="center">
-    <a class="btn-link" href="practice.html">練習問題に挑戦する</a>
-  </section>
+  
 
 </body>
 </html>

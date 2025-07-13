@@ -40,63 +40,77 @@
     <section>
       <h2>体験デモ一覧</h2>
       <p>ここでは、実際に手を動かしてIT用語を体験できるデモを一覧で紹介しています。</p>
-    </section>
 
-    <section id="sql-insert-demo" class="demo-section">
-      <h2>体験デモ - SQL INSERT文</h2>
-      <p>実際にボタンを押して、データベースへの挿入を体験してみましょう！</p>
-      
-      <div class="demo-area">
-        <h3>ユーザー情報を追加</h3>
-        <label for="userName">名前</label>
-        <input type="text" id="userName" placeholder="田中太郎">
-        
-        <label for="userAge">年齢</label>
-        <input type="number" id="userAge" placeholder="25">
-        
-        <button onclick="insertUser()" class="cta-button">INSERT実行</button>
-      </div>
-      
-      <div class="demo-output" id="sqlOutput" aria-live="polite">
-        -- ここにSQL文と結果が表示されます --
-      </div>
-      
-      <h3>現在のデータベース内容</h3>
-      <div class="demo-output" id="dbContent" aria-live="polite">
-        []
+      <div id="search-controls">
+        <div class="search-box">
+          <input type="text" placeholder="デモを検索... (例: SQL, IP)" id="demoSearchInput" aria-label="デモ検索">
+        </div>
+        <div id="category-filters" class="category-grid">
+          <button class="category-button active" data-category="all">すべて</button>
+          <button class="category-button" data-category="データベース">データベース</button>
+          <button class="category-button" data-category="ネットワーク">ネットワーク</button>
+          <!-- 今後カテゴリが増えたらここに追加 -->
+        </div>
       </div>
     </section>
 
-    <section id="ip-address-demo" class="demo-section">
-      <h2>体験デモ - IPアドレス</h2>
-      <p>実際にあなたのIPアドレスを調べたり、IPアドレスの種類を分析してみましょう！</p>
-      
-      <div class="demo-area">
-        <h3>現在のIPアドレス情報</h3>
-        <button class="btn" onclick="getMyIP()">🔍 私のIPアドレスを調べる</button>
+    <div id="demo-list">
+      <section id="sql-insert-demo" class="demo-section" data-title="SQL INSERT文" data-category="データベース">
+        <h2>体験デモ - SQL INSERT文</h2>
+        <p>実際にボタンを押して、データベースへの挿入を体験してみましょう！</p>
         
-        <div id="ipResult" class="ip-info-card" style="display: none;">
-          <h4>📍 あなたのIPアドレス情報</h4>
-          <p><strong>IPアドレス:</strong> <span id="ipAddress">取得中...</span></p>
-          <p><strong>所在地:</strong> <span id="location">取得中...</span></p>
-          <p><strong>ISP:</strong> <span id="isp">取得中...</span></p>
-          <p><strong>IPタイプ:</strong> <span id="ipType">取得中...</span></p>
+        <div class="demo-area">
+          <h3>ユーザー情報を追加</h3>
+          <label for="userName">名前</label>
+          <input type="text" id="userName" placeholder="田中太郎">
+          
+          <label for="userAge">年齢</label>
+          <input type="number" id="userAge" placeholder="25">
+          
+          <button onclick="insertUser()" class="cta-button">INSERT実行</button>
         </div>
-      </div>
-      
-      <div class="demo-area">
-        <h3>IPアドレスの種類を調べる</h3>
-        <div class="input-group">
-          <label for="ipInput">IPアドレスを入力してください</label>
-          <input type="text" id="ipInput" placeholder="例: 192.168.1.1">
-        </div>
-        <button class="btn" onclick="analyzeIP()">🔍 分析する</button>
         
-        <div class="output" id="analysisResult">
+        <div class="demo-output" id="sqlOutput" aria-live="polite">
+          -- ここにSQL文と結果が表示されます --
+        </div>
+        
+        <h3>現在のデータベース内容</h3>
+        <div class="demo-output" id="dbContent" aria-live="polite">
+          []
+        </div>
+      </section>
+
+      <section id="ip-address-demo" class="demo-section" data-title="IPアドレス" data-category="ネットワーク">
+        <h2>体験デモ - IPアドレス</h2>
+        <p>実際にあなたのIPアドレスを調べたり、IPアドレスの種類を分析してみましょう！</p>
+        
+        <div class="demo-area">
+          <h3>現在のIPアドレス情報</h3>
+          <button class="btn" onclick="getMyIP()">🔍 私のIPアドレスを調べる</button>
+          
+          <div id="ipResult" class="ip-info-card" style="display: none;">
+            <h4>📍 あなたのIPアドレス情報</h4>
+            <p><strong>IPアドレス:</strong> <span id="ipAddress">取得中...</span></p>
+            <p><strong>所在地:</strong> <span id="location">取得中...</span></p>
+            <p><strong>ISP:</strong> <span id="isp">取得中...</span></p>
+            <p><strong>IPタイプ:</strong> <span id="ipType">取得中...</span></p>
+          </div>
+        </div>
+        
+        <div class="demo-area">
+          <h3>IPアドレスの種類を調べる</h3>
+          <div class="input-group">
+            <label for="ipInput">IPアドレスを入力してください</label>
+            <input type="text" id="ipInput" placeholder="例: 192.168.1.1">
+          </div>
+          <button class="btn" onclick="analyzeIP()">🔍 分析する</button>
+          
+          <div class="output" id="analysisResult">
 ここに分析結果が表示されます...
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- 今後追加されるデモセクションをここに追加 -->
 
@@ -266,6 +280,43 @@
       }
       resultDiv.textContent = result;
     }
+
+    // Demo Page Filter/Search Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('demoSearchInput');
+      const categoryButtons = document.querySelectorAll('#category-filters .category-button');
+      const demoSections = document.querySelectorAll('#demo-list .demo-section');
+
+      function filterDemos() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const activeCategory = document.querySelector('#category-filters .category-button.active').dataset.category;
+
+        demoSections.forEach(section => {
+          const title = section.dataset.title.toLowerCase();
+          const category = section.dataset.category;
+
+          const matchesSearch = title.includes(searchTerm);
+          const matchesCategory = (activeCategory === 'all' || category === activeCategory);
+
+          if (matchesSearch && matchesCategory) {
+            section.style.display = 'block';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+      }
+
+      searchInput.addEventListener('input', filterDemos);
+
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          categoryButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          filterDemos();
+        });
+      });
+    });
+
   </script>
 </body>
 </html>

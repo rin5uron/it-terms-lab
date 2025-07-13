@@ -1,8 +1,8 @@
 /* CSSカスタムプロパティ定義 */
 :root {
-  --bg-color: #f5f5f7;
+  --bg-color: #f2f2f7; /* iOS-like light gray */
   --text-color: #1d1d1f;
-  --card-bg-color: white;
+  --card-bg-color: #ffffff; /* Pure white cards */
   --header-bg: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
   --footer-bg: #1f2937;
   --link-color: #3b82f6;
@@ -12,13 +12,22 @@
   --tag-text: white;
   --code-bg: #1f2937;
   --code-text: #10b981;
+
+  /* Status Tag Colors - Light Mode */
+  --tag-demo-bg: #e0f2f1;
+  --tag-demo-text: #00796b;
+  --tag-new-bg: #fff3e0;
+  --tag-new-text: #f57c00;
+  --tag-wip-bg: #f5f5f5;
+  --tag-wip-text: #616161;
+  --tag-exercise-bg: #ede7f6;
+  --tag-exercise-text: #5e35b1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #121212;
+body.dark-mode {
+    --bg-color: #000000; /* iOS-like pure black */
     --text-color: #e0e0e0;
-    --card-bg-color: #1e1e1e;
+    --card-bg-color: #1c1c1e; /* iOS-like dark gray cards */
     --header-bg: #1f2937;
     --footer-bg: #111827;
     --link-color: #60a5fa;
@@ -28,7 +37,16 @@
     --tag-text: #121212;
     --code-bg: #2d3748;
     --code-text: #6ee7b7;
-  }
+
+    /* Status Tag Colors - Dark Mode */
+    --tag-demo-bg: #004d40;
+    --tag-demo-text: #b2dfdb;
+    --tag-new-bg: #e65100;
+    --tag-new-text: #ffe0b2;
+    --tag-wip-bg: #424242;
+    --tag-wip-text: #bdbdbd;
+    --tag-exercise-bg: #4527a0;
+    --tag-exercise-text: #d1c4e9;
 }
 
 * {
@@ -228,6 +246,7 @@ p {
   border: 1px solid rgba(0,0,0,0.08);
   transition: all 0.2s ease;
   cursor: pointer;
+  text-decoration: none; /* リンクの下線を削除 */
 }
 
 .word-card:hover {
@@ -246,6 +265,7 @@ p {
 .word-card p {
   font-size: 1rem;
   margin-bottom: 1.5rem;
+  color: var(--text-color); /* テキスト色を明示的に指定 */
 }
 
 .word-card .tag {
@@ -258,6 +278,27 @@ p {
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
   display: inline-block;
+}
+
+/* ステータス別タグの配色 */
+.word-card .tag-demo {
+  background-color: var(--tag-demo-bg);
+  color: var(--tag-demo-text);
+}
+
+.word-card .tag-new {
+  background-color: var(--tag-new-bg);
+  color: var(--tag-new-text);
+}
+
+.word-card .tag-wip {
+  background-color: var(--tag-wip-bg);
+  color: var(--tag-wip-text);
+}
+
+.word-card .tag-exercise {
+  background-color: var(--tag-exercise-bg);
+  color: var(--tag-exercise-text);
 }
 
 .cta-button {
@@ -590,6 +631,38 @@ li {
     padding: 0.5rem 0.3rem;
   }
 }
+
+/* カテゴリ検索 */
+#category-search .category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+#category-search .category-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+#category-search .category-button:hover {
+  background: var(--link-color);
+  color: white;
+  border-color: var(--link-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 122, 255, 0.2);
+}
+
 
 /* 各用語ページ共通スタイル */
 .breadcrumb {

@@ -159,10 +159,14 @@ p {
 .question-box {
   background: var(--question-bg);
   padding: 2rem;
-  margin: 2rem 0;
+  margin-bottom: 6rem;
   border-radius: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+.question-item {
+  margin-bottom: 6rem;
+}
+
 
 .answer-box {
   background: linear-gradient(135deg, #e8f4fd 0%, #d1e9fb 100%);
@@ -531,4 +535,57 @@ br-mobile {
 }
 .base-block:last-child {
   margin-bottom: 0;
+}
+
+/* 定義リストのスタイル - コロンの位置を整列 */
+.definition-list {
+  margin: 1rem 0;
+  padding: 0;
+}
+
+.definition-list dt {
+  font-weight: bold;
+  color: var(--text-color);
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+  position: relative;
+  padding-left: 0;
+}
+
+.definition-list dt::after {
+  content: "：";
+  position: absolute;
+  left: 4em;
+  color: var(--text-color);
+}
+
+.definition-list dd {
+  margin: 0 0 0.5rem 4.5em;
+  padding: 0;
+  color: var(--secondary-color);
+}
+
+.definition-list dd:last-child {
+  margin-bottom: 0;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+  .definition-list dt::after {
+    left: 3.5em;
+  }
+  
+  .definition-list dd {
+    margin-left: 4em;
+  }
+}
+
+@media (max-width: 480px) {
+  .definition-list dt::after {
+    left: 3em;
+  }
+  
+  .definition-list dd {
+    margin-left: 3.5em;
+  }
 } 

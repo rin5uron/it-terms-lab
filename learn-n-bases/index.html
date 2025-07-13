@@ -46,7 +46,7 @@
       </p>
       <br>
       <details>
-        <summary><strong>なぜなら▼</strong></summary>
+        <summary><strong>なぜなら</strong></summary>
         <div class="details-content">10進数の２は、２進数では10（いち・ゼロ）になるから！</div>
       </details>
   
@@ -69,15 +69,15 @@
     <div class="summary-box">
       <p>n進数とは「n個の数字」で数を数える方法です。普段使う10進数は10個、2進数は2個の数字を使います。</p>
     </div>
-    <h2><i class="fas fa-book"></i> ③ n進数とは？</h2>
+    <h2><i class="fas fa-book"></i> n進数とは？</h2>
     <div class="highlight">
-      <strong>n進数</strong> = <br-mobile></br-mobile>「n個の数字を使って数を表す方法」
+      <p><strong>n進数</strong> = <br-mobile></br-mobile>「n個の数字を使って数を表す方法」</p>
     </div>
     
     <div class="example">例えば...</div>
     <ul>
-      <li><strong>10進数：</strong> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 の10個を使う</li>
-      <li><strong>2進数：</strong> 0, 1 の2個だけを使う</li>
+      <li><strong>10進数：</strong> 0〜9 の10個を使う</li>
+      <li><strong>2進数 ：</strong> 0, 1 の2個だけを使う</li>
       <li><strong>16進数：</strong> 0〜9, A〜F の16個を使う</li>
     </ul>
     
@@ -85,7 +85,7 @@
     <p>使える数字を全部使い切ったら、次の桁に進む！</p>
     <ul>
       <li>10進数：9の次は10（10で桁上がり）</li>
-      <li>2進数：1の次は10（2で桁上がり）</li>
+      <li>2進数 ：1の次は10（2で桁上がり）</li>
       <li>16進数：Fの次は10（16で桁上がり）</li>
     </ul>
   </section>
@@ -96,8 +96,8 @@
     </div>
     <h2><i class="fas fa-balance-scale"></i> 基数・桁の重み</h2>
     <div class="highlight">
-      <strong>基数</strong><br>：n進数のn。１桁で使える数字の種類数。例：２進数なら０と１の２種類を使って表すので基数は２。<br>
-      <strong>桁の重み</strong><br>：各桁が表す量を決める倍率。基数に各桁の位置を表す指数をかけたもの。
+      <p><strong>基数</strong><br>：n進数のn。１桁で使える数字の種類数。例：２進数なら０と１の２種類を使って表すので基数は２。<br>
+      <p><strong>桁の重み</strong><br>：各桁が表す量を決める倍率。基数に各桁の位置を表す指数をかけたもの。</p>  
     </div>
     
     <div class="example">例：10進数 1234 の場合</div>
@@ -105,8 +105,9 @@
 
       <pre>
 1234 = 1×10³  + 2×10²  + 3×10¹  + 4×10⁰
-     = 1×1000 + 2×100 + 3×10  + 4×1
-     = 1000   + 200   + 30    + 4
+     = 1×1000 + 2×100  + 3×10   + 4×1
+     = 1000   + 200    + 30     + 4
+     = 1234（答え）
       </pre>
     </div>
     
@@ -208,7 +209,7 @@ B = 1011 (2進数)
     <h2><i class="fas fa-exchange-alt"></i> 基数変換の方法</h2>
     
     <details>
-      <summary><h3>① 10進数 → n進数</h3></summary>
+      <summary><h3>10進数 → n進数</h3></summary>
       <div class="details-content">
         <h4>（1）整数部の変換</h4>
         <div class="point">
@@ -235,8 +236,8 @@ B = 1011 (2進数)
         <div class="example">例：0.625 を 2進数に変換する場合</div>
         <div class="calculation-box">
     0.625 × 2 = 1.25 → 1<br>
-    0.25 × 2 = 0.50 → 0<br>
-    0.50 × 2 = 1.00 → 1<br>
+    0.25  × 2 = 0.50 → 0<br>
+    0.50  × 2 = 1.00 → 1<br>
     <br>
     → 左から読む → 0.101（答え）
         </div>
@@ -244,7 +245,7 @@ B = 1011 (2進数)
     </details>
 
     <details>
-      <summary><h3>② n進数 → 10進数</h3></summary>
+      <summary><h3>n進数 → 10進数</h3></summary>
       <div class="details-content">
         <div class="point">
           各桁に桁の重みをかけて、それぞれを合計する！
@@ -255,7 +256,8 @@ B = 1011 (2進数)
         <div class="calculation-box">
     <pre>
     1×2³ + 1×2² + 0×2¹ + 1×2⁰
-       = 8   + 4   + 0   + 1   = 13
+       = 8   + 4   + 0   + 1   
+       = 13（答え）
     </pre>
         </div>
         
@@ -295,7 +297,8 @@ B = 1011 (2進数)
     <pre>
     4×10² + 9×10¹ + 8×10⁰
         = 4×100 + 9×10 + 8×1
-        = 400   + 90   + 8 = 498（答え）
+        = 400   + 90   + 8 
+        = 498（答え）
     </pre>
           </div>
         </div>
@@ -305,7 +308,7 @@ B = 1011 (2進数)
 
   <section>
     <div class="summary-box">
-      <p>試験では、10進数、2進数、16進数の相互変換が頻出！<br>パターンを覚えて効率よく解けるようにしましょう。</p>
+      <p>パターンを知り、効率よく解けるようにしましょう。</p>
     </div>
     <h2><i class="fas fa-check-circle"></i> 試験によく出る<br-mobile></br-mobile>変換パターン</h2>
     <table>
@@ -314,10 +317,10 @@ B = 1011 (2進数)
         <th>方法（ざっくり）</th>
       </tr>
       <tr><td>10進 → 2進</td><td>割って余りを逆に並べる</td></tr>
-      <tr><td>2進 → 10進</td><td>桁ごとに 2ⁿ をかけて足す</td></tr>
+      <tr><td> 2進 → 10進</td><td>桁ごとに 2ⁿ をかけて足す</td></tr>
       <tr><td>10進 → 16進</td><td>割って余り（16）＋ A〜Fに変換</td></tr>
       <tr><td>16進 → 2進</td><td>各桁を4ビットの2進数に置き換え</td></tr>
-      <tr><td>2進 → 16進</td><td>4桁ずつ区切って16進数に変換</td></tr>
+      <tr><td> 2進 → 16進</td><td>4桁ずつ区切って16進数に変換</td></tr>
     </table>
     <div class="center">
       <a class="btn-link" href="practice.html">練習問題に挑戦する</a>

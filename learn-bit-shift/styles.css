@@ -119,19 +119,19 @@ p {
 }
 
 .calculation-box {
-  background: var(--calculation-bg);
-  color: #374151;
-  border-radius: 1rem;
-  padding: 2rem;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  background: #343a40;
+  color: #a2e0a2;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin: 0.5em auto;
+  max-width: 90%;
 
   font-family: SF Mono, Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.6;
   white-space: pre-line;
   overflow-x: auto;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid #555;
 }
 
 .highlight {
@@ -169,6 +169,14 @@ p {
   padding: 1.5rem;
   margin: 1rem 0;
   border-radius: 0.75rem;
+  border: 1px solid rgba(0, 122, 255, 0.2);
+}
+
+.accordion-content {
+  background: var(--answer-bg);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  margin-top: 0.5rem;
   border: 1px solid rgba(0, 122, 255, 0.2);
 }
 
@@ -219,10 +227,17 @@ li {
 }
 
 p {
-  margin: 1rem 0;
+  margin: 0.5em 0; /* 余白を調整 */
   font-size: 1.125rem;
-  line-height: 1.8;
+  line-height: 1.6; /* 行間を調整 */
   color: var(--secondary-color);
+}
+
+.answer {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1em;
+  color: var(--text-color);
 }
 
 strong {
@@ -281,30 +296,27 @@ strong {
 
 details {
   margin: 1rem 0;
+  background: rgba(0, 0, 0, 0.02); /* ホバー前のグレーの背景色 */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
 }
 
 /* アコーディオン（三角アイコン・summaryテキスト）カスタム */
 details summary {
   color: var(--text-color);
   font-weight: 600;
-  font-size: 1.125rem;
+  font-size: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   transition: all 0.2s ease;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: rgba(0, 0, 0, 0.02);
   position: relative;
 }
 
 details summary::before {
-  content: "▼";
-  color: var(--primary-color);
-  font-size: 0.8rem;
-  margin-right: 0.5rem;
-  transition: transform 0.2s ease;
+  display: none;
 }
 
 details summary::-webkit-details-marker {
@@ -312,9 +324,10 @@ details summary::-webkit-details-marker {
 }
 
 details[open] summary {
-  color: var(--text-color);
-  background: rgba(0, 122, 255, 0.05);
-  border-color: rgba(0, 122, 255, 0.2);
+  background: rgba(0, 0, 0, 0.05); /* 開いた時のsummaryの背景色 */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 開いた時の区切り線 */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 details[open] summary::before {
@@ -322,10 +335,20 @@ details[open] summary::before {
 }
 
 details summary:hover {
-  background: rgba(0, 122, 255, 0.08);
-  border-color: rgba(0, 122, 255, 0.3);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.15);
+  background: rgba(0, 0, 0, 0.05); /* ホバー時の背景色 */
+  transform: translateY(0); /* ホバー時のアニメーションを削除 */
+  box-shadow: none; /* ホバー時の影を削除 */
+}
+
+details > *:not(summary) {
+  padding: 0.75rem 1rem; /* アコーディオンの中身のパディングを調整 */
+}
+
+.explanation-content {
+  background: rgba(0, 0, 0, 0.02); /* アコーディオンの背景色 */
+  padding: 0.75rem 1rem; /* パディングを調整 */
+  border-radius: 0 0 0.5rem 0.5rem; /* 下部の角を丸くする */
+  border-top: 1px solid rgba(0, 0, 0, 0.1); /* 上部に区切り線 */
 }
 
 .summary-box {
@@ -453,7 +476,7 @@ h2 .fas {
   }
   
   section {
-    padding: 1.5rem;
+    padding: 1rem; /* スマホでsectionのpaddingを1remに設定 */
   }
   
   .intro-section {
@@ -514,13 +537,13 @@ br-mobile {
     text-indent: 1.5em;
     display: block;
   }
-} 
+}
 
 .example {
   font-size: 0.95rem;
   margin-top: 4em;
   margin-bottom: 0.5em;
-} 
+}
 
 .section-block {
   padding: 2.5em 2em;
@@ -531,7 +554,7 @@ br-mobile {
 }
 .base-block:last-child {
   margin-bottom: 0;
-} 
+}
 
 .bit-string-example {
   display: flex;
@@ -558,9 +581,10 @@ br-mobile {
 
 .arrow {
   text-align: center;
-  font-size: 1.5em;
+  font-size: 0.9em;
   margin: 10px 0;
 }
+
 
 .shifted .bit-box:first-child {
   border-left: 2px solid #007bff;
@@ -580,4 +604,8 @@ br-mobile {
 
 .shifted .bit-box:not(.new-bit):nth-child(even) {
   background-color: #dae0e5;
+}
+
+.question-item {
+  margin-bottom: 2rem;
 }
