@@ -5,272 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="SQL INSERT文の実践例とわかりやすい解説ページ。体験しながら学べるIT用語辞典。">
   <title>【SQL実践例】INSERT文の使い方｜実践型IT用語辞典</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #f8f9fa;
-    }
-    
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-    
-    header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 2rem 0;
-      text-align: center;
-    }
-    
-    .breadcrumb {
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-    }
-    
-    .breadcrumb a {
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-    }
-    
-    .breadcrumb a:hover {
-      color: white;
-    }
-    
-    header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .subtitle {
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
-    
-    main {
-      padding: 2rem 0;
-    }
-    
-    section {
-      background: white;
-      margin: 2rem 0;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    
-    h2 {
-      color: #667eea;
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
-      border-bottom: 2px solid #667eea;
-      padding-bottom: 0.5rem;
-    }
-    
-    h3 {
-      color: #555;
-      margin: 1.5rem 0 1rem;
-      font-size: 1.3rem;
-    }
-    
-    .learning-objectives {
-      background: #e8f4f8;
-      border-left: 4px solid #667eea;
-      padding: 1.5rem;
-      margin: 1rem 0;
-    }
-    
-    .learning-objectives h3 {
-      color: #667eea;
-      margin-top: 0;
-    }
-    
-    .code-block {
-      background: #2d3436;
-      color: #00b894;
-      padding: 1.5rem;
-      border-radius: 0.5rem;
-      font-family: 'Consolas', 'Monaco', monospace;
-      font-size: 1rem;
-      overflow-x: auto;
-      margin: 1rem 0;
-    }
-    
-    .demo-area {
-      background: #f1f3f4;
-      padding: 2rem;
-      border-radius: 0.5rem;
-      margin: 1rem 0;
-    }
-    
-    .input-group {
-      margin: 1rem 0;
-    }
-    
-    .input-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-      color: #555;
-    }
-    
-    .input-group input {
-      width: 100%;
-      padding: 0.75rem;
-      border: 2px solid #ddd;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-      transition: border-color 0.3s;
-    }
-    
-    .input-group input:focus {
-      outline: none;
-      border-color: #667eea;
-    }
-    
-    .btn {
-      display: inline-block;
-      background: #667eea;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      margin: 0.5rem 0.5rem 0.5rem 0;
-    }
-    
-    .btn:hover {
-      background: #764ba2;
-      transform: translateY(-2px);
-    }
-    
-    .btn-secondary {
-      background: #636e72;
-    }
-    
-    .btn-secondary:hover {
-      background: #2d3436;
-    }
-    
-    .output {
-      background: #2d3436;
-      color: #00b894;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      font-family: monospace;
-      margin: 1rem 0;
-      min-height: 100px;
-      white-space: pre-wrap;
-    }
-    
-    .table-container {
-      overflow-x: auto;
-      margin: 1rem 0;
-    }
-    
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      border-radius: 0.5rem;
-      overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    th, td {
-      padding: 1rem;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-    
-    th {
-      background: #667eea;
-      color: white;
-      font-weight: bold;
-    }
-    
-    .highlight {
-      background: #fff3cd;
-      padding: 1rem;
-      border-left: 4px solid #ffc107;
-      margin: 1rem 0;
-      border-radius: 0.25rem;
-    }
-    
-    .related-terms {
-      background: #f8f9fa;
-      padding: 1.5rem;
-      border-radius: 0.5rem;
-      margin: 1rem 0;
-    }
-    
-    .related-terms ul {
-      list-style: none;
-      padding: 0;
-    }
-    
-    .related-terms li {
-      margin: 0.5rem 0;
-    }
-    
-    .related-terms a {
-      color: #667eea;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 0.25rem;
-      transition: background 0.3s;
-    }
-    
-    .related-terms a:hover {
-      background: #e8f4f8;
-    }
-    
-    footer {
-      background: #2d3436;
-      color: white;
-      text-align: center;
-      padding: 2rem 0;
-      margin-top: 3rem;
-    }
-    
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      
-      section {
-        padding: 1.5rem;
-      }
-      
-      .demo-area {
-        padding: 1.5rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
     <div class="container">
-      <div class="breadcrumb">
-        <a href="index.html">🏠 トップ</a> / <a href="index.html#popular">人気用語</a> / SQL INSERT文
+      <div class="hamburger-menu" id="hamburgerMenu" role="button" aria-label="メニューを開閉する" aria-controls="navMenu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </div>
-      <h1>🗄️ SQL INSERT文</h1>
-      <p class="subtitle">データベースにデータを追加する基本のSQL文</p>
+      <div class="theme-switcher-container">
+        <button id="themeSwitcher" aria-label="テーマを切り替える">🌙</button>
+      </div>
+      <h1>実践型IT用語辞典</h1>
+      <p class="subtitle">「読んで終わり」じゃなく、「動かして理解する」</p>
+      <nav id="navMenu">
+        <ul>
+          <li><a href="index.html#popular">人気用語</a></li>
+          <li><a href="index.html#demo">体験デモ</a></li>
+          <li><a href="index.html#new">新着用語</a></li>
+          <li><a href="index.html#about">制作背景</a></li>
+          <li><a href="form/request.html">用語リクエスト</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
   <main class="container">
+    <div class="breadcrumb">
+      <a href="index.html">🏠 トップ</a> / <a href="index.html#popular">人気用語</a> / SQL INSERT文
+    </div>
     <section class="learning-objectives">
       <h3>📚 このページで学べること</h3>
       <ul>
@@ -394,12 +159,68 @@
 
   <footer>
     <div class="container">
+      <div class="footer-links">
+        <a href="form/request.html">用語リクエスト</a>
+        <a href="rss.xml" target="_blank">RSS</a>
+      </div>
+      <div class="sns-share">
+        <a href="#" id="shareTwitter" target="_blank" aria-label="Twitterでシェア">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" id="shareFacebook" target="_blank" aria-label="Facebookでシェア">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
       <p>&copy; 2025 実践型IT用語辞典 | Jissen IT</p>
-      <p><a href="index.html" style="color: #74b9ff;">← トップページに戻る</a></p>
     </div>
   </footer>
 
   <script>
+    // Hamburger Menu
+    document.getElementById('hamburgerMenu').addEventListener('click', function() {
+      document.getElementById('navMenu').classList.toggle('active');
+    });
+
+    // Theme Switcher
+    const themeSwitcher = document.getElementById('themeSwitcher');
+    const body = document.body;
+
+    // 1. localStorageからテーマ設定を読み込む
+    const currentTheme = localStorage.getItem('theme');
+
+    // 2. テーマを適用する関数
+    const applyTheme = (theme) => {
+      if (theme === 'dark') {
+        body.classList.add('dark-mode');
+        themeSwitcher.textContent = '☀️';
+      } else {
+        body.classList.remove('dark-mode');
+        themeSwitcher.textContent = '🌙';
+      }
+    };
+
+    // 3. 初期テーマの設定
+    if (currentTheme) {
+      applyTheme(currentTheme);
+    } else {
+      // localStorageに設定がない場合はOSの設定に従う
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    // 4. スイッチクリック時の動作
+    themeSwitcher.addEventListener('click', () => {
+      let newTheme;
+      if (body.classList.contains('dark-mode')) {
+        newTheme = 'light';
+      } else {
+        newTheme = 'dark';
+      }
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+
+    // SQL INSERT体験デモ (既存のものをそのまま残す)
     let users = [];
     let nextId = 1;
 
@@ -483,11 +304,7 @@
       if (addedCount > 0) {
         // SQL文を表示
         const sqlOutput = document.getElementById('sqlOutput');
-        sqlOutput.textContent = `INSERT INTO users (name, age, email) VALUES 
-('田中太郎', 25, 'tanaka@example.com'),
-('佐藤花子', 30, 'sato@example.com'),
-('鈴木次郎', 28, 'suzuki@example.com');
--- ✅ 実行成功: ${addedCount}行が挿入されました`;
+        sqlOutput.textContent = `INSERT INTO users (name, age, email) VALUES \n('田中太郎', 25, 'tanaka@example.com'),\n('佐藤花子', 30, 'sato@example.com'),\n('鈴木次郎', 28, 'suzuki@example.com');\n-- ✅ 実行成功: ${addedCount}行が挿入されました`;
         
         // テーブルを更新
         updateUserTable();

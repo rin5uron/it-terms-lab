@@ -17,6 +17,9 @@
         <span class="bar"></span>
         <span class="bar"></span>
       </div>
+      <div class="theme-switcher-container">
+        <button id="themeSwitcher" aria-label="テーマを切り替える">🌙</button>
+      </div>
       <h1>実践型IT用語辞典</h1>
       <p class="subtitle">「読んで終わり」じゃなく、「動かして理解する」</p>
       <nav id="navMenu">
@@ -24,19 +27,13 @@
           <li><a href="#popular">人気用語</a></li>
           <li><a href="#demo">体験デモ</a></li>
           <li><a href="#new">新着用語</a></li>
+          <li><a href="demos.html">体験デモ一覧</a></li>
           <li><a href="#about">制作背景</a></li>
           <li><a href="form/request.html">用語リクエスト</a></li>
         </ul>
       </nav>
     </div>
   </header>
-  <section id="search">
-    <h2>用語を検索する</h2>
-    <div class="search-box">
-      <input type="text" placeholder="例：SQL、IPアドレス、DNS..." id="searchInput" aria-label="用語検索">
-    </div>
-    <p>※検索機能はデモ版です。実際の検索機能は今後実装予定です。</p>
-  </section>
 
   <main class="container">
     <section class="hero">
@@ -47,7 +44,56 @@
       <a href="#demo" class="cta-button">体験デモを見る</a>
     </section>
 
-    
+    <section id="search">
+      <h2>用語を検索する</h2>
+      <div class="search-box">
+        <input type="text" placeholder="例：SQL、IPアドレス、DNS..." id="searchInput" aria-label="用語検索">
+      </div>
+      <p>※検索機能はデモ版です。実際の検索機能は今後実装予定です。</p>
+    </section>
+
+    <section id="alphabetical-search">
+      <h2>五十音・アルファベットから探す</h2>
+      <div class="alphabet-grid">
+        <a href="#" class="alphabet-button">あ</a>
+        <a href="#" class="alphabet-button">か</a>
+        <a href="#" class="alphabet-button">さ</a>
+        <a href="#" class="alphabet-button">た</a>
+        <a href="#" class="alphabet-button">な</a>
+        <a href="#" class="alphabet-button">は</a>
+        <a href="#" class="alphabet-button">ま</a>
+        <a href="#" class="alphabet-button">や</a>
+        <a href="#" class="alphabet-button">ら</a>
+        <a href="#" class="alphabet-button">わ</a>
+        <a href="#" class="alphabet-button">A</a>
+        <a href="#" class="alphabet-button">B</a>
+        <a href="#" class="alphabet-button">C</a>
+        <a href="#" class="alphabet-button">D</a>
+        <a href="#" class="alphabet-button">E</a>
+        <a href="#" class="alphabet-button">F</a>
+        <a href="#" class="alphabet-button">G</a>
+        <a href="#" class="alphabet-button">H</a>
+        <a href="#" class="alphabet-button">I</a>
+        <a href="#" class="alphabet-button">J</a>
+        <a href="#" class="alphabet-button">K</a>
+        <a href="#" class="alphabet-button">L</a>
+        <a href="#" class="alphabet-button">M</a>
+        <a href="#" class="alphabet-button">N</a>
+        <a href="#" class="alphabet-button">O</a>
+        <a href="#" class="alphabet-button">P</a>
+        <a href="#" class="alphabet-button">Q</a>
+        <a href="#" class="alphabet-button">R</a>
+        <a href="#" class="alphabet-button">S</a>
+        <a href="#" class="alphabet-button">T</a>
+        <a href="#" class="alphabet-button">U</a>
+        <a href="#" class="alphabet-button">V</a>
+        <a href="#" class="alphabet-button">W</a>
+        <a href="#" class="alphabet-button">X</a>
+        <a href="#" class="alphabet-button">Y</a>
+        <a href="#" class="alphabet-button">Z</a>
+      </div>
+    </section>
+
     <section id="popular">
       <h2>人気の用語</h2>
       <div class="word-grid">
@@ -71,6 +117,25 @@
         </div>
       </div>
     </section>
+
+    <section id="new">
+      <h2>新着用語</h2>
+      <div class="word-grid">
+        <div class="word-card" role="button" tabindex="0">
+          <h4>DNS</h4>
+          <p>ドメイン名とIPアドレスを変換する仕組み</p>
+          <span class="tag">ネットワーク</span>
+          <span class="tag">新着</span>
+        </div>
+        <div class="word-card" role="button" tabindex="0">
+          <h4>API</h4>
+          <p>アプリケーション同士が通信する仕組み</p>
+          <span class="tag">開発</span>
+          <span class="tag">準備中</span>
+        </div>
+      </div>
+    </section>
+    
 
     <section id="demo" class="demo-section">
       <h2>体験デモ - SQL INSERT文</h2>
@@ -138,25 +203,6 @@
       同じように悩んだ誰かが、<strong>"わかる"を体験できる場所</strong>でありたいと願っています。</p>
     </section>
 
-    <section id="new">
-      <h2>新着用語</h2>
-      <div class="word-grid">
-        <div class="word-card" role="button" tabindex="0">
-          <h4>DNS</h4>
-          <p>ドメイン名とIPアドレスを変換する仕組み</p>
-          <span class="tag">ネットワーク</span>
-          <span class="tag">新着</span>
-        </div>
-        <div class="word-card" role="button" tabindex="0">
-          <h4>API</h4>
-          <p>アプリケーション同士が通信する仕組み</p>
-          <span class="tag">開発</span>
-          <span class="tag">準備中</span>
-        </div>
-      </div>
-    </section>
-
-    
   </main>
 
   <footer>
@@ -174,8 +220,6 @@
         </a>
       </div>
       <p>&copy; 2025 実践型IT用語辞典 | Jissen IT</p>
-      <p>このサイトは公開学習＆試行錯誤の場です。暖かく見守っていただけたら嬉しいです。</p>
-      <p>最終更新：2025年7月12日</p>
     </div>
   </footer>
 
@@ -237,6 +281,45 @@ INSERT INTO users (name, age) VALUES ('${name}', ${age});
     
     document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}&hashtags=実践型IT用語辞典`;
     document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+
+    // Theme Switcher
+    const themeSwitcher = document.getElementById('themeSwitcher');
+    const body = document.body;
+
+    // 1. localStorageからテーマ設定を読み込む
+    const currentTheme = localStorage.getItem('theme');
+
+    // 2. テーマを適用する関数
+    const applyTheme = (theme) => {
+      if (theme === 'dark') {
+        body.classList.add('dark-mode');
+        themeSwitcher.textContent = '☀️';
+      } else {
+        body.classList.remove('dark-mode');
+        themeSwitcher.textContent = '🌙';
+      }
+    };
+
+    // 3. 初期テーマの設定
+    if (currentTheme) {
+      applyTheme(currentTheme);
+    } else {
+      // localStorageに設定がない場合はOSの設定に従う
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    // 4. スイッチクリック時の動作
+    themeSwitcher.addEventListener('click', () => {
+      let newTheme;
+      if (body.classList.contains('dark-mode')) {
+        newTheme = 'light';
+      } else {
+        newTheme = 'dark';
+      }
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
   </script>
 </body>
 </html>

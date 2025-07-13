@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="IPアドレスの仕組みと実際の体験。実践しながら学べるIT用語辞典。">
-  <title>【ネットワーク基礎】IPアドレスとは？｜実践型IT用語辞典</title>
+  <meta name="description" content="実践型IT用語辞典の体験デモ一覧ページ。実際に手を動かしてIT用語を学べます。">
+  <title>体験デモ一覧 | 実践型IT用語辞典</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -34,36 +34,42 @@
 
   <main class="container">
     <div class="breadcrumb">
-      <a href="index.html">🏠 トップ</a> / <a href="index.html#popular">人気用語</a> / IPアドレス
+      <a href="index.html">🏠 トップ</a> / 体験デモ一覧
     </div>
-    <section class="learning-objectives">
-      <h3>📚 このページで学べること</h3>
-      <ul>
-        <li>IPアドレスの基本的な仕組み</li>
-        <li>実際にIPアドレスを調べる体験</li>
-        <li>IPアドレスの種類と分類</li>
-        <li>プライベートIPとパブリックIPの違い</li>
-      </ul>
-    </section>
 
     <section>
-      <h2>🤔 IPアドレスとは？</h2>
-      <p>IPアドレスは、インターネットやネットワーク上で機器を識別するための番号です。</p>
-      <p>簡単に言うと、<strong>「インターネット上の住所」</strong>のようなものです。</p>
+      <h2>体験デモ一覧</h2>
+      <p>ここでは、実際に手を動かしてIT用語を体験できるデモを一覧で紹介しています。</p>
+    </section>
+
+    <section id="sql-insert-demo" class="demo-section">
+      <h2>体験デモ - SQL INSERT文</h2>
+      <p>実際にボタンを押して、データベースへの挿入を体験してみましょう！</p>
       
-      <div class="highlight">
-        💡 <strong>例えば：</strong> 手紙を送るときに住所が必要なように、インターネット上でデータを送るときにも「どこに送るか」を示すIPアドレスが必要です。
+      <div class="demo-area">
+        <h3>ユーザー情報を追加</h3>
+        <label for="userName">名前</label>
+        <input type="text" id="userName" placeholder="田中太郎">
+        
+        <label for="userAge">年齢</label>
+        <input type="number" id="userAge" placeholder="25">
+        
+        <button onclick="insertUser()" class="cta-button">INSERT実行</button>
       </div>
       
-      <h3>IPアドレスの表記</h3>
-      <p>IPv4では、4つの数字を「.」で区切って表現します：</p>
-      <div class="ip-display">192.168.1.1</div>
-      <p>各数字は0〜255の範囲で、合計で約43億個のアドレスが作れます。</p>
+      <div class="demo-output" id="sqlOutput" aria-live="polite">
+        -- ここにSQL文と結果が表示されます --
+      </div>
+      
+      <h3>現在のデータベース内容</h3>
+      <div class="demo-output" id="dbContent" aria-live="polite">
+        []
+      </div>
     </section>
 
-    <section>
-      <h2>🧪 あなたのIPアドレスを調べてみよう！</h2>
-      <p>実際にあなたが今使っているIPアドレスを調べてみましょう。</p>
+    <section id="ip-address-demo" class="demo-section">
+      <h2>体験デモ - IPアドレス</h2>
+      <p>実際にあなたのIPアドレスを調べたり、IPアドレスの種類を分析してみましょう！</p>
       
       <div class="demo-area">
         <h3>現在のIPアドレス情報</h3>
@@ -78,13 +84,6 @@
         </div>
       </div>
       
-      <div class="highlight">
-        ⚠️ <strong>注意：</strong> 表示されるのは「パブリックIPアドレス」です。実際にはルーターなどにより、あなたのデバイスには「プライベートIPアドレス」も割り当てられています。
-      </div>
-    </section>
-
-    <section>
-      <h2>🎯 IPアドレスの体験ツール</h2>
       <div class="demo-area">
         <h3>IPアドレスの種類を調べる</h3>
         <div class="input-group">
@@ -99,77 +98,8 @@
       </div>
     </section>
 
-    <section>
-      <h2>📝 IPアドレスの分類</h2>
-      
-      <h3>パブリックIP vs プライベートIP</h3>
-      <div class="ip-class-grid">
-        <div class="ip-class-card">
-          <h4>🌐 パブリックIP</h4>
-          <p>インターネット上で使用される、全世界でユニークなIP</p>
-          <p><strong>例:</strong> 8.8.8.8 (Google DNS)</p>
-        </div>
-        <div class="ip-class-card">
-          <h4>🏠 プライベートIP</h4>
-          <p>ローカルネットワーク内でのみ使用されるIP</p>
-          <p><strong>例:</strong> 192.168.1.1 (家庭内ルーター)</p>
-        </div>
-      </div>
-      
-      <h3>プライベートIPの範囲</h3>
-      <ul>
-        <li><strong>クラスA:</strong> 10.0.0.0 ～ 10.255.255.255</li>
-        <li><strong>クラスB:</strong> 172.16.0.0 ～ 172.31.255.255</li>
-        <li><strong>クラスC:</strong> 192.168.0.0 ～ 192.168.255.255</li>
-      </ul>
-    </section>
+    <!-- 今後追加されるデモセクションをここに追加 -->
 
-    <section>
-      <h2>🔄 IPv4とIPv6</h2>
-      <p>現在、IPアドレスには2つのバージョンがあります：</p>
-      
-      <div class="ip-class-grid">
-        <div class="ip-class-card">
-          <h4>IPv4（現在の主流）</h4>
-          <p>32ビット、約43億個のアドレス</p>
-          <p><strong>例:</strong> 192.168.1.1</p>
-        </div>
-        <div class="ip-class-card">
-          <h4>IPv6（次世代）</h4>
-          <p>128ビット、約340澗個のアドレス</p>
-          <p><strong>例:</strong> 2001:db8::1</p>
-        </div>
-      </div>
-      
-      <div class="highlight">
-        💡 <strong>なぜIPv6が必要？</strong> スマートフォンやIoT機器の普及により、IPv4アドレスが不足しているためです。
-      </div>
-    </section>
-
-    <section>
-      <h2>🎯 実用的な使い方</h2>
-      <p>IPアドレスは以下のような場面で活用されます：</p>
-      <ul>
-        <li><strong>ネットワーク設定:</strong> ルーターやプリンターの設定</li>
-        <li><strong>セキュリティ:</strong> アクセス制限や監視</li>
-        <li><strong>サーバー運営:</strong> Webサイトやサービスの公開</li>
-        <li><strong>トラブルシューティング:</strong> 接続問題の診断</li>
-      </ul>
-      
-      <div class="highlight">
-        💡 <strong>プロのコツ：</strong> 家庭内ネットワークの問題を解決するときは、まずルーターのIPアドレス（通常192.168.1.1）にアクセスしてみましょう！
-      </div>
-    </section>
-
-    <section class="related-terms">
-      <h2>🔗 関連用語</h2>
-      <ul>
-        <li><a href="dns.html">🔍 DNS - ドメイン名とIPアドレスの変換</a></li>
-        <li><a href="router.html">📡 ルーター - ネットワークの中継装置</a></li>
-        <li><a href="subnet.html">🌐 サブネット - ネットワークの分割</a></li>
-        <li><a href="nat.html">🔄 NAT - プライベートIP⇄パブリックIP変換</a></li>
-      </ul>
-    </section>
   </main>
 
   <footer>
@@ -200,10 +130,8 @@
     const themeSwitcher = document.getElementById('themeSwitcher');
     const body = document.body;
 
-    // 1. localStorageからテーマ設定を読み込む
     const currentTheme = localStorage.getItem('theme');
 
-    // 2. テーマを適用する関数
     const applyTheme = (theme) => {
       if (theme === 'dark') {
         body.classList.add('dark-mode');
@@ -214,16 +142,13 @@
       }
     };
 
-    // 3. 初期テーマの設定
     if (currentTheme) {
       applyTheme(currentTheme);
     } else {
-      // localStorageに設定がない場合はOSの設定に従う
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       applyTheme(prefersDark ? 'dark' : 'light');
     }
 
-    // 4. スイッチクリック時の動作
     themeSwitcher.addEventListener('click', () => {
       let newTheme;
       if (body.classList.contains('dark-mode')) {
@@ -235,49 +160,57 @@
       localStorage.setItem('theme', newTheme);
     });
 
-    // IPアドレス取得と分析のスクリプト (既存のものをそのまま残す)
+    // SQL INSERT体験デモの関数 (index.htmlからコピー)
+    let users = [];
+    let nextId = 1;
+    function insertUser() {
+      const name = document.getElementById('userName').value.trim();
+      const age = document.getElementById('userAge').value;
+      if (!name || !age) {
+        alert('名前と年齢を入力してください');
+        return;
+      }
+      const user = { name, age: parseInt(age) };
+      users.push(user);
+      const sqlOutput = document.getElementById('sqlOutput');
+      sqlOutput.innerHTML = `INSERT INTO users (name, age) VALUES ('${name}', ${age});\n-- ✅ 実行完了: 1行が挿入されました`;
+      const dbContent = document.getElementById('dbContent');
+      dbContent.innerHTML = JSON.stringify(users, null, 2);
+      document.getElementById('userName').value = '';
+      document.getElementById('userAge').value = '';
+    }
+
+    // IPアドレス体験デモの関数 (ip-address.htmlからコピー)
     async function getMyIP() {
       const resultDiv = document.getElementById('ipResult');
       const ipAddress = document.getElementById('ipAddress');
       const location = document.getElementById('location');
       const isp = document.getElementById('isp');
       const ipType = document.getElementById('ipType');
-      
-      // 結果エリアを表示
       resultDiv.style.display = 'block';
-      
       try {
-        // IP情報を取得（無料APIを使用）
         const response = await fetch('https://ipapi.co/json/');
         const data = await response.json();
-        
         ipAddress.textContent = data.ip || '取得できませんでした';
         location.textContent = `${data.city || '不明'}, ${data.country_name || '不明'}`;
         isp.textContent = data.org || '不明';
-        
-        // IPタイプを判定
         const ip = data.ip;
         if (ip) {
           ipType.textContent = determineIPType(ip);
         } else {
           ipType.textContent = '判定できません';
         }
-        
       } catch (error) {
-        // エラーの場合は代替手段を使用
         ipAddress.textContent = '取得に失敗しました';
         location.textContent = 'APIエラー';
         isp.textContent = 'APIエラー';
         ipType.textContent = '判定できません';
-        
         console.error('IP取得エラー:', error);
       }
     }
     
     function determineIPType(ip) {
       const parts = ip.split('.').map(Number);
-      
-      // プライベートIPの判定
       if (parts[0] === 10) {
         return 'プライベートIP (クラスA)';
       } else if (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) {
@@ -292,38 +225,25 @@
     function analyzeIP() {
       const ipInput = document.getElementById('ipInput').value.trim();
       const resultDiv = document.getElementById('analysisResult');
-      
       if (!ipInput) {
         resultDiv.textContent = 'IPアドレスを入力してください';
         return;
       }
-      
-      // 簡易的なIP形式チェック
       const ipPattern = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/;
       const match = ipInput.match(ipPattern);
-      
       if (!match) {
         resultDiv.textContent = '有効なIPアドレスの形式ではありません\n例: 192.168.1.1';
         return;
       }
-      
       const parts = match.slice(1).map(Number);
-      
-      // 各オクテットの範囲チェック
       if (parts.some(part => part < 0 || part > 255)) {
         resultDiv.textContent = '各数値は0〜255の範囲で入力してください';
         return;
       }
-      
-      // 分析結果を表示
       let result = `📊 IPアドレス分析結果\n`;
       result += `━━━━━━━━━━━━━━━━━━━━━━━━\n`;
       result += `入力されたIP: ${ipInput}\n\n`;
-      
-      // IPタイプの判定
       result += `🏷️ IPタイプ: ${determineIPType(ipInput)}\n\n`;
-      
-      // クラス判定
       if (parts[0] <= 126) {
         result += `📂 クラス: A (1-126)\n`;
         result += `💡 大規模ネットワーク用\n`;
@@ -337,8 +257,6 @@
         result += `📂 クラス: D/E (224-255)\n`;
         result += `💡 特殊用途\n`;
       }
-      
-      // 特殊なIPの判定
       if (ipInput === '127.0.0.1') {
         result += `\n🏠 ローカルホスト (自分自身)`;
       } else if (ipInput === '255.255.255.255') {
@@ -346,9 +264,8 @@
       } else if (parts[0] === 169 && parts[1] === 254) {
         result += `\n🔧 APIPA (自動IP設定)`;
       }
-      
       resultDiv.textContent = result;
     }
   </script>
 </body>
-</html> 
+</html>

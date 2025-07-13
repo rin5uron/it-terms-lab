@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>シフト演算 練習問題 | ビットシフトを学ぶ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>シフト演算 練習問題</h1>
+    <p>実際に問題を解いて理解を深めよう</p>
+  </header>
+
+  <section>
+    <h3>レベル1：基本問題</h3>
+    
+    <div class="question-box">
+      <h4>問1：左シフト</h4>
+      <p>10進数の3を1ビット左シフト（<code>3 << 1</code>）した場合、結果はいくつになりますか？</p>
+      <details>
+        <summary>解答</summary>
+        <div class="answer-box">
+          <p><strong>解法：</strong>1ビット左シフトは2倍に相当します。</p>
+          <div class="calculation-box">
+3 × 2 = 6
+          </div>
+          <p>答え：6</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問2：右シフト</h4>
+      <p>10進数の12を2ビット右シフト（<code>12 >> 2</code>）した場合、結果はいくつになりますか？</p>
+      <details>
+        <summary>解答</summary>
+        <div class="answer-box">
+          <p><strong>解法：</strong>2ビット右シフトは1/4倍に相当します。</p>
+          <div class="calculation-box">
+12 ÷ 4 = 3
+          </div>
+          <p>答え：3</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問3：2進数での左シフト</h4>
+      <p>2進数の<code>00000011</code>（10進数で3）を1ビット左シフトした場合の2進数表記と10進数表記を答えてください。</p>
+      <details>
+        <summary>解答</summary>
+        <div class="answer-box">
+          <p><strong>解法：</strong>ビットを左に1つずらし、右端に0を埋めます。</p>
+          <div class="calculation-box">
+00000011 << 1 → 00000110
+          </div>
+          <p>2進数：<code>00000110</code><br>10進数：6</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <h3>レベル2：応用問題</h3>
+    
+    <div class="question-box">
+      <h4>問4：2進数での右シフト</h4>
+      <p>2進数の<code>00001010</code>（10進数で10）を1ビット右シフトした場合の2進数表記と10進数表記を答えてください。</p>
+      <details>
+        <summary>解答</summary>
+        <div class="answer-box">
+          <p><strong>解法：</strong>ビットを右に1つずらし、左端に0を埋めます。</p>
+          <div class="calculation-box">
+00001010 >> 1 → 00000101
+          </div>
+          <p>2進数：<code>00000101</code><br>10進数：5</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問5：シフト演算の適用可否</h4>
+      <p>以下の計算のうち、シフト演算で高速化できるものはどれですか？</p>
+      <p>ア：<code>a × 6</code><br>イ：<code>b ÷ 8</code><br>ウ：<code>c × 10</code></p>
+      <details>
+        <summary>解答</summary>
+        <div class="answer-box">
+          <p><strong>解法：</strong>シフト演算は2の累乗の掛け算・割り算にのみ適用できます。</p>
+          <ul>
+            <li>ア：<code>a × 6</code> → 6は2の累乗ではないため、シフト演算では直接高速化できません。</li>
+            <li>イ：<code>b ÷ 8</code> → 8は2の累乗（2³）であるため、<code>b >> 3</code> で高速化できます。</li>
+            <li>ウ：<code>c × 10</code> → 10は2の累乗ではないため、シフト演算では直接高速化できません。</li>
+          </ul>
+          <p>答え：イ</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <h3>レベル3：基本情報試験 過去問</h3>
+    
+    <div class="question-box">
+      <h4>問6：平成28年秋期 問1</h4>
+      <p>10進数の25を2進数で表したものはどれか。</p>
+      <p>ア：10011　イ：11001　ウ：10101　エ：11101</p>
+      <details>
+        <summary>解答</summary>
+        <div class="answer-box">
+          <p><strong>解法：</strong>2で割って余りを逆順に並べる</p>
+          <div class="calculation-box">
+25 ÷ 2 = 12 ... 1<br>
+12 ÷ 2 =  6 ... 0<br>
+ 6 ÷ 2 =  3 ... 0<br>
+ 3 ÷ 2 =  1 ... 1<br>
+ 1 ÷ 2 =  0 ... 1<br>
+<br>
+→ 逆順に読む → 11001<br>
+<br>
+答え：イ
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問7：平成27年秋期 問1</h4>
+      <p>2進数の10110110を16進数で表したものはどれか。</p>
+      <p>ア：B6　イ：6B　ウ：A6　エ：6A</p>
+      <details>
+        <summary>解答</summary>
+        <div class="answer-box">
+          <p><strong>解法：</strong>4桁ずつ区切って16進数に変換</p>
+          <div class="calculation-box">
+1011 = 11 → B<br>
+0110 =  6 → 6<br>
+<br>
+→ つなげる → B6<br>
+<br>
+答え：ア
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-box">
+      <h4>問8：レジスタ操作</h4>
+      <p>ある8ビットレジスタに16進数 <code>A5</code> が格納されている。この値を2ビット左シフト（論理左シフト）した場合、レジスタに格納される16進数の値はどれか。</p>
+      <p>ア：<code>28</code>　イ：<code>94</code>　ウ：<code>A5</code>　エ：<code>D4</code></p>
+      <details>
+        <summary>解答</summary>
+        <div class="answer-box">
+          <p><strong>解法：</strong></p>
+          <p>1. 16進数 <code>A5</code> を2進数に変換します。<br><code>A</code> は <code>1010</code>、<code>5</code> は <code>0101</code> なので、<code>A5</code> は <code>1010 0101</code> です。</p>
+          <p>2. この値を2ビット左シフトします。左端のビットは捨てられ、右端に0が追加されます。</p>
+          <div class="calculation-box">
+元の値: 1010 0101<br>
+1ビット左シフト: 0100 1010 (左端の1が捨てられ、右端に0が追加)<br>
+2ビット左シフト: 1001 0100 (さらに左端の0が捨てられ、右端に0が追加)
+          </div>
+          <p>3. 結果の2進数 <code>1001 0100</code> を16進数に変換します。<br><code>1001</code> は <code>9</code>、<code>0100</code> は <code>4</code> なので、<code>94</code> です。</p>
+          <p>答え：イ</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="center">
+    <a class="btn-link" href="index.html">解説ページに戻る</a>
+  </section>
+
+</body>
+</html>
