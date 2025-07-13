@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>n進数がわからない | 基数変換を学ぶ</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -15,10 +14,7 @@
   </header>
 
   <section>
-    <div class="summary-box">
-      <p>コンピューターは電気のON/OFFを「1」と「0」に対応させて動いています。</p>
-    </div>
-    <h2><i class="fas fa-laptop-code"></i> コンピューターは<br-mobile></br-mobile>2進数で計算している</h2>
+    <h2>① コンピューターは<br-mobile></br-mobile>2進数で計算している</h2>
     <p>
       <strong>なぜ？</strong><br>
       電気信号の「オン / オフ」で動いているから
@@ -35,10 +31,7 @@
   </section>
 
   <section>
-    <div class="summary-box">
-      <p>2進数は「0」と「1」だけで数を表現します。1の次は桁が上がり「10」になります。</p>
-    </div>
-    <h2><i class="fas fa-sort-numeric-down"></i> 2進数のしくみ</h2>
+    <h2>② 2進数のしくみ</h2>
     
       <p><strong>どうして？</strong><br>
         10進数で1 + 1 = 2<br>
@@ -47,14 +40,12 @@
       <br>
       <details>
         <summary><strong>なぜなら▼</strong></summary>
-        <div class="details-content">10進数の２は、２進数では10（いち・ゼロ）になるから！</div>
+        <div style="margin-top:1em;">10進数の２は、２進数では10（いち・ゼロ）になるから！</div>
       </details>
   
     <table>
       <tr>
         <th>10進数</th>
-
-        
         <th>2進数</th>
       </tr>
       <tr><td>0</td><td>0</td></tr>
@@ -66,22 +57,19 @@
   </section>
 
   <section>
-    <div class="summary-box">
-      <p>n進数とは「n個の数字」で数を数える方法です。普段使う10進数は10個、2進数は2個の数字を使います。</p>
-    </div>
-    <h2><i class="fas fa-book"></i> ③ n進数とは？</h2>
+    <h2>③ n進数とは？</h2>
     <div class="highlight">
       <strong>n進数</strong> = <br-mobile></br-mobile>「n個の数字を使って数を表す方法」
     </div>
     
-    <div class="example">例えば...</div>
+    <p><strong>例えば...</strong></p>
     <ul>
       <li><strong>10進数：</strong> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 の10個を使う</li>
       <li><strong>2進数：</strong> 0, 1 の2個だけを使う</li>
       <li><strong>16進数：</strong> 0〜9, A〜F の16個を使う</li>
     </ul>
     
-    <h4>桁上がりのルール</h4>
+    <p><strong>桁上がりのルール</strong></p>
     <p>使える数字を全部使い切ったら、次の桁に進む！</p>
     <ul>
       <li>10進数：9の次は10（10で桁上がり）</li>
@@ -91,18 +79,14 @@
   </section>
 
   <section>
-    <div class="summary-box">
-      <p>「基数」は使う数字の個数、「桁の重み」は各桁の重みを表します。これらを使ってn進数を10進数に変換できます。</p>
-    </div>
-    <h2><i class="fas fa-balance-scale"></i> 基数・桁の重み</h2>
+    <h2>④ 基数・桁の重み</h2>
     <div class="highlight">
       <strong>基数</strong><br>：n進数のn。１桁で使える数字の種類数。例：２進数なら０と１の２種類を使って表すので基数は２。<br>
       <strong>桁の重み</strong><br>：各桁が表す量を決める倍率。基数に各桁の位置を表す指数をかけたもの。
     </div>
     
-    <div class="example">例：10進数 1234 の場合</div>
+    <p><strong>例：10進数 1234 の場合</strong></p>
     <div class="calculation-box">
-
       <pre>
 1234 = 1×10³  + 2×10²  + 3×10¹  + 4×10⁰
      = 1×1000 + 2×100 + 3×10  + 4×1
@@ -110,7 +94,7 @@
       </pre>
     </div>
     
-    <h3>各桁の重みの概念</h3>
+    <p><strong>各桁の重みの概念</strong></p>
     <ul>
       <li><strong>千の位（1）：</strong> 重みは10³ = 1000</li>
       <li><strong>百の位（2）：</strong> 重みは10² = 100</li>
@@ -118,53 +102,47 @@
       <li><strong>一の位（4）：</strong> 重みは10⁰ = 1</li>
     </ul>
     
-    <h4>-なぜ指数が0から始まるの？-</h4>
+    <p><strong>-なぜ指数が0から始まるの？-</strong></p>
     <ul>
       <li>一の位は「何倍にもしていない」= <strong>1倍 = 基数⁰</strong></li>
       <li>十の位は「基数を1回かけた」= <strong>基数¹</strong></li>
       <li>百の位は「基数を2回かけた」= <strong>基数²</strong></li>
     </ul>
     
-    <div class="pont">
+    <div class="highlight">
       <strong>桁の重み</strong> は一の位から基数の0乗、1乗、2乗...と増えていく！
     </div>
   </section>
 
   <section>
-    <div class="summary-box">
-      <p>人間(10進数)、PC(2進数)、開発者(16進数)のスムーズな連携のため、基数変換は必須の知識です。</p>
-    </div>
+    <h2>⑤ 基数変換が試験に出る理由</h2>
+    <p>コンピュータは日々、主に10進数と16進数を２進数に変換して計算しているから
+    <h3> なぜ 10・2・16進 の<br-mobile></br-mobile>相互変換が必要なのか</h3>
     
-      <h2><i class="fas fa-cogs"></i> 基数変換が試験に出る理由</h2>
+    <h4>10進数</h4>
+    <p>人間が普段使う表記</p>
+    
+    <h4>2進数</h4>
+    <p>コンピューターが内部で使う表記（オン/オフ）</p>
+    
+    <h4>16進数</h4>
+    <p>2進数（4ビット）= 16通り → 相性抜群！<br>
       
-        <div>コンピュータは日々、主に10進数と16進数を２進数に変換して計算しているから</div>
-    
-     <div class="section-block"> 
-      <h3> なぜ 10・2・16進数の<br-mobile></br-mobile>相互変換が必要なのか</h3>
-      <details>
-        <summary>▼ 詳しく見る</summary>
-        <div class="base-block">
-          <h4>10進数</h4>
-          <p>人間が普段使う表記</p>
-        </div>
-        <div class="base-block">
-          <h4>2進数</h4>
-          <p>コンピューターが内部で使う表記（オン/オフ）</p>
-        </div>
-        <div class="base-block">
-          <h4>16進数</h4>
-          <p>2進数（4ビット）= 16通り → 相性抜群！</p>
-          <p>16進数の1桁 = 2進数の4桁に対応する。変換が簡単かつ2進数４桁を１桁でシンプルに表せる！。</p>
-          <div class="calculation-box">
-            例：2進数の１０１０→16進数のA <br>
-            例：16進数のA3 → 2進数の1010 0011
-          </div>
-        </div>
-      </details>
-    
-      <h3>実際の変換例</h3>
-      <div class="example">色コード #FF0000 を2進数に変換</div>
+        <p>16進数の1桁 = 2進数の4桁に対応する。変換が簡単かつ2進数４桁を１桁でシンプルに表せる！。<br>
+        
+      
+        </p>
+      
       <div class="calculation-box">
+        例：2進数の１０１０→16進数のA 
+        例： 16進数のA3 → 2進数の1010 0011
+      </div>
+
+  
+    
+    <h4>実際の変換例</h4>
+    <p><strong>色コード #FF0000 を2進数に変換</strong></p>
+    <div class="calculation-box">
 #FF0000 = FF + 00 + 00
 FF = 11111111 (2進数)
 00 = 00000000 (2進数)  
@@ -172,9 +150,10 @@ FF = 11111111 (2進数)
 
 結果：11111111 00000000 00000000
 （赤255、緑0、青0 = 赤色）
-      </div>
-      <div class="example">メモリアドレス 0x1A2B を2進数に変換</div>
-      <div class="calculation-box">
+    </div>
+    
+    <p><strong>メモリアドレス 0x1A2B を2進数に変換</strong></p>
+    <div class="calculation-box">
 0x1A2B = 1 + A + 2 + B
 1 = 0001 (2進数)
 A = 1010 (2進数)
@@ -182,15 +161,13 @@ A = 1010 (2進数)
 B = 1011 (2進数)
 
 結果：0001 1010 0010 1011
-      </div>
     </div>
+    
+    
   </section>
 
   <section>
-    <div class="summary-box">
-      <p>PC内部では2進数で処理され、開発者は16進数で確認し、私たちは10進数で結果を見ます。</p>
-    </div>
-    <h2><i class="fas fa-sitemap"></i> 実用のイメージ</h2>
+    <h2>⑥ 実用のイメージ</h2>
     <div class="flow-diagram">
       <strong>コンピューターの数値処理の流れ</strong><br><br>
       2進数（内部処理）<br>
@@ -204,110 +181,98 @@ B = 1011 (2進数)
   </section>
 
   <section>
+    <h2>基数変換の方法</h2>
     
-    <h2><i class="fas fa-exchange-alt"></i> 基数変換の方法</h2>
+    <h3>① 10進数 → n進数</h3>
+    <h4>（1）整数部の変換</h4>
+    <div class="highlight">
+      nで割って、余りを下から順に並べる！<br>
+      ⭐︎基数nで割ることで、桁ごとの文字列を求めている!
+    </div>
     
-    <details>
-      <summary><h3>① 10進数 → n進数</h3></summary>
-      <div class="details-content">
-        <h4>（1）整数部の変換</h4>
-        <div class="point">
-          nで割って、余りを下から順に並べる！<br>
-          基数nで割ることで、桁ごとの文字列を求めている!
-        </div>
-        
-        <div class="example">例：13 を 2進数に変換する場合</div>
-        <div class="calculation-box">
-    13 ÷ 2 =  6 ... 1<br>
-     6 ÷ 2 =  3 ... 0<br>
-     3 ÷ 2 =  1 ... 1<br>
-     1 ÷ 2 =  0 ... 1<br>
-    <br>
-    → 逆順に読む → 1101（答え）
-        </div>
-        
-        <h4>（2）小数部の変換</h4>
-        <div class="point">
-          基数nを掛けて、出てきた整数部分を左から順に読む！<br>
-          基数nで割ることで、桁ごとの文字列を求めている
-        </div>
-        
-        <div class="example">例：0.625 を 2進数に変換する場合</div>
-        <div class="calculation-box">
-    0.625 × 2 = 1.25 → 1<br>
-    0.25 × 2 = 0.50 → 0<br>
-    0.50 × 2 = 1.00 → 1<br>
-    <br>
-    → 左から読む → 0.101（答え）
-        </div>
-      </div>
-    </details>
+    <p><strong>例：13 を 2進数に変換する場合</strong></p>
+    <div class="calculation-box">
+13 ÷ 2 =  6 ... 1<br>
+ 6 ÷ 2 =  3 ... 0<br>
+ 3 ÷ 2 =  1 ... 1<br>
+ 1 ÷ 2 =  0 ... 1<br>
+<br>
+→ 逆順に読む → 1101（答え）
+    </div>
+    
+    <h4>（2）小数部の変換</h4>
+    <div class="highlight">
+      基数nを掛けて、出てきた整数部分を左から順に読む！<br>
+      ⭐︎基数nで割ることで、桁ごとの文字列を求めている
+    </div>
+    
+    <p><strong>例：0.625 を 2進数に変換する場合</strong></p>
+    <div class="calculation-box">
+0.625 × 2 = 1.25 → 1<br>
+0.25 × 2 = 0.50 → 0<br>
+0.50 × 2 = 1.00 → 1<br>
+<br>
+→ 左から読む → 0.101（答え）
+    </div>
+    
+    <h3>② n進数 → 10進数</h3>
+    <div class="highlight">
+      各桁に桁の重みをかけて、それぞれを合計する！
+      ⭐︎桁の重みをかけると、整数部分が少数部分の一の位になる
+    </div>
+    
+    <p><strong>例1：2進数 1101 を 10進数に変換</strong></p>
+    <div class="calculation-box">
+<pre>
+1×2³ + 1×2² + 0×2¹ + 1×2⁰
+   = 8   + 4   + 0   + 1   = 13
+</pre>
+    </div>
+    
+    <p><strong>例2：16進数 1A を 10進数に変換</strong></p>
+    <div class="calculation-box">
+<pre>
+1×16¹ + A×16⁰ = 1×16 + 10×1 = 26
+（※A=10、B=11、... F=15）
+</pre>
+    </div>
+    <div class="flow-diagram">
+      <h4>迷ったら10進数 → 10進数に変換してみて</h4>
+      <p><strong>例1：nで割る方法（10進数498を10進数に直す）</strong></p>
+      <div class="calculation-box">
+<pre>
+498 ÷ 10 = 49 ... 8
+ 49 ÷ 10 =  4 ... 9
+  4 ÷ 10 =  0 ... 4
 
-    <details>
-      <summary><h3>② n進数 → 10進数</h3></summary>
-      <div class="details-content">
-        <div class="point">
-          各桁に桁の重みをかけて、それぞれを合計する！
-          桁の重みをかけると、整数部分が少数部分の一の位になる
-        </div>
-        
-        <div class="example">例1：2進数 1101 を 10進数に変換</div>
-        <div class="calculation-box">
-    <pre>
-    1×2³ + 1×2² + 0×2¹ + 1×2⁰
-       = 8   + 4   + 0   + 1   = 13
-    </pre>
-        </div>
-        
-        <div class="example">例2：16進数 1A を 10進数に変換</div>
-        <div class="calculation-box">
-    <pre>
-    1×16¹ + A×16⁰ = 1×16 + 10×1 = 26
-    （※A=10、B=11、... F=15）
-    </pre>
-        </div>
-        <div class="flow-diagram">
-          <h4>迷ったら10進数 → 10進数に変換してみて</h4>
-          <div class="example">例1：nで割る方法（10進数498を10進数に直す）</div>
-          <div class="calculation-box">
-    <pre>
-    498 ÷ 10 = 49 ... 8
-     49 ÷ 10 =  4 ... 9
-      4 ÷ 10 =  0 ... 4
-    
-    → 逆順に読む → 498（答え）
-    </pre>
-          </div>
-          
-          <div class="example">例2：nを掛ける方法（10進数0.953を10進数に直す）</div>
-          <div class="calculation-box">
-    <pre>
-    0.953 × 10 = 9.53 → 9
-    0.53  × 10 = 5.30 → 5
-    0.30  × 10 = 3.00 → 3
-    
-    → 左から読む → 0.953（答え）
-    </pre>
-          </div>
-          
-          <div class="example">例3：桁の重みをかける方法（498を10進数に直す）</div>
-          <div class="calculation-box">
-    <pre>
-    4×10² + 9×10¹ + 8×10⁰
-        = 4×100 + 9×10 + 8×1
-        = 400   + 90   + 8 = 498（答え）
-    </pre>
-          </div>
-        </div>
+→ 逆順に読む → 498（答え）
+</pre>
       </div>
-    </details>
+      
+      <p><strong>例2：nを掛ける方法（10進数0.953を10進数に直す）</strong></p>
+      <div class="calculation-box">
+<pre>
+0.953 × 10 = 9.53 → 9
+0.53  × 10 = 5.30 → 5
+0.30  × 10 = 3.00 → 3
+
+→ 左から読む → 0.953（答え）
+</pre>
+      </div>
+      
+      <p><strong>例3：桁の重みをかける方法（498を10進数に直す）</strong></p>
+      <div class="calculation-box">
+<pre>
+4×10² + 9×10¹ + 8×10⁰
+    = 4×100 + 9×10 + 8×1
+    = 400   + 90   + 8 = 498（答え）
+</pre>
+      </div>
+    </div>
   </section>
 
   <section>
-    <div class="summary-box">
-      <p>試験では、10進数、2進数、16進数の相互変換が頻出！<br>パターンを覚えて効率よく解けるようにしましょう。</p>
-    </div>
-    <h2><i class="fas fa-check-circle"></i> 試験によく出る<br-mobile></br-mobile>変換パターン</h2>
+    <h2>✔ 試験によく出る<br-mobile></br-mobile>変換パターン</h2>
     <table>
       <tr>
         <th>出題形式</th>
@@ -319,12 +284,13 @@ B = 1011 (2進数)
       <tr><td>16進 → 2進</td><td>各桁を4ビットの2進数に置き換え</td></tr>
       <tr><td>2進 → 16進</td><td>4桁ずつ区切って16進数に変換</td></tr>
     </table>
-    <div class="center">
-      <a class="btn-link" href="practice.html">練習問題に挑戦する</a>
-    </div>
   </section>
 
   
+
+  <section class="center">
+    <a class="btn-link" href="practice.html">練習問題に挑戦する</a>
+  </section>
 
   
 
