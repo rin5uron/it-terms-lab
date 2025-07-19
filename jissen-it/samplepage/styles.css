@@ -58,19 +58,31 @@ nav ul {
     padding: 20px 0;
 }
 
+/* CTAボタンコンテナを追加 */
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
 .cta-button {
     display: inline-block;
     background-color: #cb4b16;
     color: #fff;
     padding: 12px 25px;
-    border-radius: 25px;
-    margin: 10px;
+    border-radius: 8px; /* 角丸を統一 */
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
+    min-width: 120px; /* 最小幅を設定 */
+    text-align: center;
 }
+
 .cta-button:hover {
     background-color: #dc3912;
     text-decoration: none;
+    transform: translateY(-2px); /* 軽い浮き上がり効果 */
 }
 
 /* 検索セクション */
@@ -96,16 +108,20 @@ nav ul {
 }
 
 .search-form button {
-    padding: 10px 15px;
+    padding: 12px 25px; /* CTAボタンと同じパディング */
     border: none;
-    background-color: #b58900;
+    background-color: #cb4b16; /* CTAボタンと同じ色 */
     color: white;
-    border-radius: 5px;
+    border-radius: 8px; /* CTAボタンと同じ角丸 */
     cursor: pointer;
+    font-weight: bold; /* フォントウェイトも統一 */
+    transition: background-color 0.3s, transform 0.2s;
+    min-width: 120px; /* 最小幅を設定 */
 }
 
 .search-form button:hover {
-    background-color: #cb4b16;
+    background-color: #dc3912; /* CTAボタンと同じホバー色 */
+    transform: translateY(-2px); /* 軽い浮き上がり効果 */
 }
 
 .char-nav, .category-nav {
@@ -116,18 +132,41 @@ nav ul {
     margin-top: 10px;
 }
 
-.char-nav a, .category-nav a {
-    display: inline-block;
-    padding: 5px 12px;
+
+.char-nav a {
+    padding: 4px 8px;
     background-color: #fff;
     border: 1px solid #eee8d5;
     border-radius: 20px;
     font-size: 0.9em;
     color: #586e75;
-    min-width: 20px; /* 最小幅を調整 */
     text-align: center;
     box-sizing: border-box; /* パディングを幅に含める */
+    min-width: 45px; /* 最低幅を大きく */
+    width: 45px; /* 固定幅に設定 */
+    height: 32px; /* 高さも統一 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.category-nav a {
+    padding: 5px 12px; /* 文字に合わせて調整 */
+    background-color: #fff;
+    border: 1px solid #eee8d5;
+    border-radius: 20px;
+    font-size: 0.9em;
+    color: #586e75;
+    text-align: center;
+    box-sizing: border-box; /* パディングを幅に含める */
+    min-width: 140px; /* 最低幅を拡大 */
+    width: 140px; /* 固定幅を拡大 */
+    height: 32px; /* 高さも統一 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .char-nav a:hover, .category-nav a:hover {
     background-color: #eee8d5;
@@ -139,7 +178,7 @@ nav ul {
     border: 0;
     border-top: 1px solid #eee8d5;
     margin: 30px auto; /* 上下のマージンを増やす */
-    width: 80%;
+    width: 100%;
 }
 
 /* レスポンシブデザイン */
@@ -173,10 +212,26 @@ nav ul {
         grid-template-columns: 1fr; /* 1列表示 */
     }
 
-    .char-nav a, .category-nav a {
-        padding: 4px 10px;
+    .char-nav a {
+        padding: 3px 8px;
         font-size: 0.8em;
-        min-width: 15px; /* スマホでの最小幅を調整 */
+        min-width: 40px; /* スマホでの最低幅 */
+        width: 40px; /* 固定幅に設定 */
+        height: 30px; /* 高さも統一 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .category-nav a {
+        padding: 4px 10px; /* スマホでの文字に合わせて調整 */
+        font-size: 0.8em;
+        min-width: 120px; /* スマホでの最低幅を拡大 */
+        width: 120px; /* 固定幅を拡大 */
+        height: 30px; /* 高さも統一 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
