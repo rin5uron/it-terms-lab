@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>応用編 - 論理回路</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>応用編 - 論理回路</h1>
+        <p>基本情報技術者試験の合格を目指し、論理回路の核心を学びます。</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>1. 論理ゲートと論理式</h2>
+            <p>各論理ゲートの動作を、真理値表と論理式で正確に理解します。</p>
+
+            <!-- Gate definitions will be inserted here -->
+            <h3>AND (論理積)</h3>
+            <p><strong>特徴:</strong> すべての入力が「1」の場合にのみ、出力が「1」になります。<br><strong>論理式:</strong> Y = A・B</p>
+            <table><thead><tr><th>A</th><th>B</th><th>Y</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td>1</td></tr></tbody></table>
+
+            <h3>OR (論理和)</h3>
+            <p><strong>特徴:</strong> いずれかの入力が「1」の場合に、出力が「1」になります。<br><strong>論理式:</strong> Y = A + B</p>
+            <table><thead><tr><th>A</th><th>B</th><th>Y</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td></tr></tbody></table>
+
+            <h3>NOT (否定)</h3>
+            <p><strong>特徴:</strong> 入力を反転させます。<br><strong>論理式:</strong> Y = ¬A or A̅</p>
+            <table><thead><tr><th>A</th><th>Y</th></tr></thead><tbody><tr><td>0</td><td>1</td></tr><tr><td>1</td><td>0</td></tr></tbody></table>
+
+            <h3>NAND (否定論理積)</h3>
+            <p><strong>特徴:</strong> ANDゲートの出力を否定します。<br><strong>論理式:</strong> Y = ¬(A・B)</p>
+            <table><thead><tr><th>A</th><th>B</th><th>Y</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>1</td></tr><tr><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>0</td></tr></tbody></table>
+
+            <h3>NOR (否定論理和)</h3>
+            <p><strong>特徴:</strong> ORゲートの出力を否定します。<br><strong>論理式:</strong> Y = ¬(A + B)</p>
+            <table><thead><tr><th>A</th><th>B</th><th>Y</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>1</td></tr><tr><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td>0</td></tr></tbody></table>
+
+            <h3>XOR (排他的論理和)</h3>
+            <p><strong>特徴:</strong> 入力が異なるときに「1」を出力します。<br><strong>論理式:</strong> Y = A ⊕ B</p>
+            <table><thead><tr><th>A</th><th>B</th><th>Y</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>0</td></tr></tbody></table>
+        </section>
+
+        <section>
+            <h2>2. ブール代数の基本法則</h2>
+            <p>論理式を簡略化するために使われる、ブール代数の重要な法則です。</p>
+            <div class="key-point">
+                <h4>ド・モルガンの法則</h4>
+                <p>論理式の変形において非常に重要です。</p>
+                <ul>
+                    <li><strong>¬(A・B) = ¬A + ¬B</strong><br>「AかつB」の否定は、「Aの否定 または Bの否定」と等しい。</li>
+                    <li><strong>¬(A + B) = ¬A・¬B</strong><br>「AまたはB」の否定は、「Aの否定 かつ Bの否定」と等しい。</li>
+                </ul>
+            </div>
+             <div class="key-point">
+                <h4>その他の重要な法則</h4>
+                <ul>
+                    <li><strong>交換法則:</strong> A・B = B・A  |  A+B = B+A</li>
+                    <li><strong>結合法則:</strong> (A・B)・C = A・(B・C)  |  (A+B)+C = A+(B+C)</li>
+                    <li><strong>分配法則:</strong> A・(B+C) = A・B + A・C  |  A+(B・C) = (A+B)・(A+C)</li>
+                    <li><strong>吸収法則:</strong> A・(A+B) = A  |  A+(A・B) = A</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. 組み合わせ回路</h2>
+            <h3>半加算器 (Half Adder)</h3>
+            <p>2つの1ビットの数を加算し、和(S)と桁上がり(C)を出力します。</p>
+            <p><strong>和 (S) = A ⊕ B</strong><br><strong>桁上がり (C) = A・B</strong></p>
+            <table><thead><tr><th>A</th><th>B</th><th>S</th><th>C</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>1</td><td>0</td><td>1</td></tr></tbody></table>
+
+            <h3>全加算器 (Full Adder)</h3>
+            <p>2つの1ビットの数と、下位からの桁上がり(Cin)の計3ビットを加算し、和(S)と上位への桁上がり(Cout)を出力します。</p>
+            <table><thead><tr><th>A</th><th>B</th><th>Cin</th><th>S</th><th>Cout</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td>-<td>1</td><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr></tbody></table>
+        </section>
+
+        <section class="question-box">
+            <h2>4. 過去問演習</h2>
+
+            <div class="question-item">
+                <h4>問題1 (基本情報技術者試験より)</h4>
+                <p>論理式 A・B + A・C を簡略化したものはどれか。</p>
+                <p>ア: A・(B+C)  イ: A+(B・C)  ウ: B・(A+C)  エ: C・(A+B)</p>
+                <details>
+                    <summary>答えと解説</summary>
+                    <div class="answer-box">
+                        <p><strong>答え: ア</strong><br>これはブール代数の**分配法則** A・(B+C) = A・B + A・C を利用します。共通の因子であるAでくくることで、式を簡略化できます。</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="question-item">
+                <h4>問題2 (基本情報技術者試験より)</h4>
+                <p>入力Aと入力Bがともに1のときだけ、出力が0になる論理ゲートはどれか。</p>
+                <p>ア: AND  イ: NOR  ウ: NAND  エ: XOR</p>
+                <details>
+                    <summary>答えと解説</summary>
+                    <div class="answer-box">
+                        <p><strong>答え: ウ</strong><br>NANDゲートは、ANDゲートの出力を否定したものです。ANDゲートは入力が両方1のときに出力が1になるため、NANDゲートはその逆で、入力が両方1のときに出力が0になります。</p>
+                    </div>
+                </details>
+            </div>
+
+             <div class="question-item">
+                <h4>問題3 (基本情報技術者試験より)</h4>
+                <p>半加算器において、入力A=1, B=0 のときの出力として正しいものはどれか。</p>
+                <p>ア: 和=0, 桁上がり=0  イ: 和=0, 桁上がり=1  ウ: 和=1, 桁上がり=0  エ: 和=1, 桁上がり=1</p>
+                <details>
+                    <summary>答えと解説</summary>
+                    <div class="answer-box">
+                        <p><strong>答え: ウ</strong><br>半加算器の和はXOR(A⊕B)、桁上がりはAND(A・B)で計算されます。<br>和: 1 ⊕ 0 = 1<br>桁上がり: 1・0 = 0</p>
+                    </div>
+                </details>
+            </div>
+
+        </section>
+
+        <div class="center">
+            <a href="index.html" class="btn-link">トップに戻る</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 IT Terms Lab</p>
+    </footer>
+</body>
+</html>

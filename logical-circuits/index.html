@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>論理回路をマスターしよう！</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="intro-section">
+        <h2>ITの基礎を学ぶ</h2>
+        <h1>論理回路をマスターしよう！</h1>
+        <p>あなたのレベルに合わせて、2つのコースから選んで学習を進めよう。</p>
+    </header>
+
+    <main>
+        <section class="course-selection">
+            <div class="course-box">
+                <h2>初級編</h2>
+                <h3>まずは、楽しく体験！</h3>
+                <p>スイッチとランプを使ったインタラクティブな実験室で、論理回路の基本的な動きを直感的に理解しよう。「ANDって何？」「XORって面白い！」と感じるのがゴールです。</p>
+                <div class="center">
+                    <a href="practice.html" class="btn-link">初級編をはじめる</a>
+                </div>
+            </div>
+
+            <div class="course-box">
+                <h2>応用編</h2>
+                <h3>基本情報レベルに挑戦！</h3>
+                <p>試験合格に必要な、より厳密な定義、ブール代数の法則、そして加算器の仕組みを学びます。過去問をベースにした演習問題で、実践力を身につけよう。</p>
+                <div class="center">
+                    <a href="exam.html" class="btn-link">応用編をはじめる</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="content-section">
+        <h2>【初級編】コンピュータの思考の基礎</h2>
+        <ul>
+            <li>コンピュータは「0」と「1」の信号を使い、論理演算子（AND, OR, NOTなど）を用いて計算を行っています。</li>
+            <li>CPU（中央処理装置）には、この論理演算を行うための論理回路が数億個も集積されています。</li>
+            <li>論理回路を図で示す際には、国際標準である<strong>MIL記号</strong>が用いられます。</li>
+            <li>論理演算の概念は、集合論の<strong>ベン図</strong>を使うと視覚的に理解しやすくなります。</li>
+        </ul>
+    </section>
+
+    <section class="content-section">
+        <h2>【応用編】足し算を実現する回路</h2>
+        <div class="adder-container">
+            <div class="adder-box">
+                <h3>半加算器 (Half Adder)</h3>
+                <p>2つの1桁の2進数を計算し、「和」と「桁上がり」を出力します。主に、一番下の桁の計算で使われます。</p>
+                <img src="imges/ha.png" alt="半加算器の回路図">
+            </div>
+            <div class="adder-box">
+                <h3>全加算器 (Full Adder)</h3>
+                <p>下の桁からの桁上がりを含めた、3つの1桁の2進数を計算します。2桁目以降の計算で必須となります。</p>
+                <img src="imges/fa.png" alt="全加算器の回路図">
+            </div>
+        </div>
+        <div class="explanation">
+            <p><strong>ポイント：</strong>全加算器は、下の桁から「1」が上がってきた（桁上がりがオンになった）場合、それを考慮して計算結果を出力します。これにより、複数桁の正確な足し算が可能になります。</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2>もっと挑戦！過去問題</h2>
+        <p>さらに理解を深めるために、基本情報技術者試験の過去問にも挑戦してみましょう。（問題は順次追加予定）</p>
+        <a href="https://www.youtube.com/watch?v=8ugmd6PBrPw" target="_blank" class="btn-link">参考動画で学ぶ</a>
+    </section>
+
+    <footer>
+        <p>© 2024 IT Terms Lab</p>
+    </footer>
+
+    <style>
+        .course-selection {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .course-selection {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .course-box {
+            background: var(--section-bg);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-color);
+            display: flex;
+            flex-direction: column;
+        }
+        .course-box h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        .course-box h3 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .course-box p {
+            flex-grow: 1;
+            margin-bottom: 2rem;
+        }
+    </style>
+</body>
+</html>
