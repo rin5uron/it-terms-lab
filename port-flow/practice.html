@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ポート番号 練習問題 | IT用語学習</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <h1>ポート番号 練習問題</h1>
+    <p>過去問を解いて理解を深めよう</p>
+  </header>
+
+  <section>
+    <h3><i class="fas fa-file-alt"></i> 基本情報技術者試験 過去問</h3>
+    <hr>
+    
+    <div class="question-item">
+      <h4>問1：基本的なHTTP通信（令和4年サンプル問）</h4>
+      <p>PCがWebサーバにHTTPで接続を開始する際のTCPパケットでは、送信元ポート番号が50001、宛先ポート番号が80であった。このWebサーバからPCへの戻りのTCPパケットでの、送信元ポート番号と宛先ポート番号の組合せはどれか。</p>
+      <details>
+        <summary>正解と解説</summary>
+        <div class="explanation-content">
+          <p class="answer">送信元ポート番号：80、宛先ポート番号：50001</p>
+          <p><strong>【解説】</strong></p>
+          <p>戻りの通信では、送信元と宛先のポート番号が逆になります。</p>
+          <div class="calculation-box">
+            <strong>行き（リクエスト）</strong><br>
+            送信元: PC (50001)<br>
+            宛先: Webサーバ (80)
+            <hr>
+            <strong>帰り（レスポンス）</strong><br>
+            送信元: Webサーバ (80)<br>
+            宛先: PC (50001)
+          </div>
+          <p>したがって、Webサーバからの戻りのパケットは、送信元が「80」、宛先が「50001」となります。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="question-item">
+      <h4>問2：プロキシ経由の通信（令和元年秋 問34）</h4>
+      <p>クライアントAが、ポート番号8080のHTTPプロキシサーバBを経由して、ポート番号80のWebサーバCにアクセスする。このとき、宛先ポート番号が8080になるTCPパケットはどれか。</p>
+      <p>ア：AからBへのHTTP要求<br>イ：AからBへのHTTP要求 と BからCへのHTTP要求<br>ウ：AからBへのHTTP要求 と CからBへのHTTP応答<br>エ：BからCへのHTTP要求 と CからBへのHTTP応答</p>
+      <details>
+        <summary>正解と解説</summary>
+        <div class="explanation-content">
+          <p class="answer">ウ：AからBへのHTTP要求 と CからBへのHTTP応答</p>
+          <p><strong>【解説】</strong></p>
+          <p>宛先ポート番号が「8080」になるのは、通信の受け手が「プロキシサーバB」であるパケットです。</p>
+          <div class="calculation-box">
+            <strong>1. A → B へのHTTP要求</strong><br>
+            AがBにリクエストを送るため、宛先はBのポート「8080」。
+            <hr>
+            <strong>2. B → C へのHTTP要求</strong><br>
+            BがCにリクエストを中継するため、宛先はCのポート「80」。
+            <hr>
+            <strong>3. C → B へのHTTP応答</strong><br>
+            CがBに応答を返すため、宛先はBのポート「8080」。
+            <hr>
+            <strong>4. B → A へのHTTP応答</strong><br>
+            BがAに応答を中継するため、宛先はAのポート（例:50001など）。
+          </div>
+          <p>したがって、宛先ポートが8080になるのは「AからBへのHTTP要求」と「CからBへのHTTP応答」です。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <div class="center">
+      <a class="btn-link" href="index.html">解説ページに戻る</a>
+    </div>
+  </section>
+
+</body>
+</html>

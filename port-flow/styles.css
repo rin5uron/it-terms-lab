@@ -1,0 +1,592 @@
+
+:root {
+  --primary-color: #007aff;
+  --primary-light: #5ac8fa;
+  --primary-dark: #0056cc;
+  --secondary-color: #3a3a3c;
+  --text-color: #1d1d1f;
+  --background-color: #f5f5f7;
+  --section-bg: #ffffff;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --highlight-bg: linear-gradient(135deg, #f2f2f7 0%, #e5e5ea 100%);
+  --question-bg: linear-gradient(135deg, #f2f2f7 0%, #e5e5ea 100%);
+  --answer-bg: linear-gradient(135deg, #e8f4fd 0%, #d1e9fb 100%);
+  --calculation-bg: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background: var(--background-color);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header, footer {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  letter-spacing: -0.02em;
+}
+
+header p {
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  color: var(--text-color);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+h4 {
+  color: var(--secondary-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+section {
+  background: var(--section-bg);
+  padding: 3rem;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+p {
+  margin: 1em 0;
+  padding: 0;
+}
+
+.btn-link {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 1.5rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 122, 255, 0.2);
+}
+
+.btn-link:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+}
+
+.center {
+  text-align: center;
+}
+
+.calculation-box {
+  background: var(--calculation-bg);
+  color: #374151;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+
+  font-family: SF Mono, Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-size: 1rem;
+  line-height: 1.6;
+  white-space: pre-line;
+  overflow-x: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.highlight {
+  background: var(--highlight-bg);
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.7;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.highlight strong {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.point {
+  padding: 2rem;
+  margin: 2rem 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.question-box {
+  background: var(--question-bg);
+  padding: 2rem;
+  margin-bottom: 6rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.question-item {
+  margin-bottom: 6rem;
+}
+
+
+.answer-box {
+  background: linear-gradient(135deg, #e8f4fd 0%, #d1e9fb 100%);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 122, 255, 0.2);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 1rem;
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background: var(--highlight-bg);
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.flow-diagram {
+  border: 1px solid rgba(0, 122, 255, 0.2);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: left;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+ul, ol {
+  padding-left: 2rem;
+  margin: 1.5em 0;
+}
+
+li {
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--secondary-color);
+}
+
+p {
+  margin: 1rem 0;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--secondary-color);
+}
+
+strong {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.intro-section {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  color: white;
+  text-align: center;
+  padding: 4rem 3rem;
+  border-radius: 2rem;
+  margin-bottom: 3rem;
+}
+
+.intro-section h2 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.intro-section p {
+  font-size: 1.375rem;
+  color: rgba(255,255,255,0.9);
+  margin: 1rem 0;
+}
+
+.key-point {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 2rem 0;
+  border: 1px solid rgba(0, 122, 255, 0.2);
+}
+
+.key-point h4 {
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.example-box {
+  background: var(--question-bg);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-top: 2rem 0;
+}
+
+.example-box h4 {
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+details {
+  margin: 1rem 0;
+}
+
+/* アコーディオン（三角アイコン・summaryテキスト）カスタム */
+details summary {
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 1.125rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.02);
+  position: relative;
+}
+
+details summary::before {
+  content: "▼";
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] summary {
+  color: var(--text-color);
+  background: rgba(0, 122, 255, 0.05);
+  border-color: rgba(0, 122, 255, 0.2);
+}
+
+details[open] summary::before {
+  transform: rotate(180deg);
+}
+
+details summary:hover {
+  background: rgba(0, 122, 255, 0.08);
+  border-color: rgba(0, 122, 255, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.15);
+}
+
+.summary-box {
+  background: #eef7ff;
+  border: 1px solid #a9d7ff;
+  border-radius: 1rem;
+  padding: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.summary-box h4 {
+  color: #005a9e;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem; /* フォントサイズを調整 */
+}
+
+.summary-box p {
+  margin: 0;
+  color: #005a9e;
+  font-size: 0.9rem; /* フォントサイズを調整 */
+}
+
+h2 .fas {
+  margin-right: 1rem;
+  color: var(--primary-color);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  body {
+    padding: 1.5rem;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  header p {
+    font-size: 1.125rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.375rem;
+  }
+  
+  h4 {
+    font-size: 1.125rem;
+  }
+  
+  section {
+    padding: 2rem;
+  }
+  
+  .intro-section {
+    padding: 3rem 2rem;
+  }
+  
+  .intro-section h2 {
+    font-size: 2rem;
+  }
+  
+  .intro-section p {
+    font-size: 1.25rem;
+  }
+  
+  .calculation-box {
+    padding: 1.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .highlight {
+    padding: 1.5rem;
+  }
+  
+  table {
+    font-size: 0.875rem;
+  }
+  
+  th, td {
+    padding: 0.75rem;
+  }
+  
+  .flow-diagram {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .key-point, .example-box {
+    padding: 1.5rem;
+  }
+  
+  p, li {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 1rem;
+  }
+  
+  header h1 {
+    font-size: 1.75rem;
+  }
+  
+  header p {
+    font-size: 1rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  h4 {
+    font-size: 1rem;
+  }
+  
+  section {
+    padding: 1.5rem;
+  }
+  
+  .intro-section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .intro-section h2 {
+    font-size: 1.75rem;
+  }
+  
+  .intro-section p {
+    font-size: 1.125rem;
+  }
+  
+  .calculation-box {
+    padding: 1rem;
+    font-size: 0.75rem;
+  }
+  
+  .highlight {
+    padding: 1rem;
+  }
+  
+  table {
+    font-size: 0.75rem;
+  }
+  
+  th, td {
+    padding: 0.5rem;
+  }
+  
+  .flow-diagram {
+    padding: 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .key-point, .example-box {
+    padding: 1rem;
+  }
+  
+  p, li {
+    font-size: 0.875rem;
+  }
+} 
+
+/* --- スマホ専用改行＆字下げ --- */
+br-mobile {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  br-mobile {
+    display: block;
+    height: 0;
+    content: "";
+  }
+  br-mobile + * {
+    text-indent: 1.5em;
+    display: block;
+  }
+} 
+
+.example {
+  font-size: 0.95rem;
+  margin-top: 4em;
+  margin-bottom: 0.5em;
+} 
+
+.section-block {
+  padding: 2.5em 2em;
+  margin: 2.5em 0;
+}
+.base-block {
+  margin-bottom: 2em;
+}
+.base-block:last-child {
+  margin-bottom: 0;
+}
+
+/* 定義リストのスタイル - コロンの位置を整列 */
+.definition-list {
+  margin: 1rem 0;
+  padding: 0;
+}
+
+.definition-list dt {
+  font-weight: bold;
+  color: var(--text-color);
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+  position: relative;
+  padding-left: 0;
+}
+
+.definition-list dt::after {
+  content: "：";
+  position: absolute;
+  left: 4em;
+  color: var(--text-color);
+}
+
+.definition-list dd {
+  margin: 0 0 0.5rem 4.5em;
+  padding: 0;
+  color: var(--secondary-color);
+}
+
+.definition-list dd:last-child {
+  margin-bottom: 0;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+  .definition-list dt::after {
+    left: 3.5em;
+  }
+  
+  .definition-list dd {
+    margin-left: 4em;
+  }
+}
+
+@media (max-width: 480px) {
+  .definition-list dt::after {
+    left: 3em;
+  }
+  
+  .definition-list dd {
+    margin-left: 3.5em;
+  }
+} 
