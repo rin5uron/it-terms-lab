@@ -587,6 +587,10 @@ br-mobile {
 }
 
 @media (max-width: 480px) {
+  h1{
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
   .definition-list dt::after {
     left: 3em;
   }
