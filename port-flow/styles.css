@@ -195,9 +195,13 @@ th, td {
 }
 
 th {
+  font-size: 0.7rem;
   background: var(--highlight-bg);
   font-weight: 600;
   color: var(--text-color);
+}
+td {
+  font-size: 0.75rem;
 }
 
 .flow-diagram {
@@ -288,6 +292,7 @@ details {
   margin: 1rem 0;
 }
 
+ 
 /* アコーディオン（三角アイコン・summaryテキスト）カスタム */
 details summary {
   color: var(--text-color);

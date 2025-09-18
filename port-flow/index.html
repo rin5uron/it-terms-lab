@@ -6,6 +6,19 @@
   <title>ポート番号と通信フローの仕組み | IT用語学習</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .illustration-svg {
+      width: 100%;
+      margin: 0;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #555;
+      text-align: center;
+      margin-top: -1rem;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -47,18 +60,55 @@
       <p>PCからサーバへのリクエストと、サーバからPCへのレスポンスでは、送信元と宛先のポート番号が「反転」します。</p>
     </div>
     <h2><i class="fas fa-exchange-alt"></i> HTTP通信のポート番号の流れ</h2>
-    <p>
-      PC側の送信元ポート（例：50001）は一時的に割り当てられる「エフェメラルポート」です。サーバ側はサービスごとに決まったポート（HTTPなら80）を使います。
-    </p>
-    <div class="calculation-box">
-      <strong>PC → Webサーバ（リクエスト）</strong><br>
-      送信元ポート: 50001<br>
-      宛先ポート: 80
-      <hr>
-      <strong>Webサーバ → PC（レスポンス）</strong><br>
-      送信元ポート: 80<br>
-      宛先ポート: 50001
-    </div>
+    <svg viewBox="0 0 400 150" class="illustration-svg">
+      <style>
+        .icon { font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 30px; }
+        .label { font-size: 12px; font-weight: bold; }
+        .port { font-size: 10px; fill: #e67e22; }
+        .arrow { stroke: #3498db; stroke-width: 1.5; marker-end: url(#arrowhead); }
+        .arrow-rev { stroke: #2ecc71; stroke-width: 1.5; marker-end: url(#arrowhead-rev); }
+        .packet-label { font-size: 9px; }
+      </style>
+      <defs>
+        <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db" />
+        </marker>
+        <marker id="arrowhead-rev" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#2ecc71" />
+        </marker>
+      </defs>
+      
+      <text x="50" y="50" class="icon">&#xf109;</text>
+      <text x="45" y="75" class="label">PC</text>
+      
+      <text x="320" y="50" class="icon">&#xf233;</text>
+      <text x="300" y="75" class="label">Webサーバ</text>
+
+      <path class="arrow" d="M 90,40 Q 200,10 310,40" fill="none" />
+      <text x="160" y="25" class="packet-label">リクエスト</text>
+      <text x="130" y="45" class="port">宛先: 80</text>
+      <text x="200" y="45" class="port">送信元: 50001 (一例)</text>
+
+      <path class="arrow-rev" d="M 310,60 Q 200,100 90,60" fill="none" />
+      <text x="160" y="95" class="packet-label">レスポンス</text>
+      <text x="130" y="75" class="port">送信元: 80</text>
+      <text x="200" y="75" class="port">宛先: 50001 (一例)</text>
+    </svg>
+    <p class="note">※ポート番号50001は、OSが割り当てる一時的なポートの一例です。</p>
+
+    <details>
+      <summary><strong>なぜ送信元ポートはOSが自動で決めるの？</strong></summary>
+      <div class="details-content">
+        <p>もし送信元ポートを一つに決めてしまうと、<strong>PC上で同時に一つの通信しかできなくなってしまう</strong>からです。</p>
+        <p>例えば、ブラウザでYouTubeを見ながら、別のタブでGoogle検索をすると、PCの中では2つの通信が同時に動いています。PCは、「YouTubeからの返事」と「Googleからの返事」を区別するために、OSが自動的に別々の送信元ポートを割り当てます。</p>
+        <div class="calculation-box">
+          <strong>YouTubeとの通信：</strong><br>PCは「返事は<strong>60001番</strong>にお願いします」と伝えてリクエストを送る。<br><br>
+          <strong>Googleとの通信：</strong><br>PCは「返事は<strong>60002番</strong>にお願いします」と伝えてリクエストを送る。
+        </div>
+        <p>こうすることで、データがごちゃ混ぜになる「ポートの衝突」を避け、複数の通信を正しく管理できるのです。</p>
+      </div>
+    </details>
+
     <div class="pont">
       <strong>ポイント：</strong>戻りのパケットは送信元・宛先が“反転”するだけ！
     </div>
@@ -66,50 +116,76 @@
 
   <section>
     <div class="summary-box">
-      <p>プロキシを経由する場合、通信は2段階になります。クライアントはまずプロキシサーバと通信し、プロキシサーバがWebサーバと通信します。</p>
+      <p>プロキシは、PCの「代理」としてインターネットに接続するサーバです。セキュリティ向上やアクセス高速化などの役割があります。</p>
+    </div>
+    <h2><i class="fas fa-user-shield"></i> プロキシってなに？</h2>
+    <p>
+      Proxy（プロキシ）は「代理」という意味で、PCとWebサーバの間に入って通信を中継します。
+    </p>
+    <div class="example">主な目的</div>
+    <ul>
+      <li><strong>セキュリティ向上：</strong>PCをインターネットから隠し、不正なアクセスから守る「盾」になります。</li>
+      <li><strong>高速化（キャッシュ）：</strong>一度アクセスしたページの情報を保存し、次回から素早く表示します。</li>
+      <li><strong>アクセス制御：</strong>会社や学校で、特定のサイトへのアクセスを制限する「門番」として使われます。</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="summary-box">
+      <p>プロキシを経由する場合、通信は2段階に分かれます。PCはまずプロキシと通信し、次にプロキシがWebサーバと通信します。</p>
     </div>
     <h2><i class="fas fa-network-wired"></i> プロキシサーバを使うとどう変わる？</h2>
-    <p>
-      クライアントAが、ポート8080のプロキシサーバBを経由して、ポート80のWebサーバCにアクセスするケースを考えます。
-    </p>
-    <div class="flow-diagram">
-      <strong>通信の流れ： A → B → C</strong><br><br>
-      <ol>
-        <li>クライアントA → プロキシB (宛先ポート: 8080)</li>
-        <li>プロキシB → WebサーバC (宛先ポート: 80)</li>
-        <li>WebサーバC → プロキシB (宛先ポート: 8080)</li>
-        <li>プロキシB → クライアントA (宛先ポート: Aの元のポート)</li>
-      </ol>
-    </div>
+    <svg viewBox="0 0 450 220" class="illustration-svg">
+      <style>
+        .icon { font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 30px; }
+        .label { font-size: 12px; font-weight: bold; }
+        .port { font-size: 10px; fill: #e67e22; }
+        .arrow { stroke: #3498db; stroke-width: 1.5; marker-end: url(#arrowhead); }
+        .arrow-rev { stroke: #2ecc71; stroke-width: 1.5; marker-end: url(#arrowhead-rev); }
+        .packet-label { font-size: 9px; }
+      </style>
+      <text x="30" y="50" class="icon">&#xf109;</text>
+      <text x="10" y="75" class="label">クライアントA</text>
+
+      <text x="200" y="50" class="icon">&#xf234;</text>
+      <text x="185" y="75" class="label">プロキシB</text>
+      <text x="185" y="90" class="port">ポート: 8080</text>
+
+      <text x="380" y="50" class="icon">&#xf233;</text>
+      <text x="360" y="75" class="label">WebサーバC</text>
+      <text x="365" y="90" class="port">ポート: 80</text>
+
+      <!-- A -> B -->
+      <path class="arrow" d="M 70,40 Q 135,10 200,40" fill="none" />
+      <text x="100" y="30" class="packet-label">1. 要求 (A→B)</text>
+      <text x="110" y="45" class="port">宛先: 8080</text>
+
+      <!-- B -> C -->
+      <path class="arrow" d="M 240,40 Q 310,10 380,40" fill="none" />
+      <text x="270" y="30" class="packet-label">2. 中継 (B→C)</text>
+      <text x="285" y="45" class="port">宛先: 80</text>
+
+      <!-- C -> B -->
+      <path class="arrow-rev" d="M 380,60 Q 310,100 240,60" fill="none" />
+      <text x="270" y="95" class="packet-label">3. 応答 (C→B)</text>
+      <text x="285" y="75" class="port">宛先: 8080</text>
+
+      <!-- B -> A -->
+      <path class="arrow-rev" d="M 200,60 Q 135,100 70,60" fill="none" />
+      <text x="85" y="95" class="packet-label">4. 中継 (B→A)</text>
+      <text x="85" y="75" class="port">宛先: Aのポート (例: 50001)</text>
+    </svg>
     
-    <h4>TCPポート番号のまとめ</h4>
-    <table>
-      <tr>
-        <th>区間</th>
-        <th>宛先ポート</th>
-        <th>備考</th>
-      </tr>
-      <tr>
-        <td>A → B (プロキシ)</td>
-        <td>8080</td>
-        <td>プロキシBをターゲットにする</td>
-      </tr>
-      <tr>
-        <td>B → C (Web)</td>
-        <td>80</td>
-        <td>WebサーバCに中継</td>
-      </tr>
-      <tr>
-        <td>C → B (応答)</td>
-        <td>8080</td>
-        <td>Bが受け取るため</td>
-      </tr>
-      <tr>
-        <td>B → A (応答)</td>
-        <td>Aのポート（例:50001）</td>
-        <td>最初の送信元ポートと一致</td>
-      </tr>
-    </table>
+    <details>
+      <summary><strong>なぜB→Aの宛先は「Aのポート」なの？</strong></summary>
+      <div class="details-content">
+        <p>これは、先ほどの<strong>『HTTP通信の流れ』で登場したPCの送信元ポートと全く同じ仕組み</strong>です。</p>
+        <p>PC（クライアントA）がプロキシ（B）との通信を始める時に、「<strong>戻ってくるデータは、この扉（ポート番号）に入れてください</strong>」と、一時的な使い捨ての扉番号を自分で決めて相手に伝えるからです。</p>
+        <p>この一時的なポートは「<strong>エフェメラルポート</strong>」と呼ばれます。</p>
+        <p>宅配便で例えると、AがBに荷物を送る際、返送先として「自宅の玄関（ポート50001番）」と伝票に書くのと同じです。BはCとのやり取りを終えた後、その伝票を見て、指定された「自宅の玄関（50001番）」に返事を届けるのです。</p>
+      </div>
+    </details>
+
   </section>
 
   <section>
