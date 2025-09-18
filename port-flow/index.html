@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ポート番号と通信フローの仕組み | IT用語学習</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <h1>ポート番号と通信フローの仕組み</h1>
+    <p>過去問で出た“ポート番号の動き”がわかる！</p>
+  </header>
+
+  <section>
+    <div class="summary-box">
+      <h4><i class="fas fa-bullseye"></i> このページの目的</h4>
+      <ul>
+        <li>「送信元ポート」「宛先ポート」の意味がわかる</li>
+        <li>HTTP通信の基本的な流れが理解できる</li>
+        <li>プロキシを使うとポートの流れがどう変わるかイメージできる</li>
+        <li><strong>令和元年秋・令和4年サンプルの問題が自力で解けるようになる！</strong></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="summary-box">
+      <p>IPアドレスが「建物の住所」なら、ポート番号は「部屋番号」。通信相手のコンピュータの中で、どのアプリケーション宛かを区別します。</p>
+    </div>
+    <h2><i class="fas fa-door-open"></i> ポート番号ってなに？</h2>
+    <p>
+      通信相手の “アプリケーションの入り口” を指定するための番号です。
+    </p>
+    <div class="example">代表的なポート番号</div>
+    <ul>
+      <li><strong>HTTP：</strong> 80</li>
+      <li><strong>HTTPS：</strong> 443</li>
+      <li><strong>プロキシ：</strong> 8080（よく使われる）</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="summary-box">
+      <p>PCからサーバへのリクエストと、サーバからPCへのレスポンスでは、送信元と宛先のポート番号が「反転」します。</p>
+    </div>
+    <h2><i class="fas fa-exchange-alt"></i> HTTP通信のポート番号の流れ</h2>
+    <p>
+      PC側の送信元ポート（例：50001）は一時的に割り当てられる「エフェメラルポート」です。サーバ側はサービスごとに決まったポート（HTTPなら80）を使います。
+    </p>
+    <div class="calculation-box">
+      <strong>PC → Webサーバ（リクエスト）</strong><br>
+      送信元ポート: 50001<br>
+      宛先ポート: 80
+      <hr>
+      <strong>Webサーバ → PC（レスポンス）</strong><br>
+      送信元ポート: 80<br>
+      宛先ポート: 50001
+    </div>
+    <div class="pont">
+      <strong>ポイント：</strong>戻りのパケットは送信元・宛先が“反転”するだけ！
+    </div>
+  </section>
+
+  <section>
+    <div class="summary-box">
+      <p>プロキシを経由する場合、通信は2段階になります。クライアントはまずプロキシサーバと通信し、プロキシサーバがWebサーバと通信します。</p>
+    </div>
+    <h2><i class="fas fa-network-wired"></i> プロキシサーバを使うとどう変わる？</h2>
+    <p>
+      クライアントAが、ポート8080のプロキシサーバBを経由して、ポート80のWebサーバCにアクセスするケースを考えます。
+    </p>
+    <div class="flow-diagram">
+      <strong>通信の流れ： A → B → C</strong><br><br>
+      <ol>
+        <li>クライアントA → プロキシB (宛先ポート: 8080)</li>
+        <li>プロキシB → WebサーバC (宛先ポート: 80)</li>
+        <li>WebサーバC → プロキシB (宛先ポート: 8080)</li>
+        <li>プロキシB → クライアントA (宛先ポート: Aの元のポート)</li>
+      </ol>
+    </div>
+    
+    <h4>TCPポート番号のまとめ</h4>
+    <table>
+      <tr>
+        <th>区間</th>
+        <th>宛先ポート</th>
+        <th>備考</th>
+      </tr>
+      <tr>
+        <td>A → B (プロキシ)</td>
+        <td>8080</td>
+        <td>プロキシBをターゲットにする</td>
+      </tr>
+      <tr>
+        <td>B → C (Web)</td>
+        <td>80</td>
+        <td>WebサーバCに中継</td>
+      </tr>
+      <tr>
+        <td>C → B (応答)</td>
+        <td>8080</td>
+        <td>Bが受け取るため</td>
+      </tr>
+      <tr>
+        <td>B → A (応答)</td>
+        <td>Aのポート（例:50001）</td>
+        <td>最初の送信元ポートと一致</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <div class="summary-box">
+      <p>ポート番号の動きをパターンで覚え、過去問に挑戦しましょう。</p>
+    </div>
+    <h2><i class="fas fa-check-circle"></i> まとめ</h2>
+    <table>
+      <tr>
+        <th>ポイント</th>
+        <th>内容</th>
+      </tr>
+      <tr>
+        <td>宛先ポート</td>
+        <td>通信の“入り口”を指定する番号</td>
+      </tr>
+      <tr>
+        <td>送信元ポート</td>
+        <td>クライアント側が一時的に使う番号（例：50001）</td>
+      </tr>
+      <tr>
+        <td>戻りの通信</td>
+        <td>ポート番号が“反転”する</td>
+      </tr>
+      <tr>
+        <td>プロキシ通信</td>
+        <td>クライアント(A)からプロキシ(B)への宛先ポートは常にプロキシのポート(8080)になる</td>
+      </tr>
+    </table>
+    <div class="center">
+      <a class="btn-link" href="practice.html">過去問に挑戦する</a>
+    </div>
+  </section>
+
+</body>
+</html>
